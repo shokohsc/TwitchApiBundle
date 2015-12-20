@@ -1,0 +1,30 @@
+{
+    "name": "shokohsc/twitch-api-bundle",
+    "description": "Twitch Api Symfony Bundle",
+    "keywords": ["twitch","api"],
+    "homepage": "https://github.com/shokohsc",
+    "license": "MIT",
+    "type": "symfony-bundle",
+    "authors": [
+        {
+            "name": "Pommier Dimitri",
+            "email": "pommier.dimitri@hotmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.0",
+        "symfony/framework-bundle": "^2.8",
+        "symfony/serializer": "^2.8",
+        "guzzlehttp/guzzle": "^6.1"
+    },
+    "require-dev": {
+        "fabpot/php-cs-fixer": "^1.11",
+        "mmoreram/php-formatter": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {"Shoko\\TwitchApiBundle\\": ""}
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
+}

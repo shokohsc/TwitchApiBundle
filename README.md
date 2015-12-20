@@ -1,2 +1,2 @@
 # TwitchApiBundle
-Twitch api sf2 bundle
+Twitch Api bundle for Symfony2+
