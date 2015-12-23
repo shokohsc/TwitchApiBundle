@@ -3,7 +3,7 @@
 namespace Shoko\TwitchApiBundle\Lib;
 
 use GuzzleHttp\Client as Guzzle;
-use Shoko\TwitchApiBundle\Model\ValueObject\Url;
+use Shoko\TwitchApiBundle\Model\Entity\ValueObject\Url;
 
 /**
  * Client class.

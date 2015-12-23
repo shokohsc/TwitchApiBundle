@@ -2,7 +2,7 @@
 
 namespace Shoko\TwitchApiBundle\Tests\Lib;
 
-use Shoko\TwitchApiBundle\Model\ValueObject\Url;
+use Shoko\TwitchApiBundle\Model\Entity\ValueObject\Url;
 use Shoko\TwitchApiBundle\Lib\Client;
 use Prophecy\Prophet;
 use Prophecy\Argument;
@@ -31,13 +31,16 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $this->prophet = new Prophet;
     }
 
+    /**
+     * Test GetUrl method.
+     */
     public function testGetUrl()
     {
         $guzzle = $this->prophet->prophesize('GuzzleHttp\Client');
-        $url = $this->prophet->prophesize('Shoko\TwitchApiBundle\Model\ValueObject\Url');
+        $url = $this->prophet->prophesize('Shoko\TwitchApiBundle\Model\Entity\ValueObject\Url');
         $url = (new Client($guzzle->reveal(), $url->reveal()))->getUrl();
 
-        $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\ValueObject\Url', $url);
+        $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\ValueObject\Url', $url);
     }
 
     /**
@@ -46,7 +49,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     public function testGetHeaders()
     {
         $guzzle = $this->prophet->prophesize('GuzzleHttp\Client');
-        $url = $this->prophet->prophesize('Shoko\TwitchApiBundle\Model\ValueObject\Url');
+        $url = $this->prophet->prophesize('Shoko\TwitchApiBundle\Model\Entity\ValueObject\Url');
         $headers = (new Client($guzzle->reveal(), $url->reveal()))->getHeaders();
         $expected = array('Accept' => 'application/vnd.twitchtv.v3+json');
 

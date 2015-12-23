@@ -1,8 +1,8 @@
 <?php
 
-namespace Shoko\TwitchApiBundle\Tests\Model\ValueObject;
+namespace Shoko\TwitchApiBundle\Tests\Model\Entity\ValueObject;
 
-use Shoko\TwitchApiBundle\Model\ValueObject\Url;
+use Shoko\TwitchApiBundle\Model\Entity\ValueObject\Url;
 
 /**
  * UrlTest class.

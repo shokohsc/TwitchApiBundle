@@ -1,8 +1,8 @@
 <?php
 
-namespace Shoko\TwitchApiBundle\Tests\Model\ValueObject;
+namespace Shoko\TwitchApiBundle\Tests\Model\Entity\ValueObject;
 
-use Shoko\TwitchApiBundle\Model\ValueObject\Link;
+use Shoko\TwitchApiBundle\Model\Entity\ValueObject\Link;
 use Shoko\TwitchApiBundle\Model\Entity\User;
 
 /**
