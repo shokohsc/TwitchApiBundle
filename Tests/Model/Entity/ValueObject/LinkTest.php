@@ -22,7 +22,7 @@ class LinkTest extends \PHPUnit_Framework_TestCase
           ->setKey(User::ENDPOINT)
           ->setValue('some_user')
         ;
-        $this->assertEquals('"user": "some_user"', strval($link));
+        $this->assertEquals('"users": "some_user"', strval($link));
     }
 
     public function testGettersAndSetters()
