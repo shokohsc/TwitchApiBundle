@@ -5,14 +5,8 @@ namespace Shoko\TwitchApiBundle\Model\Entity\ValueObject;
 /**
  * Link class.
  */
-class Link implements \ArrayAccess
+class Link
 {
-    /**
-     * \ArrayAccess $container
-     * @var array
-     */
-    private $container = array();
-
     /**
      * Link $key
      * @var string
@@ -26,18 +20,11 @@ class Link implements \ArrayAccess
     private $value;
 
     /**
-     * Constructor method.
-     * @param string $key Link key
-     * @param string $value Link hostname
+     * @return Link
      */
-    public function __construct($key = null, $value = null)
+    public static function create()
     {
-        $this->key = $key;
-        $this->value = $value;
-        $this->container = array(
-          'key' => $this->key,
-          'value' => $this->value
-        );
+        return new Link();
     }
 
     /**
@@ -46,39 +33,9 @@ class Link implements \ArrayAccess
      */
     public function __toString()
     {
-        return '"' . $this->key . '": "' . $this->value . '"';
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function offsetSet($offset, $value) {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function offsetExists($offset) {
-        return isset($this->container[$offset]);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function offsetUnset($offset) {
-        unset($this->container[$offset]);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function offsetGet($offset) {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return json_encode([
+          $this->key => $this->value
+        ]);
     }
 
     /**
@@ -98,7 +55,6 @@ class Link implements \ArrayAccess
     public function setKey($key)
     {
         $this->key = $key;
-        $this->container['key'] = $this->key;
 
         return $this;
     }
@@ -120,7 +76,6 @@ class Link implements \ArrayAccess
     public function setValue($value)
     {
         $this->value = $value;
-        $this->container['value'] = $this->value;
 
         return $this;
     }

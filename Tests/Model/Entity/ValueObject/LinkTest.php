@@ -11,23 +11,33 @@ use Shoko\TwitchApiBundle\Model\Entity\User;
 class LinkTest extends \PHPUnit_Framework_TestCase
 {
     /**
+     * Test create method.
+     */
+    public function testCreate()
+    {
+        $link = Link::create();
+
+        $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\ValueObject\Link', $link);
+    }
+
+    /**
      * Test __toString method.
      */
     public function testToString()
     {
-        $link = new Link();
-        $this->assertEquals('"": ""', strval($link));
+        $link = Link::create();
+        $this->assertEquals('{"":null}', strval($link));
 
         $link
           ->setKey(User::ENDPOINT)
           ->setValue('some_user')
         ;
-        $this->assertEquals('"users": "some_user"', strval($link));
+        $this->assertEquals('{"users":"some_user"}', strval($link));
     }
 
     public function testGettersAndSetters()
     {
-        $link = new Link();
+        $link = Link::create();
         $this->assertEquals(null, $link->getKey());
         $this->assertEquals(null, $link->getValue());
 
@@ -37,19 +47,5 @@ class LinkTest extends \PHPUnit_Framework_TestCase
         ;
         $this->assertEquals(User::ENDPOINT, $link->getKey());
         $this->assertEquals('some_user', $link->getValue());
-    }
-
-    /**
-     * Test array access interface method.
-     */
-    public function testArrayAccessInterface()
-    {
-        $link = (new Link())
-          ->setKey(User::ENDPOINT)
-          ->setValue('some_user')
-        ;
-
-        $this->assertEquals(User::ENDPOINT, $link['key']);
-        $this->assertEquals('some_user', $link['value']);
     }
 }
