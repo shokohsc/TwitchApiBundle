@@ -24,7 +24,6 @@ class RootFactoryTest extends \PHPUnit_Framework_TestCase
 
         $rootFactory = new RootFactory;
         $root = $rootFactory->createRoot($data);
-        dump($root);
 
         $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Root', $root);
         $this->assertEquals(null, $root->getToken());
