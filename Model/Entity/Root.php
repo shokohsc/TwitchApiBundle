@@ -25,14 +25,11 @@ class Root
     private $links = array();
 
     /**
-     * Constructor method.
-     * @param Token $token
-     * @param array $links
+     * @return Root
      */
-    public function __construct($token = null, $links = array())
+    public static function create()
     {
-        $this->token = $token;
-        $this->links = $links;
+        return new Root;
     }
 
     /**

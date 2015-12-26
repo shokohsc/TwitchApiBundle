@@ -24,7 +24,7 @@ class Link
      */
     public static function create()
     {
-        return new Link();
+        return new Link;
     }
 
     /**

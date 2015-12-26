@@ -15,7 +15,7 @@ class LinkListTest extends \PHPUnit_Framework_TestCase
     public function testCreate()
     {
         $data = [
-          'some_key' => 'some_value',
+          'some_key'    => 'some_value',
           'another_key' => 'another_value'
         ];
 

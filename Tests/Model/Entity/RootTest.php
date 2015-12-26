@@ -28,7 +28,14 @@ class RootTest extends \PHPUnit_Framework_TestCase
     protected function setup()
     {
         $this->prophet = new Prophet;
-        $this->root = new Root();
+        $this->root = new Root;
+    }
+
+    public function testCreate()
+    {
+        $root = Root::create();
+
+        $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Root', $root);
     }
 
     /**
