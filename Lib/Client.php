@@ -75,6 +75,6 @@ class Client
      */
     public function get($resource, $headers = array())
     {
-        return $this->guzzle->get($resource, array_merge($this->headers, $headers));
+        return $this->guzzle->get($this->url.$resource, array_merge($this->headers, $headers));
     }
 }
