@@ -30,9 +30,7 @@ class Client
 
     /**
      * Constructor method.
-     * @param array  $headers Http headers to send along
      */
-
     public function __construct(Guzzle $guzzle, Url $url, $headers = array('Accept' => 'application/vnd.twitchtv.v3+json'))
     {
         $this->headers  = $headers;
@@ -68,6 +66,15 @@ class Client
     }
 
     /**
+     * Add headers
+     * @param array $headers
+     */
+    public function addHeaders($headers = array())
+    {
+        return array_merge($this->headers, $headers);
+    }
+
+    /**
      * Get resource
      * @param  string $resource
      * @param  array  $headers
@@ -75,6 +82,6 @@ class Client
      */
     public function get($resource, $headers = array())
     {
-        return $this->guzzle->get($this->url.$resource, array_merge($this->headers, $headers));
+        return $this->guzzle->get($this->url . $resource, $this->addHeaders($headers));
     }
 }
