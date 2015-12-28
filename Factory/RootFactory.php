@@ -23,7 +23,7 @@ class RootFactory extends AbstractFactory
         }
 
         if (isset($data['_links'])) {
-            $root = $root->setlinks($this->createLinkList($data['_links']));
+            $root = $root->setLinks($this->createLinkList($data['_links']));
         }
 
         return $root;
