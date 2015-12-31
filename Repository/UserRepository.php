@@ -31,12 +31,19 @@ class UserRepository
     /**
      * @return User
      */
-    public function getUser()
+    public function getUser($token = null, $username = null)
     {
-        $data = $this->client
-                     ->get(User::ENDPOINT)
-                     ->getBody()
-                ;
+        if (null !== $token) {
+            $data = $this->client
+                      ->get(User::AUTH_ENDPOINT, array('Authorization' => 'OAuth ' . $token))
+                      ->getBody()
+                    ;
+        } else {
+            $data = $this->client
+                      ->get(User::ENDPOINT . $username)
+                      ->getBody()
+                    ;
+        }
 
         return $this->factory->createUser(json_decode($data, true));
     }

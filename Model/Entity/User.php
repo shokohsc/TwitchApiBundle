@@ -7,7 +7,8 @@ namespace Shoko\TwitchApiBundle\Model\Entity;
  */
 class User
 {
-    const ENDPOINT = 'users';
+    const ENDPOINT = 'users/';
+    const AUTH_ENDPOINT = 'user';
 
     /**
      * Type string $type

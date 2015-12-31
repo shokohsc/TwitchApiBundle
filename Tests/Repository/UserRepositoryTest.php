@@ -60,7 +60,7 @@ class UserRepositoryTest extends \PHPUnit_Framework_TestCase
         $factory = new UserFactory;
         $repository = new UserRepository($client->reveal(), $factory);
 
-        $user = $repository->getUser();
+        $user = $repository->getUser(null, 'test_user1');
 
         $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\User', $user);
         $this->assertEquals('21229404', $user->getId());

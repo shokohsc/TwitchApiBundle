@@ -31,12 +31,19 @@ class RootRepository
     /**
      * @return Root
      */
-    public function getRoot()
+    public function getRoot($token = null)
     {
-        $data = $this->client
-                     ->get(Root::ENDPOINT)
-                     ->getBody()
-                ;
+        if (null !== $token) {
+            $data = $this->client
+                      ->get(Root::ENDPOINT, array('Authorization' => 'OAuth ' . $token))
+                      ->getBody()
+                    ;
+        } else {
+            $data = $this->client
+                      ->get(Root::ENDPOINT)
+                      ->getBody()
+                    ;
+        }
 
         return $this->factory->createRoot(json_decode($data, true));
     }
