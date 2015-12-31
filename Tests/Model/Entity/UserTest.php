@@ -17,66 +17,52 @@ class UserTest extends \PHPUnit_Framework_TestCase
     private $prophet;
 
     /**
-     * User $user
-     * @var User
-     */
-    private $user;
-
-    /**
      * {@inheridoc}
      */
     protected function setup()
     {
         $this->prophet = new Prophet;
-        $this->user = new User;
     }
 
-    public function testCreate()
+    /**
+     * Test Get/Set, create, endpoint methods.
+     */
+    public function testUserEntity()
     {
         $user = User::create();
 
         $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\User', $user);
-    }
 
-    /**
-     * Test User endpoint method.
-     */
-    public function testUserEndpoint()
-    {
-        $this->assertEquals(User::ENDPOINT, constant(get_class($this->user).'::ENDPOINT'));
-    }
+        $this->assertEquals(User::ENDPOINT, constant(get_class($user).'::ENDPOINT'));
 
-    /**
-     * Test Get name method.
-     */
-    public function testGetName()
-    {
-        $this->assertEquals(null, $this->user->getName());
-    }
+        $this->assertEquals('user', $user->getType());
+        $this->assertEquals('some_type', $user->setType('some_type')->getType());
 
-    /**
-     * Test Set name method.
-     */
-    public function testSetName()
-    {
-        $this->assertEquals('some_name', $this->user->setName('some_name')->getName());
-    }
+        $this->assertEquals(null, $user->getName());
+        $this->assertEquals('some_name', $user->setName('some_name')->getName());
 
-    /**
-     * Test Get links method.
-     */
-    public function testGetLinks()
-    {
-        $this->assertEquals(array(), $this->user->getLinks());
-    }
+        $date = new \DateTime();
+        $this->assertEquals(null, $user->getCreatedAt());
+        $this->assertEquals($date, $user->setCreatedAt($date)->getCreatedAt());
 
-    /**
-     * Test Set links method.
-     */
-    public function testSetLinks()
-    {
+        $this->assertEquals(null, $user->getUpdatedAt());
+        $this->assertEquals($date, $user->setUpdatedAt($date)->getUpdatedAt());
+
+        $this->assertEquals(array(), $user->getLinks());
         $link = $this->prophet->prophesize('Shoko\TwitchApiBundle\Entity\ValueObject\Link');
-        $this->assertEquals([$link], $this->user->setLinks([$link])->getLinks());
+        $this->assertEquals([$link], $user->setLinks([$link])->getLinks());
+
+        $this->assertEquals(null, $user->getLogo());
+        $this->assertEquals('some_logo', $user->setLogo('some_logo')->getLogo());
+
+        $this->assertEquals(null, $user->getId());
+        $this->assertEquals('some_id', $user->setId('some_id')->getId());
+
+        $this->assertEquals(null, $user->getDisplayName());
+        $this->assertEquals('some_display_name', $user->setDisplayName('some_display_name')->getDisplayName());
+
+        $this->assertEquals(null, $user->getBio());
+        $this->assertEquals('some_bio', $user->setBio('some_bio')->getBio());
     }
 
     /**
