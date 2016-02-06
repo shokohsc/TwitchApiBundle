@@ -3,7 +3,6 @@
 namespace Shoko\TwitchApiBundle\Lib;
 
 use GuzzleHttp\Client as Guzzle;
-use Shoko\TwitchApiBundle\Model\Entity\ValueObject\Url;
 
 /**
  * Client class.
@@ -11,49 +10,45 @@ use Shoko\TwitchApiBundle\Model\Entity\ValueObject\Url;
 class Client
 {
     /**
-     * Guzzle $guzzle client class
-     * @var Guzzle
+     * Url $protocol: https
      */
-    private $guzzle;
+    const URL_PROTOCOL = 'https';
 
     /**
-     * Url $url class
-     * @var Url
+     * Url $hostname: api.twitch.tv
      */
-    private $url;
+    const URL_HOST = 'api.twitch.tv';
 
     /**
-     * array $headers Http headers to send along
-     * @var array
+     * Url $version, Twitch api version: v3 - kraken
      */
-    private $headers;
+    const URL_VERSION = 'kraken';
 
     /**
      * Constructor method.
+     * @param Guzzle $guzzle
      */
-    public function __construct(Guzzle $guzzle, Url $url, $headers = array('Accept' => 'application/vnd.twitchtv.v3+json'))
+    public function __construct(Guzzle $guzzle)
     {
-        $this->headers  = $headers;
-        $this->url      = $url;
-        $this->guzzle   = $guzzle;
+        $this->guzzle = $guzzle;
     }
 
     /**
-     * Get url
+     * Get default twitch v3 api url
      * @return Url
      */
     public function getUrl()
     {
-        return $this->url;
+        return self::URL_PROTOCOL . '://' . self::URL_HOST . '/' . self::URL_VERSION . '/';
     }
 
     /**
-     * Get headers
+     * Get default headers to send
      * @return array
      */
     public function getHeaders()
     {
-        return $this->headers;
+        return array('Accept' => 'application/vnd.twitchtv.v3+json');
     }
 
     /**
@@ -66,12 +61,14 @@ class Client
     }
 
     /**
-     * Add headers
-     * @param array $headers
+     * Set guzzle $guzzle
+     * @return Client
      */
-    public function addHeaders($headers = array())
+    public function setGuzzle(Guzzle $guzzle)
     {
-        return array_merge($this->headers, $headers);
+        $this->guzzle = $guzzle;
+
+        return $this;
     }
 
     /**
@@ -82,6 +79,10 @@ class Client
      */
     public function get($resource, $headers = array())
     {
-        return $this->guzzle->get($this->url . $resource, $this->addHeaders($headers));
+        return $this->getGuzzle()->request(
+          'GET',
+          $this->getUrl() . $resource,
+          array_merge($this->getHeaders(), $headers)
+        );
     }
 }

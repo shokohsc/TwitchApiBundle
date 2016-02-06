@@ -36,11 +36,12 @@ class ClientTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetUrl()
     {
-        $guzzle = $this->prophet->prophesize('GuzzleHttp\Client');
-        $url = $this->prophet->prophesize('Shoko\TwitchApiBundle\Model\Entity\ValueObject\Url');
-        $url = (new Client($guzzle->reveal(), $url->reveal()))->getUrl();
+        $guzzle   = $this->prophet->prophesize('GuzzleHttp\Client');
+        $client   = new Client($guzzle->reveal());
+        $url      = $client->getUrl();
+        $expected = 'https://api.twitch.tv/kraken/';
 
-        $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\ValueObject\Url', $url);
+        $this->assertEquals($expected, $url);
     }
 
     /**
@@ -48,9 +49,9 @@ class ClientTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetHeaders()
     {
-        $guzzle = $this->prophet->prophesize('GuzzleHttp\Client');
-        $url = $this->prophet->prophesize('Shoko\TwitchApiBundle\Model\Entity\ValueObject\Url');
-        $headers = (new Client($guzzle->reveal(), $url->reveal()))->getHeaders();
+        $guzzle   = $this->prophet->prophesize('GuzzleHttp\Client');
+        $client   = new Client($guzzle->reveal());
+        $headers  = $client->getHeaders();
         $expected = array('Accept' => 'application/vnd.twitchtv.v3+json');
 
         $this->assertEquals($expected, $headers);
@@ -62,9 +63,10 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     public function testGuzzle()
     {
         $guzzle = new Guzzle();
-        $url = new Url;
-        $result = (new Client($guzzle, $url))->getGuzzle();
+        $client = new Client($guzzle);
+        $result = $client->getGuzzle();
 
+        $this->assertEquals($guzzle, $result);
         $this->assertInstanceOf('GuzzleHttp\Client', $result);
     }
 
@@ -76,8 +78,9 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $mock     = new MockHandler([new Response(200)]);
         $handler  = HandlerStack::create($mock);
         $guzzle   = new Guzzle(['handler' => $handler]);
-        $url      = new Url;
-        $response = (new Client($guzzle, $url))->get('/');
+
+        $client   = new Client($guzzle);
+        $response = $client->get('');
 
         $this->assertEquals(200, $response->getStatusCode());
     }

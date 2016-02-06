@@ -10,7 +10,7 @@ use Shoko\TwitchApiBundle\Entity\Link;
  */
 class Root
 {
-    const ENDPOINT = '/';
+    const ENDPOINT = '';
 
     /**
      * Token $token.
