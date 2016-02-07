@@ -3,27 +3,12 @@
 namespace Shoko\TwitchApiBundle\Tests\Model\Entity;
 
 use Shoko\TwitchApiBundle\Model\Entity\User;
-use Prophecy\Prophet;
 
 /**
  * UserTest class.
  */
 class UserTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * Prophet $prophet
-     * @var Prophet
-     */
-    private $prophet;
-
-    /**
-     * {@inheridoc}
-     */
-    protected function setup()
-    {
-        $this->prophet = new Prophet;
-    }
-
     /**
      * Test Get/Set, create, endpoint methods.
      */
@@ -63,13 +48,5 @@ class UserTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(null, $user->getBio());
         $this->assertEquals('some_bio', $user->setBio('some_bio')->getBio());
-    }
-
-    /**
-     * {@inheridoc}
-     */
-    protected function tearDown()
-    {
-        $this->prophet->checkPredictions();
     }
 }

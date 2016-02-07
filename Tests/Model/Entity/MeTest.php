@@ -11,20 +11,6 @@ use Prophecy\Prophet;
 class MeTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Prophet $prophet
-     * @var Prophet
-     */
-    private $prophet;
-
-    /**
-     * {@inheridoc}
-     */
-    protected function setup()
-    {
-        $this->prophet = new Prophet;
-    }
-
-    /**
      * Test Get/Set, create, endpoint methods.
      */
     public function testMeEntity()
@@ -72,13 +58,5 @@ class MeTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(array(), $me->getNotifications());
         $this->assertEquals(array('email' => true), $me->setNotifications(array('email' => true))->getNotifications());
-    }
-
-    /**
-     * {@inheridoc}
-     */
-    protected function tearDown()
-    {
-        $this->prophet->checkPredictions();
     }
 }
