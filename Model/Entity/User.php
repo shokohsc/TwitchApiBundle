@@ -2,12 +2,18 @@
 
 namespace Shoko\TwitchApiBundle\Model\Entity;
 
+use Shoko\TwitchApiBundle\Model\Entity\Traits\Linksable;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\Identifiable;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\Timestampable;
+
 /**
  * User class.
  */
 class User
 {
     const ENDPOINT = 'users/';
+
+    use Identifiable, Timestampable, Linksable;
 
     /**
      * Type string $type
@@ -22,34 +28,10 @@ class User
     private $name = null;
 
     /**
-     * Creation date DateTime $createdAt
-     * @var DateTime
-     */
-    private $createdAt = null;
-
-    /**
-     * Update date DateTime $updatedAt
-     * @var DateTime
-     */
-    private $updatedAt = null;
-
-    /**
-     * Links array
-     * @var array
-     */
-    private $links = array();
-
-    /**
      * Logo string $logo
      * @var string
      */
     private $logo = null;
-
-    /**
-     * Id string $id
-     * @var string
-     */
-    private $id = null;
 
     /**
      * Display name string $displayName
@@ -114,69 +96,6 @@ class User
     }
 
     /**
-     * Get createdAt
-     * @return DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * Set createdAt
-     * @param DateTime $createdAt
-     * @return User
-     */
-    public function setCreatedAt(\DateTime $createdAt)
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * Get updatedAt
-     * @return DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
-
-    /**
-     * Set updatedAt
-     * @param DateTime $updatedAt
-     * @return User
-     */
-    public function setUpdatedAt(\DateTime $updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get links method.
-     * @return array
-     */
-    public function getLinks()
-    {
-        return $this->links;
-    }
-
-    /**
-     * Set links method.
-     * @param array $links
-     * @return User
-     */
-    public function setLinks(array $links)
-    {
-        $this->links = $links;
-
-        return $this;
-    }
-
-    /**
      * Get logo
      * @return string
      */
@@ -193,27 +112,6 @@ class User
     public function setLogo($logo)
     {
         $this->logo = $logo;
-
-        return $this;
-    }
-
-    /**
-     * Get id
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set id
-     * @param string $id
-     * @return User
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
 
         return $this;
     }

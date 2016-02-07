@@ -2,6 +2,7 @@
 
 namespace Shoko\TwitchApiBundle\Model\Entity;
 
+use Shoko\TwitchApiBundle\Model\Entity\Traits\Linksable;
 use Shoko\TwitchApiBundle\Model\Entity\ValueObject\Token;
 
 /**
@@ -11,17 +12,13 @@ class Root
 {
     const ENDPOINT = '';
 
+    use Linksable;
+
     /**
      * Token $token.
      * @var Token
      */
     private $token = null;
-
-    /**
-     * array Link $links.
-     * @var array
-     */
-    private $links = array();
 
     /**
      * @return Root
@@ -48,27 +45,6 @@ class Root
     public function setToken(Token $token)
     {
         $this->token = $token;
-
-        return $this;
-    }
-
-    /**
-     * Get links method.
-     * @return array
-     */
-    public function getLinks()
-    {
-        return $this->links;
-    }
-
-    /**
-     * Set links method.
-     * @param array $links
-     * @return Root
-     */
-    public function setLinks(array $links)
-    {
-        $this->links = $links;
 
         return $this;
     }
