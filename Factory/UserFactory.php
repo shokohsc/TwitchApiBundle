@@ -14,9 +14,11 @@ class UserFactory extends AbstractFactory
      *
      * @return User
      */
-    public function createUser(array $data)
+    public function createUser(array $data, $user = false)
     {
-        $user = User::create();
+        if (false === $user) {
+            $user = User::create();
+        }
 
         if (isset($data['type'])) {
             $user = $user->setType($data['type']);
@@ -35,7 +37,7 @@ class UserFactory extends AbstractFactory
         }
 
         if (isset($data['_links'])) {
-            $user = $user->setLinks($this->createLinkList($data['_links']));
+            $user = $user->setLinks($this->createLinks($data['_links']));
         }
 
         if (isset($data['logo'])) {

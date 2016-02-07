@@ -25,9 +25,11 @@ class TokenFactory extends AbstractFactory
      *
      * @return Token
      */
-    public function createToken(array $data)
+    public function createToken(array $data, $token = false)
     {
-        $token = Token::create();
+        if (false === $token) {
+            $token = Token::create();
+        }
 
         if (isset($data['authorization'])) {
             $token = $token->setAuthorization($this->createAuthorization($data['authorization']));

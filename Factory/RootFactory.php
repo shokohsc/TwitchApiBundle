@@ -14,16 +14,18 @@ class RootFactory extends AbstractFactory
      *
      * @return Root
      */
-    public function createRoot(array $data)
+    public function createRoot(array $data, $root = false)
     {
-        $root = Root::create();
+        if (false === $root) {
+            $root = Root::create();
+        }
 
         if (isset($data['token'])) {
             $root = $root->setToken($data['token']);
         }
 
         if (isset($data['_links'])) {
-            $root = $root->setLinks($this->createLinkList($data['_links']));
+            $root = $root->setLinks($this->createLinks($data['_links']));
         }
 
         return $root;

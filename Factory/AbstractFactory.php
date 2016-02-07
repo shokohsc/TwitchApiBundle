@@ -12,7 +12,22 @@ class AbstractFactory
      *
      * @return array
      */
-    protected function createLinkList(array $data)
+    protected function createLinks(array $data)
+    {
+        $links = [];
+        foreach ($data as $key => $value) {
+            $links[$key] = $value;
+        }
+
+        return $links;
+    }
+
+    /**
+     * @param array $data
+     *
+     * @return array
+     */
+    protected function createNotifications(array $data)
     {
         $links = [];
         foreach ($data as $key => $value) {
