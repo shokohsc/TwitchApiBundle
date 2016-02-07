@@ -2,9 +2,12 @@
 
 namespace Shoko\TwitchApiBundle\Model\Entity;
 
+use Shoko\TwitchApiBundle\Model\Entity\Traits\Logoable;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\Nameable;
 use Shoko\TwitchApiBundle\Model\Entity\Traits\Linksable;
 use Shoko\TwitchApiBundle\Model\Entity\Traits\Identifiable;
 use Shoko\TwitchApiBundle\Model\Entity\Traits\Timestampable;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\Displaynameable;
 
 /**
  * User class.
@@ -13,31 +16,13 @@ class User
 {
     const ENDPOINT = 'users/';
 
-    use Identifiable, Timestampable, Linksable;
+    use Identifiable, Timestampable, Linksable, Logoable, Nameable, Displaynameable;
 
     /**
      * Type string $type
      * @var string
      */
     private $type = 'user';
-
-    /**
-     * Name string $name
-     * @var string
-     */
-    private $name = null;
-
-    /**
-     * Logo string $logo
-     * @var string
-     */
-    private $logo = null;
-
-    /**
-     * Display name string $displayName
-     * @var string
-     */
-    private $displayName = null;
 
     /**
      * Bio string $bio
@@ -70,69 +55,6 @@ class User
     public function setType($type)
     {
         $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set name
-     * @param string $name
-     * @return User
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get logo
-     * @return string
-     */
-    public function getLogo()
-    {
-        return $this->logo;
-    }
-
-    /**
-     * Set logo
-     * @param string $logo
-     * @return User
-     */
-    public function setLogo($logo)
-    {
-        $this->logo = $logo;
-
-        return $this;
-    }
-
-    /**
-     * Get displayName
-     * @return string
-     */
-    public function getDisplayName()
-    {
-        return $this->displayName;
-    }
-
-    /**
-     * Set displayName
-     * @param string $displayName
-     * @return User
-     */
-    public function setDisplayName($displayName)
-    {
-        $this->displayName = $displayName;
 
         return $this;
     }
