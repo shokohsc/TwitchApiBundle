@@ -1,6 +1,8 @@
 <?php
 
 namespace Shoko\TwitchApiBundle\Model\Entity;
+
+use Shoko\TwitchApiBundle\Model\Entity\Traits\Emailable;
 use Shoko\TwitchApiBundle\Model\Entity\User;
 
 /**
@@ -10,11 +12,7 @@ class Me extends User
 {
     const ENDPOINT = 'user';
 
-    /**
-     * Email string $email
-     * @var string
-     */
-    private $email = null;
+    use Emailable;
 
     /**
      * Partnered boolean $partnered
@@ -34,27 +32,6 @@ class Me extends User
     public static function create()
     {
         return new Me;
-    }
-
-    /**
-     * Get email
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * Set email
-     * @param string $email
-     * @return Me
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
     }
 
     /**
