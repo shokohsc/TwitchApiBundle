@@ -50,7 +50,7 @@ class UserTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($date, $user->setUpdatedAt($date)->getUpdatedAt());
 
         $this->assertEquals(array(), $user->getLinks());
-        $link = $this->prophet->prophesize('Shoko\TwitchApiBundle\Entity\ValueObject\Link');
+        $link = 'some_link';
         $this->assertEquals([$link], $user->setLinks([$link])->getLinks());
 
         $this->assertEquals(null, $user->getLogo());

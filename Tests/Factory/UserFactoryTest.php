@@ -38,10 +38,10 @@ class UserFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('test_user1', $user->getName());
         $this->assertEquals(new \DateTime('2011-06-03T17:49:19Z'), $user->getCreatedAt());
         $this->assertEquals(new \DateTime('2012-06-18T17:19:57Z'), $user->getUpdatedAt());
-        $this->assertEquals('self', $user->getLinks()[0]->getKey());
-        $this->assertEquals('https://api.twitch.tv/kraken/users/test_user1', $user->getLinks()[0]->getValue());
-        $this->assertEquals('another_key', $user->getLinks()[1]->getKey());
-        $this->assertEquals('another_value', $user->getLinks()[1]->getValue());
+        $this->assertArrayHasKey('self', $user->getLinks());
+        $this->assertEquals('https://api.twitch.tv/kraken/users/test_user1', $user->getLinks()['self']);
+        $this->assertArrayHasKey('another_key', $user->getLinks());
+        $this->assertEquals('another_value', $user->getLinks()['another_key']);
         $this->assertEquals('http://static-cdn.jtvnw.net/jtv_user_pictures/test_user1-profile_image-62e8318af864d6d7-300x300.jpeg', $user->getLogo());
         $this->assertEquals(21229404, $user->getId());
         $this->assertEquals('test_user1', $user->getDisplayName());

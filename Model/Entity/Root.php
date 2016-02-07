@@ -2,8 +2,7 @@
 
 namespace Shoko\TwitchApiBundle\Model\Entity;
 
-use Shoko\TwitchApiBundle\Entity\Token;
-use Shoko\TwitchApiBundle\Entity\Link;
+use Shoko\TwitchApiBundle\Model\Entity\ValueObject\Token;
 
 /**
  * Root class.
@@ -46,7 +45,7 @@ class Root
      * @param Token $token
      * @return Root
      */
-    public function setToken($token)
+    public function setToken(Token $token)
     {
         $this->token = $token;
 

@@ -2,8 +2,6 @@
 
 namespace Shoko\TwitchApiBundle\Factory;
 
-use Shoko\TwitchApiBundle\Model\Lists\LinkList;
-
 /**
  * Class AbstractFactory
  */
@@ -14,8 +12,13 @@ class AbstractFactory
      *
      * @return array
      */
-    protected function createLinkList($data)
+    protected function createLinkList(array $data)
     {
-        return LinkList::create($data);
+        $links = [];
+        foreach ($data as $key => $value) {
+            $links[$key] = $value;
+        }
+
+        return $links;
     }
 }

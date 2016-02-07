@@ -36,11 +36,11 @@ class RootTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(Root::ENDPOINT, constant(get_class($root).'::ENDPOINT'));
 
         $this->assertEquals(null, $root->getToken());
-        $token = $this->prophet->prophesize('Shoko\TwitchApiBundle\Entity\ValueObject\Token');
-        $this->assertEquals($token, $root->setToken($token)->getToken());
+        $token = $this->prophet->prophesize('Shoko\TwitchApiBundle\Model\Entity\ValueObject\Token');
+        $this->assertEquals($token->reveal(), $root->setToken($token->reveal())->getToken());
 
         $this->assertEquals(array(), $root->getLinks());
-        $link = $this->prophet->prophesize('Shoko\TwitchApiBundle\Entity\ValueObject\Link');
+        $link = 'some_link';
         $this->assertEquals([$link], $root->setLinks([$link])->getLinks());
     }
 

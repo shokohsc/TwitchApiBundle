@@ -27,9 +27,9 @@ class RootFactoryTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Root', $root);
         $this->assertEquals(null, $root->getToken());
-        $this->assertEquals('some_key', $root->getLinks()[0]->getKey());
-        $this->assertEquals('some_value', $root->getLinks()[0]->getValue());
-        $this->assertEquals('another_key', $root->getLinks()[1]->getKey());
-        $this->assertEquals('another_value', $root->getLinks()[1]->getValue());
+        $this->assertArrayHasKey('some_key', $root->getLinks());
+        $this->assertEquals('some_value', $root->getLinks()['some_key']);
+        $this->assertArrayHasKey('another_key', $root->getLinks());
+        $this->assertEquals('another_value', $root->getLinks()['another_key']);
     }
 }
