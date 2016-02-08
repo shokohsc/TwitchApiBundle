@@ -7,7 +7,7 @@ use Shoko\TwitchApiBundle\Model\Entity\Channel;
 /**
  * Class ChannelFactory
  */
-class ChannelFactory extends AbstractFactory
+class ChannelFactory
 {
     /**
      * @param array $data
@@ -93,7 +93,7 @@ class ChannelFactory extends AbstractFactory
         }
 
         if (isset($data['_links'])) {
-            $channel = $channel->setLinks($this->createLinks($data['_links']));
+            $channel = $channel->setLinks($data['_links']);
         }
 
         if (isset($data['logo'])) {

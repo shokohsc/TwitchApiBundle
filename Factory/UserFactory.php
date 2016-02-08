@@ -7,7 +7,7 @@ use Shoko\TwitchApiBundle\Model\Entity\User;
 /**
  * Class UserFactory
  */
-class UserFactory extends AbstractFactory
+class UserFactory
 {
     /**
      * @param array $data
@@ -37,7 +37,7 @@ class UserFactory extends AbstractFactory
         }
 
         if (isset($data['_links'])) {
-            $user = $user->setLinks($this->createLinks($data['_links']));
+            $user = $user->setLinks($data['_links']);
         }
 
         if (isset($data['logo'])) {

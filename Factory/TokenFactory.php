@@ -8,7 +8,7 @@ use Shoko\TwitchApiBundle\Model\Entity\ValueObject\Authorization;
 /**
  * Class TokenFactory
  */
-class TokenFactory extends AbstractFactory
+class TokenFactory
 {
     /**
      * @param array $data

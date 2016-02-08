@@ -7,7 +7,7 @@ use Shoko\TwitchApiBundle\Model\Entity\Root;
 /**
  * Class RootFactory
  */
-class RootFactory extends AbstractFactory
+class RootFactory
 {
     /**
      * @param array $data
@@ -25,7 +25,7 @@ class RootFactory extends AbstractFactory
         }
 
         if (isset($data['_links'])) {
-            $root = $root->setLinks($this->createLinks($data['_links']));
+            $root = $root->setLinks($data['_links']);
         }
 
         return $root;

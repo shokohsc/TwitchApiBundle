@@ -8,7 +8,7 @@ use Shoko\TwitchApiBundle\Factory\UserFactory;
 /**
  * Class MeFactory
  */
-class MeFactory extends AbstractFactory
+class MeFactory
 {
     /**
      * @param array $data
@@ -32,7 +32,7 @@ class MeFactory extends AbstractFactory
         }
 
         if (isset($data['notifications'])) {
-            $me = $me->setNotifications($this->createNotifications($data['notifications']));
+            $me = $me->setNotifications($data['notifications']);
         }
 
         return $me;

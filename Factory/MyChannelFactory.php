@@ -8,7 +8,7 @@ use Shoko\TwitchApiBundle\Factory\UserFactory;
 /**
  * Class MyChannelFactory
  */
-class MyChannelFactory extends AbstractFactory
+class MyChannelFactory
 {
     /**
      * @param array $data
