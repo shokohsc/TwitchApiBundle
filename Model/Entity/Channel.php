@@ -4,11 +4,14 @@ namespace Shoko\TwitchApiBundle\Model\Entity;
 
 use Shoko\TwitchApiBundle\Model\Entity\ValueObject\Token;
 use Shoko\TwitchApiBundle\Model\Entity\Traits\Logoable;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\Gameable;
 use Shoko\TwitchApiBundle\Model\Entity\Traits\Nameable;
 use Shoko\TwitchApiBundle\Model\Entity\Traits\Linksable;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\Delayable;
 use Shoko\TwitchApiBundle\Model\Entity\Traits\Identifiable;
 use Shoko\TwitchApiBundle\Model\Entity\Traits\Timestampable;
 use Shoko\TwitchApiBundle\Model\Entity\Traits\Displaynameable;
+
 /**
  * Channel class.
  */
@@ -16,7 +19,7 @@ class Channel
 {
     const ENDPOINT = 'channels/';
 
-    use Identifiable, Timestampable, Logoable, Linksable, Nameable, Displaynameable;
+    use Identifiable, Timestampable, Logoable, Linksable, Gameable, Nameable, Displaynameable, Delayable;
 
     /**
      * Mature boolean $mature.
@@ -35,18 +38,6 @@ class Channel
      * @var string
      */
     private $broadcasterLanguage = null;
-
-    /**
-     * Game string $game
-     * @var string
-     */
-    private $game = null;
-
-    /**
-     * Delay string $delay
-     * @var string
-     */
-    private $delay = null;
 
     /**
      * Language string $language.
@@ -175,48 +166,6 @@ class Channel
     public function setBroadcasterLanguage($broadcasterLanguage)
     {
         $this->broadcasterLanguage = $broadcasterLanguage;
-
-        return $this;
-    }
-
-    /**
-     * Get game
-     * @return string
-     */
-    public function getGame()
-    {
-        return $this->game;
-    }
-
-    /**
-     * Set game
-     * @param string $game
-     * @return Channel
-     */
-    public function setGame($game)
-    {
-        $this->game = $game;
-
-        return $this;
-    }
-
-    /**
-     * Get delay
-     * @return string
-     */
-    public function getDelay()
-    {
-        return $this->delay;
-    }
-
-    /**
-     * Set delay
-     * @param string $delay
-     * @return Channel
-     */
-    public function setDelay($delay)
-    {
-        $this->delay = $delay;
 
         return $this;
     }
