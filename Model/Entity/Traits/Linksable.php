@@ -8,7 +8,7 @@ namespace Shoko\TwitchApiBundle\Model\Entity\Traits;
 trait Linksable
 {
     /**
-     * Links array
+     * Links array $links
      * @var array
      */
     private $links = array();
