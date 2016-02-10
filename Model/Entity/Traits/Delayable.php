@@ -8,14 +8,14 @@ namespace Shoko\TwitchApiBundle\Model\Entity\Traits;
 trait Delayable
 {
     /**
-     * Delay string $delay
-     * @var string
+     * Delay integer|null $delay
+     * @var integer|null
      */
     private $delay = null;
 
     /**
      * Get delay
-     * @return string
+     * @return integer|null
      */
     public function getDelay()
     {
@@ -24,7 +24,7 @@ trait Delayable
 
     /**
      * Set delay
-     * @param string $delay
+     * @param integer|null $delay
      */
     public function setDelay($delay)
     {
