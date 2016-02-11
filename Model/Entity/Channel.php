@@ -2,14 +2,15 @@
 
 namespace Shoko\TwitchApiBundle\Model\Entity;
 
-use Shoko\TwitchApiBundle\Model\Entity\ValueObject\Token;
 use Shoko\TwitchApiBundle\Model\Entity\Traits\Logoable;
 use Shoko\TwitchApiBundle\Model\Entity\Traits\Gameable;
 use Shoko\TwitchApiBundle\Model\Entity\Traits\Nameable;
 use Shoko\TwitchApiBundle\Model\Entity\Traits\Linksable;
 use Shoko\TwitchApiBundle\Model\Entity\Traits\Delayable;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\Bannerable;
 use Shoko\TwitchApiBundle\Model\Entity\Traits\Identifiable;
 use Shoko\TwitchApiBundle\Model\Entity\Traits\Timestampable;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\Backgroundable;
 use Shoko\TwitchApiBundle\Model\Entity\Traits\Displaynameable;
 
 /**
@@ -19,7 +20,7 @@ class Channel
 {
     const ENDPOINT = 'channels/';
 
-    use Identifiable, Timestampable, Logoable, Linksable, Gameable, Nameable, Displaynameable, Delayable;
+    use Identifiable, Timestampable, Logoable, Linksable, Gameable, Nameable, Displaynameable, Delayable, Bannerable, Backgroundable;
 
     /**
      * Mature boolean $mature.
@@ -46,22 +47,10 @@ class Channel
     private $language = null;
 
     /**
-     * Banner string $banner
-     * @var string
-     */
-    private $banner = null;
-
-    /**
      * Video banner string $videoBanner
      * @var string
      */
     private $videoBanner = null;
-
-    /**
-     * Background string $background
-     * @var string
-     */
-    private $background = null;
 
     /**
      * Profile banner string $profileBanner
@@ -192,27 +181,6 @@ class Channel
     }
 
     /**
-     * Get banner
-     * @return string
-     */
-    public function getBanner()
-    {
-        return $this->banner;
-    }
-
-    /**
-     * Set banner
-     * @param string $banner
-     * @return Channel
-     */
-    public function setBanner($banner)
-    {
-        $this->banner = $banner;
-
-        return $this;
-    }
-
-    /**
      * Get videoBanner
      * @return string
      */
@@ -229,27 +197,6 @@ class Channel
     public function setVideoBanner($videoBanner)
     {
         $this->videoBanner = $videoBanner;
-
-        return $this;
-    }
-
-    /**
-     * Get background
-     * @return string
-     */
-    public function getBackground()
-    {
-        return $this->background;
-    }
-
-    /**
-     * Set background
-     * @param string $background
-     * @return Channel
-     */
-    public function setBackground($background)
-    {
-        $this->background = $background;
 
         return $this;
     }
