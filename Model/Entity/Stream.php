@@ -5,8 +5,8 @@ namespace Shoko\TwitchApiBundle\Model\Entity;
 use Shoko\TwitchApiBundle\Model\Entity\Traits\Gameable;
 use Shoko\TwitchApiBundle\Model\Entity\Traits\Delayable;
 use Shoko\TwitchApiBundle\Model\Entity\Traits\Linksable;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\Channelable;
 use Shoko\TwitchApiBundle\Model\Entity\Traits\Identifiable;
-use Shoko\TwitchApiBundle\Model\Entity\Channel;
 
 /**
  * Stream class.
@@ -15,7 +15,7 @@ class Stream
 {
     const ENDPOINT = 'streams/';
 
-    use Identifiable, Linksable, Gameable, Delayable;
+    use Identifiable, Linksable, Gameable, Delayable, Channelable;
 
     /**
      * Viewers integer $viewers
@@ -46,12 +46,6 @@ class Stream
      * @var DateTime
      */
     private $createdAt = null;
-
-    /**
-     * Channel $channel
-     * @var Channel
-     */
-    private $channel = null;
 
     /**
      * Preview array $preview
@@ -168,27 +162,6 @@ class Stream
     public function setCreatedAt(\DateTime $createdAt)
     {
         $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * Get channel
-     * @return Channel
-     */
-    public function getChannel()
-    {
-        return $this->channel;
-    }
-
-    /**
-     * Set channel
-     * @param Channel $channel
-     * @return Stream
-     */
-    public function setChannel(Channel $channel)
-    {
-        $this->channel = $channel;
 
         return $this;
     }
