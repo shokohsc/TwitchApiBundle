@@ -27,11 +27,11 @@ class Client
     /**
      * Constructor method.
      *
-     * @param Guzzle $guzzle
+     * @param Guzzle|bool $guzzle
      */
-    public function __construct(Guzzle $guzzle)
+    public function __construct($guzzle = false)
     {
-        $this->guzzle = $guzzle;
+        $this->guzzle = $guzzle ? $guzzle : new Guzzle();
     }
 
     /**

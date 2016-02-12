@@ -34,8 +34,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetUrl()
     {
-        $guzzle = $this->prophet->prophesize('GuzzleHttp\Client');
-        $client = new Client($guzzle->reveal());
+        $client = new Client;
         $url = $client->getUrl();
         $expected = 'https://api.twitch.tv/kraken/';
 
@@ -47,8 +46,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetHeaders()
     {
-        $guzzle = $this->prophet->prophesize('GuzzleHttp\Client');
-        $client = new Client($guzzle->reveal());
+        $client = new Client;
         $headers = $client->getHeaders();
         $expected = array('Accept' => 'application/vnd.twitchtv.v3+json');
 
