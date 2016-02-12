@@ -10,22 +10,23 @@ use GuzzleHttp\Client as Guzzle;
 class Client
 {
     /**
-     * Url $protocol: https
+     * Url $protocol: https.
      */
     const URL_PROTOCOL = 'https';
 
     /**
-     * Url $hostname: api.twitch.tv
+     * Url $hostname: api.twitch.tv.
      */
     const URL_HOST = 'api.twitch.tv';
 
     /**
-     * Url $version, Twitch api version: v3 - kraken
+     * Url $version, Twitch api version: v3 - kraken.
      */
     const URL_VERSION = 'kraken';
 
     /**
      * Constructor method.
+     *
      * @param Guzzle $guzzle
      */
     public function __construct(Guzzle $guzzle)
@@ -34,16 +35,18 @@ class Client
     }
 
     /**
-     * Get default twitch v3 api url
+     * Get default twitch v3 api url.
+     *
      * @return Url
      */
     public function getUrl()
     {
-        return self::URL_PROTOCOL . '://' . self::URL_HOST . '/' . self::URL_VERSION . '/';
+        return self::URL_PROTOCOL.'://'.self::URL_HOST.'/'.self::URL_VERSION.'/';
     }
 
     /**
-     * Get default headers to send
+     * Get default headers to send.
+     *
      * @return array
      */
     public function getHeaders()
@@ -52,7 +55,8 @@ class Client
     }
 
     /**
-     * Get guzzle
+     * Get guzzle.
+     *
      * @return Guzzle
      */
     public function getGuzzle()
@@ -61,7 +65,8 @@ class Client
     }
 
     /**
-     * Set guzzle $guzzle
+     * Set guzzle $guzzle.
+     *
      * @return Client
      */
     public function setGuzzle(Guzzle $guzzle)
@@ -72,16 +77,18 @@ class Client
     }
 
     /**
-     * Get resource
-     * @param  string $resource
-     * @param  array  $headers
+     * Get resource.
+     *
+     * @param string $resource
+     * @param array  $headers
+     *
      * @return \Guzzle\Http\Message\Response
      */
     public function get($resource, $headers = array())
     {
         return $this->getGuzzle()->request(
           'GET',
-          $this->getUrl() . $resource,
+          $this->getUrl().$resource,
           array_merge($this->getHeaders(), $headers)
         );
     }

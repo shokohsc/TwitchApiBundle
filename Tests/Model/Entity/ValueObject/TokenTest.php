@@ -11,7 +11,8 @@ use Prophecy\Prophet;
 class TokenTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Prophet $prophet
+     * Prophet $prophet.
+     *
      * @var Prophet
      */
     private $prophet;
@@ -28,7 +29,7 @@ class TokenTest extends \PHPUnit_Framework_TestCase
 
     public function testGettersAndSetters()
     {
-        $this->prophet = new Prophet;
+        $this->prophet = new Prophet();
 
         $token = Token::create();
         $this->assertEquals(null, $token->getAuthorization());

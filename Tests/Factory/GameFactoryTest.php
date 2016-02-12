@@ -18,22 +18,22 @@ class GameFactoryTest extends \PHPUnit_Framework_TestCase
         $data = [
           'name' => 'test_game1',
           '_links' => [
-            'self'    => 'https://api.twitch.tv/kraken/games/test_game1',
+            'self' => 'https://api.twitch.tv/kraken/games/test_game1',
             'another_key' => 'another_value',
           ],
           'logo' => [
-            'self'    => 'https://api.twitch.tv/kraken/games/test_game1',
+            'self' => 'https://api.twitch.tv/kraken/games/test_game1',
             'another_key' => 'another_value',
           ],
           'box' => [
-            'self'    => 'https://api.twitch.tv/kraken/games/test_game1',
+            'self' => 'https://api.twitch.tv/kraken/games/test_game1',
             'another_key' => 'another_value',
           ],
           '_id' => 21229404,
           'giantbomb_id' => 212294,
         ];
 
-        $gameFactory = new GameFactory;
+        $gameFactory = new GameFactory();
         $game = $gameFactory->createGame($data);
 
         $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Game', $game);

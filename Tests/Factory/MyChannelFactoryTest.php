@@ -3,7 +3,6 @@
 namespace Shoko\TwitchApiBundle\Tests\Factory;
 
 use Shoko\TwitchApiBundle\Factory\MyChannelFactory;
-use Shoko\TwitchApiBundle\Model\Entity\MyChannel;
 
 /**
  * MyChannelFactoryTest class.
@@ -20,7 +19,7 @@ class MyChannelFactoryTest extends \PHPUnit_Framework_TestCase
           'created_at' => '2011-06-03T17:49:19Z',
           'updated_at' => '2012-06-18T17:19:57Z',
           '_links' => [
-            'self'    => 'https://api.twitch.tv/kraken/channels/test_channel1',
+            'self' => 'https://api.twitch.tv/kraken/channels/test_channel1',
             'another_key' => 'another_value',
           ],
           'logo' => 'http://static-cdn.jtvnw.net/jtv_channel_pictures/test_channel1-profile_image-62e8318af864d6d7-300x300.jpeg',
@@ -45,7 +44,7 @@ class MyChannelFactoryTest extends \PHPUnit_Framework_TestCase
           'stream_key' => 'live_5439587_s8df7s9d7g6dsfggsdfg',
         ];
 
-        $myChannelFactory = new MyChannelFactory;
+        $myChannelFactory = new MyChannelFactory();
         $myChannel = $myChannelFactory->createMyChannel($data);
 
         $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\MyChannel', $myChannel);

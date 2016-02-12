@@ -20,7 +20,7 @@ class TeamFactoryTest extends \PHPUnit_Framework_TestCase
           'created_at' => '2011-06-03T17:49:19Z',
           'updated_at' => '2012-06-18T17:19:57Z',
           '_links' => [
-            'self'    => 'https://api.twitch.tv/kraken/teams/test_team1',
+            'self' => 'https://api.twitch.tv/kraken/teams/test_team1',
             'another_key' => 'another_value',
           ],
           'logo' => 'http://static-cdn.jtvnw.net/jtv_team_pictures/test_team1-profile_image-62e8318af864d6d7-300x300.jpeg',
@@ -31,7 +31,7 @@ class TeamFactoryTest extends \PHPUnit_Framework_TestCase
           'background' => 'some_background',
         ];
 
-        $teamFactory = new TeamFactory;
+        $teamFactory = new TeamFactory();
         $team = $teamFactory->createTeam($data);
 
         $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Team', $team);

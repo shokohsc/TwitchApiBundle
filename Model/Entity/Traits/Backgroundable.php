@@ -3,18 +3,20 @@
 namespace Shoko\TwitchApiBundle\Model\Entity\Traits;
 
 /**
- * Trait Backgroundable
+ * Trait Backgroundable.
  */
 trait Backgroundable
 {
     /**
-     * Background string $background
+     * Background string $background.
+     *
      * @var string
      */
     private $background = null;
 
     /**
-     * Get background
+     * Get background.
+     *
      * @return string
      */
     public function getBackground()
@@ -23,7 +25,8 @@ trait Backgroundable
     }
 
     /**
-     * Set background
+     * Set background.
+     *
      * @param string $background
      */
     public function setBackground($background)

@@ -19,13 +19,15 @@ class User
     use Identifiable, Timestampable, Linksable, Logoable, Nameable, Displaynameable;
 
     /**
-     * Type string $type
+     * Type string $type.
+     *
      * @var string
      */
     private $type = 'user';
 
     /**
-     * Bio string $bio
+     * Bio string $bio.
+     *
      * @var string
      */
     private $bio = null;
@@ -35,11 +37,12 @@ class User
      */
     public static function create()
     {
-        return new User;
+        return new self();
     }
 
     /**
-     * Get type
+     * Get type.
+     *
      * @return string
      */
     public function getType()
@@ -48,8 +51,10 @@ class User
     }
 
     /**
-     * Set type
+     * Set type.
+     *
      * @param string $type
+     *
      * @return User
      */
     public function setType($type)
@@ -60,7 +65,8 @@ class User
     }
 
     /**
-     * Get bio
+     * Get bio.
+     *
      * @return string
      */
     public function getBio()
@@ -69,8 +75,10 @@ class User
     }
 
     /**
-     * Set bio
+     * Set bio.
+     *
      * @param string $bio
+     *
      * @return User
      */
     public function setBio($bio)

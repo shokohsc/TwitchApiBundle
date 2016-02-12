@@ -5,7 +5,7 @@ namespace Shoko\TwitchApiBundle\Factory;
 use Shoko\TwitchApiBundle\Model\Entity\User;
 
 /**
- * Class UserFactory
+ * Class UserFactory.
  */
 class UserFactory
 {

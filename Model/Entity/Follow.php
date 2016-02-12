@@ -14,12 +14,14 @@ class Follow
 
     /**
      * Notifications boolean $notifications.
-     * @var boolean
+     *
+     * @var bool
      */
     private $notifications = false;
 
     /**
-     * Creation date DateTime $createdAt
+     * Creation date DateTime $createdAt.
+     *
      * @var DateTime
      */
     private $createdAt = null;
@@ -29,11 +31,12 @@ class Follow
      */
     public static function create()
     {
-        return new Follow;
+        return new self();
     }
 
     /**
      * Is notifications method.
+     *
      * @return true|false
      */
     public function isNotifications()
@@ -43,7 +46,9 @@ class Follow
 
     /**
      * Set notifications method.
-     * @param boolean $notifications
+     *
+     * @param bool $notifications
+     *
      * @return Follow
      */
     public function setNotifications($notifications)
@@ -54,7 +59,8 @@ class Follow
     }
 
     /**
-     * Get createdAt
+     * Get createdAt.
+     *
      * @return DateTime
      */
     public function getCreatedAt()
@@ -63,8 +69,10 @@ class Follow
     }
 
     /**
-     * Set createdAt
+     * Set createdAt.
+     *
      * @param DateTime $createdAt
+     *
      * @return Follow
      */
     public function setCreatedAt(\DateTime $createdAt)

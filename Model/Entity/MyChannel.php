@@ -3,7 +3,6 @@
 namespace Shoko\TwitchApiBundle\Model\Entity;
 
 use Shoko\TwitchApiBundle\Model\Entity\Traits\Emailable;
-use Shoko\TwitchApiBundle\Model\Entity\Channel;
 
 /**
  * MyChannel class.
@@ -15,7 +14,8 @@ class MyChannel extends Channel
     use Emailable;
 
     /**
-     * Stream key string $streamKey
+     * Stream key string $streamKey.
+     *
      * @var string
      */
     private $streamKey;
@@ -25,11 +25,12 @@ class MyChannel extends Channel
      */
     public static function create()
     {
-        return new MyChannel;
+        return new self();
     }
 
     /**
-     * Get streamKey
+     * Get streamKey.
+     *
      * @return string
      */
     public function getStreamKey()
@@ -38,8 +39,10 @@ class MyChannel extends Channel
     }
 
     /**
-     * Set streamKey
+     * Set streamKey.
+     *
      * @param string $streamKey
+     *
      * @return MyChannel
      */
     public function setStreamKey($streamKey)

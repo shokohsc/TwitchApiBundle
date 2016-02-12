@@ -2,27 +2,28 @@
 
 namespace Shoko\TwitchApiBundle\Model\Entity\ValueObject;
 
-use Shoko\TwitchApiBundle\Model\Entity\ValueObject\Authorization;
-
 /**
  * Authorization class.
  */
 class Authorization
 {
     /**
-     * array $scopes
+     * array $scopes.
+     *
      * @var array
      */
     private $scopes = array();
 
     /**
-     * DateTime $createdAt
+     * DateTime $createdAt.
+     *
      * @var DateTime
      */
     private $createdAt = null;
 
     /**
-     * DateTime $updatedAt
+     * DateTime $updatedAt.
+     *
      * @var DateTime
      */
     private $updatedAt = null;
@@ -32,11 +33,12 @@ class Authorization
      */
     public static function create()
     {
-        return new Authorization;
+        return new self();
     }
 
     /**
-     * Get scopes
+     * Get scopes.
+     *
      * @return array
      */
     public function getScopes()
@@ -45,8 +47,10 @@ class Authorization
     }
 
     /**
-     * Set scopes
+     * Set scopes.
+     *
      * @param array $scopes
+     *
      * @return Authorization
      */
     public function setScopes(array $scopes)
@@ -57,7 +61,8 @@ class Authorization
     }
 
     /**
-     * Get createdAt
+     * Get createdAt.
+     *
      * @return \DateTime
      */
     public function getCreatedAt()
@@ -66,8 +71,10 @@ class Authorization
     }
 
     /**
-     * Set createdAt
+     * Set createdAt.
+     *
      * @param \DateTime $createdAt
+     *
      * @return Authorization
      */
     public function setCreatedAt(\DateTime $createdAt)
@@ -78,7 +85,8 @@ class Authorization
     }
 
     /**
-     * Get updatedAt
+     * Get updatedAt.
+     *
      * @return \DateTime
      */
     public function getUpdatedAt()
@@ -87,8 +95,10 @@ class Authorization
     }
 
     /**
-     * Set updatedAt
+     * Set updatedAt.
+     *
      * @param \DateTime $updatedAt
+     *
      * @return Authorization
      */
     public function setUpdatedAt(\DateTime $updatedAt)

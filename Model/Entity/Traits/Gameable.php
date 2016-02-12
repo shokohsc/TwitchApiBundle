@@ -3,18 +3,20 @@
 namespace Shoko\TwitchApiBundle\Model\Entity\Traits;
 
 /**
- * Trait Gameable
+ * Trait Gameable.
  */
 trait Gameable
 {
     /**
-     * Game string $game
+     * Game string $game.
+     *
      * @var string
      */
     private $game = null;
 
     /**
-     * Get game
+     * Get game.
+     *
      * @return string
      */
     public function getGame()
@@ -23,7 +25,8 @@ trait Gameable
     }
 
     /**
-     * Set game
+     * Set game.
+     *
      * @param string $game
      */
     public function setGame($game)

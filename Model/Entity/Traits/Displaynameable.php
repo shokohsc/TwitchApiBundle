@@ -3,18 +3,20 @@
 namespace Shoko\TwitchApiBundle\Model\Entity\Traits;
 
 /**
- * Trait Displaynameable
+ * Trait Displaynameable.
  */
 trait Displaynameable
 {
     /**
-     * DisplayName string $displayName
+     * DisplayName string $displayName.
+     *
      * @var string
      */
     private $displayName = null;
 
     /**
-     * Get displayName
+     * Get displayName.
+     *
      * @return string
      */
     public function getDisplayName()
@@ -23,7 +25,8 @@ trait Displaynameable
     }
 
     /**
-     * Set displayName
+     * Set displayName.
+     *
      * @param string $displayName
      */
     public function setDisplayName($displayName)

@@ -5,7 +5,7 @@ namespace Shoko\TwitchApiBundle\Factory;
 use Shoko\TwitchApiBundle\Model\Entity\Root;
 
 /**
- * Class RootFactory
+ * Class RootFactory.
  */
 class RootFactory
 {

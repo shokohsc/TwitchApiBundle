@@ -3,18 +3,20 @@
 namespace Shoko\TwitchApiBundle\Model\Entity\Traits;
 
 /**
- * Trait Channelable
+ * Trait Channelable.
  */
 trait Channelable
 {
     /**
-     * Channel string $channel
+     * Channel string $channel.
+     *
      * @var string
      */
     private $channel = null;
 
     /**
-     * Get channel
+     * Get channel.
+     *
      * @return string
      */
     public function getChannel()
@@ -23,7 +25,8 @@ trait Channelable
     }
 
     /**
-     * Set channel
+     * Set channel.
+     *
      * @param string $channel
      */
     public function setChannel($channel)

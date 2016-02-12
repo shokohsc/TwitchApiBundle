@@ -3,10 +3,8 @@
 namespace Shoko\TwitchApiBundle\Factory;
 
 use Shoko\TwitchApiBundle\Model\Entity\MyChannel;
-use Shoko\TwitchApiBundle\Factory\UserFactory;
-
 /**
- * Class MyChannelFactory
+ * Class MyChannelFactory.
  */
 class MyChannelFactory
 {
@@ -21,7 +19,7 @@ class MyChannelFactory
             $myChannel = MyChannel::create();
         }
 
-        $myChannel = (new ChannelFactory)->createChannel($data, $myChannel);
+        $myChannel = (new ChannelFactory())->createChannel($data, $myChannel);
 
         if (isset($data['email'])) {
             $myChannel = $myChannel->setEmail($data['email']);

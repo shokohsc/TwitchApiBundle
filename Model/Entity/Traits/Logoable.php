@@ -3,18 +3,20 @@
 namespace Shoko\TwitchApiBundle\Model\Entity\Traits;
 
 /**
- * Trait Logoable
+ * Trait Logoable.
  */
 trait Logoable
 {
     /**
-     * Logo string $logo
+     * Logo string $logo.
+     *
      * @var string
      */
     private $logo = null;
 
     /**
-     * Get logo
+     * Get logo.
+     *
      * @return string
      */
     public function getLogo()
@@ -23,7 +25,8 @@ trait Logoable
     }
 
     /**
-     * Set logo
+     * Set logo.
+     *
      * @param string $logo
      */
     public function setLogo($logo)

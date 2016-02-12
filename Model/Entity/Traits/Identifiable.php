@@ -3,18 +3,20 @@
 namespace Shoko\TwitchApiBundle\Model\Entity\Traits;
 
 /**
- * Trait Identifiable
+ * Trait Identifiable.
  */
 trait Identifiable
 {
     /**
-     * Id string $id
+     * Id string $id.
+     *
      * @var string
      */
     private $id = null;
 
     /**
-     * Get id
+     * Get id.
+     *
      * @return string
      */
     public function getId()
@@ -23,7 +25,8 @@ trait Identifiable
     }
 
     /**
-     * Set id
+     * Set id.
+     *
      * @param string $id
      */
     public function setId($id)

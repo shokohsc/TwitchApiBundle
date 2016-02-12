@@ -5,7 +5,7 @@ namespace Shoko\TwitchApiBundle\Factory;
 use Shoko\TwitchApiBundle\Model\Entity\Channel;
 
 /**
- * Class ChannelFactory
+ * Class ChannelFactory.
  */
 class ChannelFactory
 {

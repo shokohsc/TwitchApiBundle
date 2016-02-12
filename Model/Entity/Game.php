@@ -16,19 +16,22 @@ class Game
     use Identifiable, Linksable, Nameable;
 
     /**
-     * Box array $box
+     * Box array $box.
+     *
      * @var array
      */
     private $box = array();
 
     /**
-     * Logo array $logo
+     * Logo array $logo.
+     *
      * @var array
      */
     private $logo = array();
 
     /**
-     * GiantBombId string $giantBombId
+     * GiantBombId string $giantBombId.
+     *
      * @var string
      */
     private $giantBombId = null;
@@ -38,11 +41,12 @@ class Game
      */
     public static function create()
     {
-        return new Game;
+        return new self();
     }
 
     /**
      * Get box method.
+     *
      * @return array
      */
     public function getBox()
@@ -52,7 +56,9 @@ class Game
 
     /**
      * Set box method.
+     *
      * @param array $box
+     *
      * @return Game
      */
     public function setBox(array $box)
@@ -64,6 +70,7 @@ class Game
 
     /**
      * Get logo method.
+     *
      * @return array
      */
     public function getLogo()
@@ -73,7 +80,9 @@ class Game
 
     /**
      * Set logo method.
+     *
      * @param array $logo
+     *
      * @return Game
      */
     public function setLogo(array $logo)
@@ -84,7 +93,8 @@ class Game
     }
 
     /**
-     * Get giantBombId
+     * Get giantBombId.
+     *
      * @return string
      */
     public function getGiantBombId()
@@ -93,8 +103,10 @@ class Game
     }
 
     /**
-     * Set giantBombId
+     * Set giantBombId.
+     *
      * @param string $giantBombId
+     *
      * @return Game
      */
     public function setGiantBombId($giantBombId)

@@ -21,7 +21,7 @@ class MeFactoryTest extends \PHPUnit_Framework_TestCase
           'created_at' => '2011-06-03T17:49:19Z',
           'updated_at' => '2012-06-18T17:19:57Z',
           '_links' => [
-            'self'    => 'https://api.twitch.tv/kraken/mes/test_me1',
+            'self' => 'https://api.twitch.tv/kraken/mes/test_me1',
             'another_key' => 'another_value',
           ],
           'logo' => 'http://static-cdn.jtvnw.net/jtv_me_pictures/test_me1-profile_image-62e8318af864d6d7-300x300.jpeg',
@@ -36,7 +36,7 @@ class MeFactoryTest extends \PHPUnit_Framework_TestCase
           ],
         ];
 
-        $meFactory = new MeFactory;
+        $meFactory = new MeFactory();
         $me = $meFactory->createMe($data);
 
         $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Me', $me);

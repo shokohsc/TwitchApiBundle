@@ -2,28 +2,29 @@
 
 namespace Shoko\TwitchApiBundle\Model\Entity\ValueObject;
 
-use Shoko\TwitchApiBundle\Model\Entity\ValueObject\Authorization;
-
 /**
  * Token class.
  */
 class Token
 {
     /**
-     * Token $authorization
+     * Token $authorization.
+     *
      * @var Authorization
      */
     private $authorization = null;
 
     /**
-     * string $userName
+     * string $userName.
+     *
      * @var string
      */
     private $userName = null;
 
     /**
-     * string $valid
-     * @var boolean
+     * string $valid.
+     *
+     * @var bool
      */
     private $valid = false;
 
@@ -32,11 +33,12 @@ class Token
      */
     public static function create()
     {
-        return new Token;
+        return new self();
     }
 
     /**
-     * Get authorization
+     * Get authorization.
+     *
      * @return Authorization
      */
     public function getAuthorization()
@@ -45,8 +47,10 @@ class Token
     }
 
     /**
-     * Set authorization
+     * Set authorization.
+     *
      * @param Authorization $authorization
+     *
      * @return Token
      */
     public function setAuthorization(Authorization $authorization)
@@ -57,7 +61,8 @@ class Token
     }
 
     /**
-     * Get userName
+     * Get userName.
+     *
      * @return string
      */
     public function getUserName()
@@ -66,8 +71,10 @@ class Token
     }
 
     /**
-     * Set userName
+     * Set userName.
+     *
      * @param string $userName
+     *
      * @return Token
      */
     public function setUserName($userName)
@@ -78,8 +85,9 @@ class Token
     }
 
     /**
-     * Get valid
-     * @return boolean
+     * Get valid.
+     *
+     * @return bool
      */
     public function isValid()
     {
@@ -87,8 +95,10 @@ class Token
     }
 
     /**
-     * Set valid
-     * @param boolean $valid
+     * Set valid.
+     *
+     * @param bool $valid
+     *
      * @return Token
      */
     public function setValid($valid)

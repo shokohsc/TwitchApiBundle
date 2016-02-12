@@ -3,18 +3,20 @@
 namespace Shoko\TwitchApiBundle\Model\Entity\Traits;
 
 /**
- * Trait Linksable
+ * Trait Linksable.
  */
 trait Linksable
 {
     /**
-     * Links array $links
+     * Links array $links.
+     *
      * @var array
      */
     private $links = array();
 
     /**
      * Get links method.
+     *
      * @return array
      */
     public function getLinks()
@@ -24,6 +26,7 @@ trait Linksable
 
     /**
      * Set links method.
+     *
      * @param array $links
      */
     public function setLinks(array $links)

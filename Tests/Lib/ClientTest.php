@@ -2,11 +2,8 @@
 
 namespace Shoko\TwitchApiBundle\Tests\Lib;
 
-use Shoko\TwitchApiBundle\Model\Entity\ValueObject\Url;
 use Shoko\TwitchApiBundle\Lib\Client;
 use Prophecy\Prophet;
-use Prophecy\Argument;
-
 use GuzzleHttp\Client as Guzzle;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -18,17 +15,18 @@ use GuzzleHttp\Psr7\Response;
 class ClientTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Prophet $prophet
+     * Prophet $prophet.
+     *
      * @var Prophet
      */
     private $prophet;
 
     /**
-     * {@inheridoc}
+     * {@inheridoc}.
      */
     protected function setup()
     {
-        $this->prophet = new Prophet;
+        $this->prophet = new Prophet();
     }
 
     /**
@@ -36,9 +34,9 @@ class ClientTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetUrl()
     {
-        $guzzle   = $this->prophet->prophesize('GuzzleHttp\Client');
-        $client   = new Client($guzzle->reveal());
-        $url      = $client->getUrl();
+        $guzzle = $this->prophet->prophesize('GuzzleHttp\Client');
+        $client = new Client($guzzle->reveal());
+        $url = $client->getUrl();
         $expected = 'https://api.twitch.tv/kraken/';
 
         $this->assertEquals($expected, $url);
@@ -49,9 +47,9 @@ class ClientTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetHeaders()
     {
-        $guzzle   = $this->prophet->prophesize('GuzzleHttp\Client');
-        $client   = new Client($guzzle->reveal());
-        $headers  = $client->getHeaders();
+        $guzzle = $this->prophet->prophesize('GuzzleHttp\Client');
+        $client = new Client($guzzle->reveal());
+        $headers = $client->getHeaders();
         $expected = array('Accept' => 'application/vnd.twitchtv.v3+json');
 
         $this->assertEquals($expected, $headers);
@@ -75,18 +73,18 @@ class ClientTest extends \PHPUnit_Framework_TestCase
      */
     public function testGet()
     {
-        $mock     = new MockHandler([new Response(200)]);
-        $handler  = HandlerStack::create($mock);
-        $guzzle   = new Guzzle(['handler' => $handler]);
+        $mock = new MockHandler([new Response(200)]);
+        $handler = HandlerStack::create($mock);
+        $guzzle = new Guzzle(['handler' => $handler]);
 
-        $client   = new Client($guzzle);
+        $client = new Client($guzzle);
         $response = $client->get('');
 
         $this->assertEquals(200, $response->getStatusCode());
     }
 
     /**
-     * {@inheridoc}
+     * {@inheridoc}.
      */
     protected function tearDown()
     {

@@ -17,12 +17,12 @@ class RootFactoryTest extends \PHPUnit_Framework_TestCase
     {
         $data = [
           '_links' => [
-            'some_key'    => 'some_value',
+            'some_key' => 'some_value',
             'another_key' => 'another_value',
-          ]
+          ],
         ];
 
-        $rootFactory = new RootFactory;
+        $rootFactory = new RootFactory();
         $root = $rootFactory->createRoot($data);
 
         $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Root', $root);

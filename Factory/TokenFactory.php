@@ -6,7 +6,7 @@ use Shoko\TwitchApiBundle\Model\Entity\ValueObject\Token;
 use Shoko\TwitchApiBundle\Model\Entity\ValueObject\Authorization;
 
 /**
- * Class TokenFactory
+ * Class TokenFactory.
  */
 class TokenFactory
 {

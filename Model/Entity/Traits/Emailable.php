@@ -3,18 +3,20 @@
 namespace Shoko\TwitchApiBundle\Model\Entity\Traits;
 
 /**
- * Trait Emailable
+ * Trait Emailable.
  */
 trait Emailable
 {
     /**
-     * Email string $email
+     * Email string $email.
+     *
      * @var string
      */
     private $email = null;
 
     /**
-     * Get email
+     * Get email.
+     *
      * @return string
      */
     public function getEmail()
@@ -23,7 +25,8 @@ trait Emailable
     }
 
     /**
-     * Set email
+     * Set email.
+     *
      * @param string $email
      */
     public function setEmail($email)

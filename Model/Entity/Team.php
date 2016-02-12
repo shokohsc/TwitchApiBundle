@@ -22,6 +22,7 @@ class Team
 
     /**
      * Info string $info.
+     *
      * @var string
      */
     private $info = null;
@@ -31,11 +32,12 @@ class Team
      */
     public static function create()
     {
-        return new Team;
+        return new self();
     }
 
     /**
      * Get info method.
+     *
      * @return string
      */
     public function getInfo()
@@ -45,7 +47,9 @@ class Team
 
     /**
      * Set info method.
+     *
      * @param string $info
+     *
      * @return Team
      */
     public function setInfo($info)

@@ -11,17 +11,18 @@ use Prophecy\Prophet;
 class RootTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Prophet $prophet
+     * Prophet $prophet.
+     *
      * @var Prophet
      */
     private $prophet;
 
     /**
-     * {@inheridoc}
+     * {@inheridoc}.
      */
     protected function setup()
     {
-        $this->prophet = new Prophet;
+        $this->prophet = new Prophet();
     }
 
     /**
@@ -45,7 +46,7 @@ class RootTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * {@inheridoc}
+     * {@inheridoc}.
      */
     protected function tearDown()
     {

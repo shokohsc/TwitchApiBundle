@@ -3,19 +3,21 @@
 namespace Shoko\TwitchApiBundle\Model\Entity\Traits;
 
 /**
- * Trait Delayable
+ * Trait Delayable.
  */
 trait Delayable
 {
     /**
-     * Delay integer|null $delay
-     * @var integer|null
+     * Delay integer|null $delay.
+     *
+     * @var int|null
      */
     private $delay = null;
 
     /**
-     * Get delay
-     * @return integer|null
+     * Get delay.
+     *
+     * @return int|null
      */
     public function getDelay()
     {
@@ -23,8 +25,9 @@ trait Delayable
     }
 
     /**
-     * Set delay
-     * @param integer|null $delay
+     * Set delay.
+     *
+     * @param int|null $delay
      */
     public function setDelay($delay)
     {

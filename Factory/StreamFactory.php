@@ -3,10 +3,9 @@
 namespace Shoko\TwitchApiBundle\Factory;
 
 use Shoko\TwitchApiBundle\Model\Entity\Stream;
-use Shoko\TwitchApiBundle\Factory\ChannelFactory;
 
 /**
- * Class StreamFactory
+ * Class StreamFactory.
  */
 class StreamFactory
 {
@@ -58,7 +57,7 @@ class StreamFactory
         }
 
         if (isset($data['channel'])) {
-            $stream = $stream->setChannel((new ChannelFactory)->createChannel($data['channel']));
+            $stream = $stream->setChannel((new ChannelFactory())->createChannel($data['channel']));
         }
 
         if (isset($data['preview'])) {

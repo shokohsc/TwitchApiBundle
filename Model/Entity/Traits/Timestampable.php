@@ -3,24 +3,27 @@
 namespace Shoko\TwitchApiBundle\Model\Entity\Traits;
 
 /**
- * Trait Timestampable
+ * Trait Timestampable.
  */
 trait Timestampable
 {
     /**
-     * Creation date DateTime $createdAt
+     * Creation date DateTime $createdAt.
+     *
      * @var DateTime
      */
     private $createdAt = null;
 
     /**
-     * Update date DateTime $updatedAt
+     * Update date DateTime $updatedAt.
+     *
      * @var DateTime
      */
     private $updatedAt = null;
 
     /**
-     * Get createdAt
+     * Get createdAt.
+     *
      * @return DateTime
      */
     public function getCreatedAt()
@@ -29,7 +32,8 @@ trait Timestampable
     }
 
     /**
-     * Set createdAt
+     * Set createdAt.
+     *
      * @param DateTime $createdAt
      */
     public function setCreatedAt(\DateTime $createdAt)
@@ -40,7 +44,8 @@ trait Timestampable
     }
 
     /**
-     * Get updatedAt
+     * Get updatedAt.
+     *
      * @return DateTime
      */
     public function getUpdatedAt()
@@ -49,7 +54,8 @@ trait Timestampable
     }
 
     /**
-     * Set updatedAt
+     * Set updatedAt.
+     *
      * @param DateTime $updatedAt
      */
     public function setUpdatedAt(\DateTime $updatedAt)

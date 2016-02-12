@@ -5,7 +5,7 @@ namespace Shoko\TwitchApiBundle\Factory;
 use Shoko\TwitchApiBundle\Model\Entity\Game;
 
 /**
- * Class GameFactory
+ * Class GameFactory.
  */
 class GameFactory
 {

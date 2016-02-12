@@ -18,37 +18,43 @@ class Stream
     use Identifiable, Linksable, Gameable, Delayable, Channelable;
 
     /**
-     * Viewers integer $viewers
-     * @var integer
+     * Viewers integer $viewers.
+     *
+     * @var int
      */
     private $viewers = 0;
 
     /**
-     * Average Fps decimal $averageFps
+     * Average Fps decimal $averageFps.
+     *
      * @var decimal
      */
     private $averageFps = 0;
 
     /**
-     * Video Height integer $videoHeight
-     * @var integer
+     * Video Height integer $videoHeight.
+     *
+     * @var int
      */
     private $videoHeight = 0;
 
     /**
-     * Playlist boolean $playlist
-     * @var boolean
+     * Playlist boolean $playlist.
+     *
+     * @var bool
      */
     private $playlist = false;
 
     /**
-     * Creation date DateTime $createdAt
+     * Creation date DateTime $createdAt.
+     *
      * @var DateTime
      */
     private $createdAt = null;
 
     /**
-     * Preview array $preview
+     * Preview array $preview.
+     *
      * @var array
      */
     private $preview = array();
@@ -58,12 +64,13 @@ class Stream
      */
     public static function create()
     {
-        return new Stream;
+        return new self();
     }
 
     /**
-     * Get viewers
-     * @return integer
+     * Get viewers.
+     *
+     * @return int
      */
     public function getViewers()
     {
@@ -71,8 +78,10 @@ class Stream
     }
 
     /**
-     * Set viewers
-     * @param integer $viewers
+     * Set viewers.
+     *
+     * @param int $viewers
+     *
      * @return Stream
      */
     public function setViewers($viewers)
@@ -83,7 +92,8 @@ class Stream
     }
 
     /**
-     * Get averageFps
+     * Get averageFps.
+     *
      * @return decimal
      */
     public function getAverageFps()
@@ -92,8 +102,10 @@ class Stream
     }
 
     /**
-     * Set averageFps
+     * Set averageFps.
+     *
      * @param decimal $averageFps
+     *
      * @return Stream
      */
     public function setAverageFps($averageFps)
@@ -104,8 +116,9 @@ class Stream
     }
 
     /**
-     * Get videoHeight
-     * @return integer
+     * Get videoHeight.
+     *
+     * @return int
      */
     public function getVideoHeight()
     {
@@ -113,8 +126,10 @@ class Stream
     }
 
     /**
-     * Set videoHeight
-     * @param integer $videoHeight
+     * Set videoHeight.
+     *
+     * @param int $videoHeight
+     *
      * @return Stream
      */
     public function setVideoHeight($videoHeight)
@@ -125,8 +140,9 @@ class Stream
     }
 
     /**
-     * Get playlist
-     * @return boolean
+     * Get playlist.
+     *
+     * @return bool
      */
     public function isPlaylist()
     {
@@ -134,8 +150,10 @@ class Stream
     }
 
     /**
-     * Set playlist
-     * @param boolean $playlist
+     * Set playlist.
+     *
+     * @param bool $playlist
+     *
      * @return Stream
      */
     public function setPlaylist($playlist)
@@ -146,7 +164,8 @@ class Stream
     }
 
     /**
-     * Get createdAt
+     * Get createdAt.
+     *
      * @return DateTime
      */
     public function getCreatedAt()
@@ -155,8 +174,10 @@ class Stream
     }
 
     /**
-     * Set createdAt
+     * Set createdAt.
+     *
      * @param DateTime $createdAt
+     *
      * @return Stream
      */
     public function setCreatedAt(\DateTime $createdAt)
@@ -168,6 +189,7 @@ class Stream
 
     /**
      * Get preview method.
+     *
      * @return array
      */
     public function getPreview()
@@ -177,7 +199,9 @@ class Stream
 
     /**
      * Set preview method.
+     *
      * @param array $preview
+     *
      * @return Stream
      */
     public function setPreview(array $preview)

@@ -5,7 +5,7 @@ namespace Shoko\TwitchApiBundle\Factory;
 use Shoko\TwitchApiBundle\Model\Entity\Team;
 
 /**
- * Class TeamFactory
+ * Class TeamFactory.
  */
 class TeamFactory
 {

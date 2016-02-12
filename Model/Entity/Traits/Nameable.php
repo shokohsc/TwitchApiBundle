@@ -3,18 +3,20 @@
 namespace Shoko\TwitchApiBundle\Model\Entity\Traits;
 
 /**
- * Trait Nameable
+ * Trait Nameable.
  */
 trait Nameable
 {
     /**
-     * Name string $name
+     * Name string $name.
+     *
      * @var string
      */
     private $name = null;
 
     /**
-     * Get name
+     * Get name.
+     *
      * @return string
      */
     public function getName()
@@ -23,7 +25,8 @@ trait Nameable
     }
 
     /**
-     * Set name
+     * Set name.
+     *
      * @param string $name
      */
     public function setName($name)

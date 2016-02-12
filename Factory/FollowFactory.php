@@ -3,10 +3,9 @@
 namespace Shoko\TwitchApiBundle\Factory;
 
 use Shoko\TwitchApiBundle\Model\Entity\Follow;
-use Shoko\TwitchApiBundle\Factory\ChannelFactory;
 
 /**
- * Class FollowFactory
+ * Class FollowFactory.
  */
 class FollowFactory
 {
@@ -34,7 +33,7 @@ class FollowFactory
         }
 
         if (isset($data['channel'])) {
-            $follow = $follow->setChannel((new ChannelFactory)->createChannel($data['channel']));
+            $follow = $follow->setChannel((new ChannelFactory())->createChannel($data['channel']));
         }
 
         return $follow;

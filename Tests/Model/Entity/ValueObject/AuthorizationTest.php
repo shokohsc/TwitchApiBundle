@@ -26,7 +26,7 @@ class AuthorizationTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(null, $authorization->getCreatedAt());
         $this->assertEquals(null, $authorization->getUpdatedAt());
 
-        $date = new \DateTime;
+        $date = new \DateTime();
 
         $authorization
           ->setScopes(array('some_scope'))

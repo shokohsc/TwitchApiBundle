@@ -20,7 +20,7 @@ class ChannelFactoryTest extends \PHPUnit_Framework_TestCase
           'created_at' => '2011-06-03T17:49:19Z',
           'updated_at' => '2012-06-18T17:19:57Z',
           '_links' => [
-            'self'    => 'https://api.twitch.tv/kraken/channels/test_channel1',
+            'self' => 'https://api.twitch.tv/kraken/channels/test_channel1',
             'another_key' => 'another_value',
           ],
           'logo' => 'http://static-cdn.jtvnw.net/jtv_channel_pictures/test_channel1-profile_image-62e8318af864d6d7-300x300.jpeg',
@@ -43,7 +43,7 @@ class ChannelFactoryTest extends \PHPUnit_Framework_TestCase
           'followers' => 42,
         ];
 
-        $channelFactory = new ChannelFactory;
+        $channelFactory = new ChannelFactory();
         $channel = $channelFactory->createChannel($data);
 
         $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Channel', $channel);

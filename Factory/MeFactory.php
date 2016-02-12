@@ -3,10 +3,9 @@
 namespace Shoko\TwitchApiBundle\Factory;
 
 use Shoko\TwitchApiBundle\Model\Entity\Me;
-use Shoko\TwitchApiBundle\Factory\UserFactory;
 
 /**
- * Class MeFactory
+ * Class MeFactory.
  */
 class MeFactory
 {
@@ -21,7 +20,7 @@ class MeFactory
             $me = Me::create();
         }
 
-        $me = (new UserFactory)->createUser($data, $me);
+        $me = (new UserFactory())->createUser($data, $me);
 
         if (isset($data['email'])) {
             $me = $me->setEmail($data['email']);

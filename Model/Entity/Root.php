@@ -16,6 +16,7 @@ class Root
 
     /**
      * Token $token.
+     *
      * @var Token
      */
     private $token = null;
@@ -25,11 +26,12 @@ class Root
      */
     public static function create()
     {
-        return new Root;
+        return new self();
     }
 
     /**
      * Get token method.
+     *
      * @return Token|null
      */
     public function getToken()
@@ -39,7 +41,9 @@ class Root
 
     /**
      * Set token method.
+     *
      * @param Token $token
+     *
      * @return Root
      */
     public function setToken(Token $token)

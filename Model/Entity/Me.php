@@ -3,7 +3,6 @@
 namespace Shoko\TwitchApiBundle\Model\Entity;
 
 use Shoko\TwitchApiBundle\Model\Entity\Traits\Emailable;
-use Shoko\TwitchApiBundle\Model\Entity\User;
 
 /**
  * Me class.
@@ -15,13 +14,15 @@ class Me extends User
     use Emailable;
 
     /**
-     * Partnered boolean $partnered
-     * @var boolean
+     * Partnered boolean $partnered.
+     *
+     * @var bool
      */
     private $partnered = false;
 
     /**
-     * Notifications array
+     * Notifications array.
+     *
      * @var array
      */
     private $notifications = array();
@@ -31,12 +32,13 @@ class Me extends User
      */
     public static function create()
     {
-        return new Me;
+        return new self();
     }
 
     /**
-     * Get partnered
-     * @return boolean
+     * Get partnered.
+     *
+     * @return bool
      */
     public function isPartnered()
     {
@@ -44,8 +46,10 @@ class Me extends User
     }
 
     /**
-     * Set partnered
-     * @param boolean $partnered
+     * Set partnered.
+     *
+     * @param bool $partnered
+     *
      * @return Me
      */
     public function setPartnered($partnered)
@@ -57,6 +61,7 @@ class Me extends User
 
     /**
      * Get notifications method.
+     *
      * @return array
      */
     public function getNotifications()
@@ -66,7 +71,9 @@ class Me extends User
 
     /**
      * Set notifications method.
+     *
      * @param array $notifications
+     *
      * @return Me
      */
     public function setNotifications(array $notifications)

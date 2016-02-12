@@ -3,7 +3,6 @@
 namespace Shoko\TwitchApiBundle\Tests\Model\Entity;
 
 use Shoko\TwitchApiBundle\Model\Entity\Me;
-use Prophecy\Prophet;
 
 /**
  * MeTest class.

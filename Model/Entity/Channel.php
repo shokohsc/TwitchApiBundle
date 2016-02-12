@@ -24,67 +24,78 @@ class Channel
 
     /**
      * Mature boolean $mature.
-     * @var boolean
+     *
+     * @var bool
      */
     private $mature = false;
 
     /**
      * Status string $status.
+     *
      * @var string
      */
     private $status = null;
 
     /**
      * Broadcaster language string $broadcasterLanguage.
+     *
      * @var string
      */
     private $broadcasterLanguage = null;
 
     /**
      * Language string $language.
+     *
      * @var string
      */
     private $language = null;
 
     /**
-     * Video banner string $videoBanner
+     * Video banner string $videoBanner.
+     *
      * @var string
      */
     private $videoBanner = null;
 
     /**
-     * Profile banner string $profileBanner
+     * Profile banner string $profileBanner.
+     *
      * @var string
      */
     private $profileBanner = null;
 
     /**
-     * Profile banner background color string $profileBannerBackgroundColor
+     * Profile banner background color string $profileBannerBackgroundColor.
+     *
      * @var string
      */
     private $profileBannerBackgroundColor = null;
 
     /**
-     * Partner string $partner
+     * Partner string $partner.
+     *
      * @var string
      */
     private $partner = false;
 
     /**
-     * Url string $url
+     * Url string $url.
+     *
      * @var string
      */
     private $url = null;
 
     /**
-     * Views integer $views
-     * @var integer
+     * Views integer $views.
+     *
+     * @var int
      */
     private $views = 0;
 
     /**
-     * Followers integer $followers
-     * @var integer
+     * Followers integer $followers.
+     *
+     * @var int
      */
     private $followers = 0;
 
@@ -93,11 +104,12 @@ class Channel
      */
     public static function create()
     {
-        return new Channel;
+        return new self();
     }
 
     /**
      * Is mature method.
+     *
      * @return true|false
      */
     public function isMature()
@@ -107,7 +119,9 @@ class Channel
 
     /**
      * Set mature method.
-     * @param boolean $mature
+     *
+     * @param bool $mature
+     *
      * @return Channel
      */
     public function setMature($mature)
@@ -119,6 +133,7 @@ class Channel
 
     /**
      * Get status method.
+     *
      * @return string
      */
     public function getStatus()
@@ -128,7 +143,9 @@ class Channel
 
     /**
      * Set status method.
+     *
      * @param string $status
+     *
      * @return Channel
      */
     public function setStatus($status)
@@ -140,6 +157,7 @@ class Channel
 
     /**
      * Get broadcasterLanguage method.
+     *
      * @return string
      */
     public function getBroadcasterLanguage()
@@ -149,7 +167,9 @@ class Channel
 
     /**
      * Set broadcasterLanguage method.
+     *
      * @param string $broadcasterLanguage
+     *
      * @return Channel
      */
     public function setBroadcasterLanguage($broadcasterLanguage)
@@ -160,7 +180,8 @@ class Channel
     }
 
     /**
-     * Get language
+     * Get language.
+     *
      * @return string
      */
     public function getLanguage()
@@ -169,8 +190,10 @@ class Channel
     }
 
     /**
-     * Set language
+     * Set language.
+     *
      * @param string $language
+     *
      * @return Channel
      */
     public function setLanguage($language)
@@ -181,7 +204,8 @@ class Channel
     }
 
     /**
-     * Get videoBanner
+     * Get videoBanner.
+     *
      * @return string
      */
     public function getVideoBanner()
@@ -190,8 +214,10 @@ class Channel
     }
 
     /**
-     * Set videoBanner
+     * Set videoBanner.
+     *
      * @param string $videoBanner
+     *
      * @return Channel
      */
     public function setVideoBanner($videoBanner)
@@ -202,7 +228,8 @@ class Channel
     }
 
     /**
-     * Get profileBanner
+     * Get profileBanner.
+     *
      * @return string
      */
     public function getProfileBanner()
@@ -211,8 +238,10 @@ class Channel
     }
 
     /**
-     * Set profileBanner
+     * Set profileBanner.
+     *
      * @param string $profileBanner
+     *
      * @return Channel
      */
     public function setProfileBanner($profileBanner)
@@ -223,7 +252,8 @@ class Channel
     }
 
     /**
-     * Get profileBannerBackgroundColor
+     * Get profileBannerBackgroundColor.
+     *
      * @return string
      */
     public function getProfileBannerBackgroundColor()
@@ -232,8 +262,10 @@ class Channel
     }
 
     /**
-     * Set profileBannerBackgroundColor
+     * Set profileBannerBackgroundColor.
+     *
      * @param string $profileBannerBackgroundColor
+     *
      * @return Channel
      */
     public function setProfileBannerBackgroundColor($profileBannerBackgroundColor)
@@ -245,6 +277,7 @@ class Channel
 
     /**
      * Is partner method.
+     *
      * @return true|false
      */
     public function isPartner()
@@ -254,7 +287,9 @@ class Channel
 
     /**
      * Set partner method.
-     * @param boolean $partner
+     *
+     * @param bool $partner
+     *
      * @return Channel
      */
     public function setPartner($partner)
@@ -265,7 +300,8 @@ class Channel
     }
 
     /**
-     * Get url
+     * Get url.
+     *
      * @return string
      */
     public function getUrl()
@@ -274,8 +310,10 @@ class Channel
     }
 
     /**
-     * Set url
+     * Set url.
+     *
      * @param string $url
+     *
      * @return Channel
      */
     public function setUrl($url)
@@ -286,8 +324,9 @@ class Channel
     }
 
     /**
-     * Get views
-     * @return integer
+     * Get views.
+     *
+     * @return int
      */
     public function getViews()
     {
@@ -295,8 +334,10 @@ class Channel
     }
 
     /**
-     * Set views
-     * @param integer $views
+     * Set views.
+     *
+     * @param int $views
+     *
      * @return Channel
      */
     public function setViews($views)
@@ -307,8 +348,9 @@ class Channel
     }
 
     /**
-     * Get followers
-     * @return integer
+     * Get followers.
+     *
+     * @return int
      */
     public function getFollowers()
     {
@@ -316,8 +358,10 @@ class Channel
     }
 
     /**
-     * Set followers
-     * @param integer $followers
+     * Set followers.
+     *
+     * @param int $followers
+     *
      * @return Channel
      */
     public function setFollowers($followers)
