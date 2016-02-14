@@ -27,3 +27,18 @@ services:
   channel.repository:
     class: Shoko\TwitchApiBundle\Repository\ChannelRepository
     arguments: ["@client", "@channel.factory"]
+  game.repository:
+    class: Shoko\TwitchApiBundle\Repository\GameRepository
+    arguments: ["@client", "@game.factory"]
+  root.repository:
+    class: Shoko\TwitchApiBundle\Repository\RootRepository
+    arguments: ["@client", "@root.factory"]
+  stream.repository:
+    class: Shoko\TwitchApiBundle\Repository\StreamRepository
+    arguments: ["@client", "@stream.factory"]
+  team.repository:
+    class: Shoko\TwitchApiBundle\Repository\TeamRepository
+    arguments: ["@client", "@team.factory"]
+  user.repository:
+    class: Shoko\TwitchApiBundle\Repository\UserRepository
+    arguments: ["@client", "@user.factory"]
