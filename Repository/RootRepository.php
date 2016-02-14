@@ -10,11 +10,15 @@ use Shoko\TwitchApiBundle\Model\Entity\Root;
  */
 class RootRepository extends AbstractRepository
 {
+    /**
+     * Get root
+     * @return Root
+     */
     public function get()
     {
-        $response = $this->client->get(Root::ENDPOINT);
+        $response = $this->getClient()->get(Root::ENDPOINT);
         $data = $this->jsonResponse($response);
 
-        return $this->factory->createEntity($data);
+        return $this->getFactory()->createEntity($data);
     }
 }

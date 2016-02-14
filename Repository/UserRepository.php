@@ -10,11 +10,16 @@ use Shoko\TwitchApiBundle\Model\Entity\User;
  */
 class UserRepository extends AbstractRepository
 {
+    /**
+     * Get user
+     * @param  string $userId
+     * @return User
+     */
     public function getUser($userId)
     {
-        $response = $this->client->get(User::ENDPOINT.$userId);
+        $response = $this->getClient()->get(User::ENDPOINT.$userId);
         $data = $this->jsonResponse($response);
 
-        return $this->factory->createEntity($data);
+        return $this->getFactory()->createEntity($data);
     }
 }

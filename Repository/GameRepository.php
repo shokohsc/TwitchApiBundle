@@ -10,11 +10,15 @@ use Shoko\TwitchApiBundle\Model\Entity\Game;
  */
 class GameRepository extends AbstractRepository
 {
+    /**
+     * Get top games
+     * @return array
+     */
     public function getTop()
     {
-        $response = $this->client->get(Game::ENDPOINT);
+        $response = $this->getClient()->get(Game::ENDPOINT);
         $data = $this->jsonResponse($response);
 
-        return $this->factory->createEntity($data);
+        return $this->getFactory()->createEntity($data);
     }
 }

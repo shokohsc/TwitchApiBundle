@@ -10,11 +10,16 @@ use Shoko\TwitchApiBundle\Model\Entity\Team;
  */
 class TeamRepository extends AbstractRepository
 {
+    /**
+     * Get team
+     * @param  string $teamId
+     * @return Team
+     */
     public function getTeam($teamId)
     {
-        $response = $this->client->get(Team::ENDPOINT.$teamId);
+        $response = $this->getClient()->get(Team::ENDPOINT.$teamId);
         $data = $this->jsonResponse($response);
 
-        return $this->factory->createEntity($data);
+        return $this->getFactory()->createEntity($data);
     }
 }

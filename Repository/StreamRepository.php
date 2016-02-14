@@ -10,11 +10,16 @@ use Shoko\TwitchApiBundle\Model\Entity\Stream;
  */
 class StreamRepository extends AbstractRepository
 {
+    /**
+     * Get stream
+     * @param  string $channelId
+     * @return Stream
+     */
     public function getStream($channelId)
     {
-        $response = $this->client->get(Stream::ENDPOINT.$channelId);
+        $response = $this->getClient()->get(Stream::ENDPOINT.$channelId);
         $data = $this->jsonResponse($response);
 
-        return $this->factory->createEntity($data);
+        return $this->getFactory()->createEntity($data);
     }
 }
