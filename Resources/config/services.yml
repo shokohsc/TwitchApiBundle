@@ -1,3 +1,29 @@
 services:
-  twitch_client:
+# Client
+  twitch.client:
     class: Shoko\TwitchApiBundle\Lib\Client
+# Factories
+  channel.factory:
+    class: Shoko\TwitchApiBundle\Factory\ChannelFactory
+  follow.factory:
+    class: Shoko\TwitchApiBundle\Factory\FollowFactory
+  game.factory:
+    class: Shoko\TwitchApiBundle\Factory\GameFactory
+  me.factory:
+    class: Shoko\TwitchApiBundle\Factory\MeFactory
+  my_channel.factory:
+    class: Shoko\TwitchApiBundle\Factory\MyChannelFactory
+  root.factory:
+    class: Shoko\TwitchApiBundle\Factory\RootFactory
+  stream.factory:
+    class: Shoko\TwitchApiBundle\Factory\StreamFactory
+  team.factory:
+    class: Shoko\TwitchApiBundle\Factory\TeamFactory
+  token.factory:
+    class: Shoko\TwitchApiBundle\Factory\TokenFactory
+  user.factory:
+    class: Shoko\TwitchApiBundle\Factory\UserFactory
+# Repositories
+  channel.repository:
+    class: Shoko\TwitchApiBundle\Repository\ChannelRepository
+    arguments: ["@client", "@channel.factory"]

@@ -3,18 +3,19 @@
 namespace Shoko\TwitchApiBundle\Factory;
 
 use Shoko\TwitchApiBundle\Model\Entity\Team;
+use Shoko\TwitchApiBundle\Factory\FactoryInterface;
 
 /**
  * Class TeamFactory.
  */
-class TeamFactory
+class TeamFactory implements FactoryInterface
 {
     /**
      * @param array $data
      *
      * @return Team
      */
-    public function createTeam(array $data, $team = false)
+    public function createEntity(array $data, $team = false)
     {
         if (false === $team) {
             $team = Team::create();

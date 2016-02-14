@@ -3,18 +3,19 @@
 namespace Shoko\TwitchApiBundle\Factory;
 
 use Shoko\TwitchApiBundle\Model\Entity\Channel;
+use Shoko\TwitchApiBundle\Factory\FactoryInterface;
 
 /**
  * Class ChannelFactory.
  */
-class ChannelFactory
+class ChannelFactory implements FactoryInterface
 {
     /**
      * @param array $data
      *
      * @return Channel
      */
-    public function createChannel(array $data, $channel = false)
+    public function createEntity(array $data, $channel = false)
     {
         if (false === $channel) {
             $channel = Channel::create();

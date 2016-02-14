@@ -57,7 +57,7 @@ class StreamFactoryTest extends \PHPUnit_Framework_TestCase
         ];
 
         $streamFactory = new StreamFactory();
-        $stream = $streamFactory->createStream($data);
+        $stream = $streamFactory->createEntity($data);
 
         $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Stream', $stream);
         $this->assertEquals(new \DateTime('2011-06-03T17:49:19Z'), $stream->getCreatedAt());

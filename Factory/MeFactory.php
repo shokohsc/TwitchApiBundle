@@ -3,24 +3,25 @@
 namespace Shoko\TwitchApiBundle\Factory;
 
 use Shoko\TwitchApiBundle\Model\Entity\Me;
+use Shoko\TwitchApiBundle\Factory\FactoryInterface;
 
 /**
  * Class MeFactory.
  */
-class MeFactory
+class MeFactory implements FactoryInterface
 {
     /**
      * @param array $data
      *
      * @return Me
      */
-    public function createMe(array $data, $me = false)
+    public function createEntity(array $data, $me = false)
     {
         if (false === $me) {
             $me = Me::create();
         }
 
-        $me = (new UserFactory())->createUser($data, $me);
+        $me = (new UserFactory())->createEntity($data, $me);
 
         if (isset($data['email'])) {
             $me = $me->setEmail($data['email']);

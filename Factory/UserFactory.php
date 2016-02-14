@@ -3,18 +3,19 @@
 namespace Shoko\TwitchApiBundle\Factory;
 
 use Shoko\TwitchApiBundle\Model\Entity\User;
+use Shoko\TwitchApiBundle\Factory\FactoryInterface;
 
 /**
  * Class UserFactory.
  */
-class UserFactory
+class UserFactory implements FactoryInterface
 {
     /**
      * @param array $data
      *
      * @return User
      */
-    public function createUser(array $data, $user = false)
+    public function createEntity(array $data, $user = false)
     {
         if (false === $user) {
             $user = User::create();

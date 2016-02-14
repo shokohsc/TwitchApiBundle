@@ -4,11 +4,12 @@ namespace Shoko\TwitchApiBundle\Factory;
 
 use Shoko\TwitchApiBundle\Model\Entity\ValueObject\Token;
 use Shoko\TwitchApiBundle\Model\Entity\ValueObject\Authorization;
+use Shoko\TwitchApiBundle\Factory\FactoryInterface;
 
 /**
  * Class TokenFactory.
  */
-class TokenFactory
+class TokenFactory implements FactoryInterface
 {
     /**
      * @param array $data
@@ -25,7 +26,7 @@ class TokenFactory
      *
      * @return Token
      */
-    public function createToken(array $data, $token = false)
+    public function createEntity(array $data, $token = false)
     {
         if (false === $token) {
             $token = Token::create();

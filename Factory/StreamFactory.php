@@ -3,18 +3,19 @@
 namespace Shoko\TwitchApiBundle\Factory;
 
 use Shoko\TwitchApiBundle\Model\Entity\Stream;
+use Shoko\TwitchApiBundle\Factory\FactoryInterface;
 
 /**
  * Class StreamFactory.
  */
-class StreamFactory
+class StreamFactory implements FactoryInterface
 {
     /**
      * @param array $data
      *
      * @return Stream
      */
-    public function createStream(array $data, $stream = false)
+    public function createEntity(array $data, $stream = false)
     {
         if (false === $stream) {
             $stream = Stream::create();
@@ -57,7 +58,7 @@ class StreamFactory
         }
 
         if (isset($data['channel'])) {
-            $stream = $stream->setChannel((new ChannelFactory())->createChannel($data['channel']));
+            $stream = $stream->setChannel((new ChannelFactory())->createEntity($data['channel']));
         }
 
         if (isset($data['preview'])) {

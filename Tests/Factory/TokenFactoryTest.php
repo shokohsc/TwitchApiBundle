@@ -26,7 +26,7 @@ class TokenFactoryTest extends \PHPUnit_Framework_TestCase
         ];
 
         $tokenFactory = new TokenFactory();
-        $token = $tokenFactory->createToken($data);
+        $token = $tokenFactory->createEntity($data);
 
         $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\ValueObject\Token', $token);
         $this->assertEquals(null, $token->getAuthorization());

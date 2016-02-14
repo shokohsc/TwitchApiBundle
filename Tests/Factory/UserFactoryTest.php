@@ -31,7 +31,7 @@ class UserFactoryTest extends \PHPUnit_Framework_TestCase
         ];
 
         $userFactory = new UserFactory();
-        $user = $userFactory->createUser($data);
+        $user = $userFactory->createEntity($data);
 
         $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\User', $user);
         $this->assertEquals('user', $user->getType());

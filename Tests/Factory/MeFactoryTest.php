@@ -37,7 +37,7 @@ class MeFactoryTest extends \PHPUnit_Framework_TestCase
         ];
 
         $meFactory = new MeFactory();
-        $me = $meFactory->createMe($data);
+        $me = $meFactory->createEntity($data);
 
         $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Me', $me);
         $this->assertEquals('me', $me->getType());

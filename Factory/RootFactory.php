@@ -3,18 +3,19 @@
 namespace Shoko\TwitchApiBundle\Factory;
 
 use Shoko\TwitchApiBundle\Model\Entity\Root;
+use Shoko\TwitchApiBundle\Factory\FactoryInterface;
 
 /**
  * Class RootFactory.
  */
-class RootFactory
+class RootFactory implements FactoryInterface
 {
     /**
      * @param array $data
      *
      * @return Root
      */
-    public function createRoot(array $data, $root = false)
+    public function createEntity(array $data, $root = false)
     {
         if (false === $root) {
             $root = Root::create();

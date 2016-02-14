@@ -34,7 +34,7 @@ class GameFactoryTest extends \PHPUnit_Framework_TestCase
         ];
 
         $gameFactory = new GameFactory();
-        $game = $gameFactory->createGame($data);
+        $game = $gameFactory->createEntity($data);
 
         $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Game', $game);
         $this->assertEquals('test_game1', $game->getName());

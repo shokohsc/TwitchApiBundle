@@ -51,7 +51,7 @@ class FollowFactoryTest extends \PHPUnit_Framework_TestCase
         ];
 
         $followFactory = new FollowFactory();
-        $follow = $followFactory->createFollow($data);
+        $follow = $followFactory->createEntity($data);
 
         $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Follow', $follow);
         $this->assertEquals(new \DateTime('2011-06-03T17:49:19Z'), $follow->getCreatedAt());

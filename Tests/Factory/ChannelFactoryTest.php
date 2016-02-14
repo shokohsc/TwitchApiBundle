@@ -44,7 +44,7 @@ class ChannelFactoryTest extends \PHPUnit_Framework_TestCase
         ];
 
         $channelFactory = new ChannelFactory();
-        $channel = $channelFactory->createChannel($data);
+        $channel = $channelFactory->createEntity($data);
 
         $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Channel', $channel);
         $this->assertEquals('test_channel1', $channel->getName());

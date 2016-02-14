@@ -32,7 +32,7 @@ class TeamFactoryTest extends \PHPUnit_Framework_TestCase
         ];
 
         $teamFactory = new TeamFactory();
-        $team = $teamFactory->createTeam($data);
+        $team = $teamFactory->createEntity($data);
 
         $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Team', $team);
         $this->assertEquals('test_team1', $team->getName());

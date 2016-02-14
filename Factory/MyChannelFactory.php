@@ -3,23 +3,24 @@
 namespace Shoko\TwitchApiBundle\Factory;
 
 use Shoko\TwitchApiBundle\Model\Entity\MyChannel;
+use Shoko\TwitchApiBundle\Factory\FactoryInterface;
 /**
  * Class MyChannelFactory.
  */
-class MyChannelFactory
+class MyChannelFactory implements FactoryInterface
 {
     /**
      * @param array $data
      *
      * @return MyChannel
      */
-    public function createMyChannel(array $data, $myChannel = false)
+    public function createEntity(array $data, $myChannel = false)
     {
         if (false === $myChannel) {
             $myChannel = MyChannel::create();
         }
 
-        $myChannel = (new ChannelFactory())->createChannel($data, $myChannel);
+        $myChannel = (new ChannelFactory())->createEntity($data, $myChannel);
 
         if (isset($data['email'])) {
             $myChannel = $myChannel->setEmail($data['email']);

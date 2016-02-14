@@ -3,18 +3,19 @@
 namespace Shoko\TwitchApiBundle\Factory;
 
 use Shoko\TwitchApiBundle\Model\Entity\Follow;
+use Shoko\TwitchApiBundle\Factory\FactoryInterface;
 
 /**
  * Class FollowFactory.
  */
-class FollowFactory
+class FollowFactory implements FactoryInterface
 {
     /**
      * @param array $data
      *
      * @return Follow
      */
-    public function createFollow(array $data, $follow = false)
+    public function createEntity(array $data, $follow = false)
     {
         if (false === $follow) {
             $follow = Follow::create();
@@ -33,7 +34,7 @@ class FollowFactory
         }
 
         if (isset($data['channel'])) {
-            $follow = $follow->setChannel((new ChannelFactory())->createChannel($data['channel']));
+            $follow = $follow->setChannel((new ChannelFactory())->createEntity($data['channel']));
         }
 
         return $follow;
