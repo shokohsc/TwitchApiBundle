@@ -4,6 +4,7 @@ namespace Shoko\TwitchApiBundle\Repository;
 
 use Shoko\TwitchApiBundle\Lib\Client;
 use Shoko\TwitchApiBundle\Factory\FactoryInterface;
+use Shoko\TwitchApiBundle\Util\JsonTransformer;
 use GuzzleHttp\Psr7\Response;
 
 /**
@@ -24,14 +25,22 @@ class AbstractRepository
     private $factory;
 
     /**
+     * JsonTransformer $transformer
+     * @var JsonTransformer
+     */
+    private $transformer;
+
+    /**
      * Constructor method.
      * @param Client           $client
      * @param FactoryInterface $factory
+     * @param JsonTransformer  $transformer
      */
-    public function __construct(Client $client, FactoryInterface $factory)
+    public function __construct(Client $client, FactoryInterface $factory, JsonTransformer $transformer)
     {
         $this->client = $client;
         $this->factory = $factory;
+        $this->transformer = $transformer;
     }
 
     /**
@@ -53,12 +62,21 @@ class AbstractRepository
     }
 
     /**
+     * Get JsonTransformer $transformer
+     * @return JsonTransformer
+     */
+    protected function getTransformer()
+    {
+        return $this->transformer;
+    }
+
+    /**
      * Get Json object to Assoc array
      * @param  Response $response
      * @return array
      */
     protected function jsonResponse(Response $response)
     {
-        return json_decode($response->getBody()->getContents(), true);
+        return $this->getTransformer()->transform($response->getBody()->getContents());
     }
 }

@@ -51,10 +51,12 @@ class AbstractRepositoryTest extends \PHPUnit_Framework_TestCase
         $client = $this->prophet->prophesize('Shoko\TwitchApiBundle\Lib\Client');
         $factory = $this->prophet->prophesize();
         $factory->willImplement('Shoko\TwitchApiBundle\Factory\FactoryInterface');
-        $repository = new AbstractRepository($client->reveal(), $factory->reveal());
+        $transformer = $this->prophet->prophesize('Shoko\TwitchApiBundle\Util\JsonTransformer');
+        $repository = new AbstractRepository($client->reveal(), $factory->reveal(), $transformer->reveal());
 
         $this->assertEquals($client->reveal(), $this->invokeMethod($repository, 'getClient'));
         $this->assertEquals($factory->reveal(), $this->invokeMethod($repository, 'getFactory'));
+        $this->assertEquals($transformer->reveal(), $this->invokeMethod($repository, 'getTransformer'));
     }
 
     /**
@@ -65,7 +67,8 @@ class AbstractRepositoryTest extends \PHPUnit_Framework_TestCase
       $client = $this->prophet->prophesize('Shoko\TwitchApiBundle\Lib\Client');
       $factory = $this->prophet->prophesize();
       $factory->willImplement('Shoko\TwitchApiBundle\Factory\FactoryInterface');
-      $repository = new AbstractRepository($client->reveal(), $factory->reveal());
+      $transformer = $this->prophet->prophesize('Shoko\TwitchApiBundle\Util\JsonTransformer');
+      $repository = new AbstractRepository($client->reveal(), $factory->reveal(), $transformer->reveal());
 
       $response = $this->prophet->prophesize('GuzzleHttp\Psr7\Response');
       $client->get('some_resource')->willReturn($response->reveal());
@@ -76,6 +79,8 @@ class AbstractRepositoryTest extends \PHPUnit_Framework_TestCase
 
       $content = '{"_links":{"user":"https://api.twitch.tv/kraken/user","channel":"https://api.twitch.tv/kraken/channel","search":"https://api.twitch.tv/kraken/search","streams":"https://api.twitch.tv/kraken/streams","ingests":"https://api.twitch.tv/kraken/ingests","teams":"https://api.twitch.tv/kraken/teams"},"token":{"valid":false,"authorization":null}}';
       $body->getContents()->willReturn($content);
+
+      $transformer->transform($content)->willReturn(json_decode($content, true));
 
       $result = $this->invokeMethod($repository, 'jsonResponse', [$response->reveal()]);
       $this->assertEquals(json_decode($content, true), $result);
