@@ -4,10 +4,6 @@ namespace Shoko\TwitchApiBundle\Tests\Lib;
 
 use Shoko\TwitchApiBundle\Repository\AbstractRepository;
 use Prophecy\Prophet;
-use GuzzleHttp\Client as Guzzle;
-use GuzzleHttp\Handler\MockHandler;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Psr7\Response;
 
 /**
  * AbstractRepositoryTest class.
@@ -59,6 +55,30 @@ class AbstractRepositoryTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($client->reveal(), $this->invokeMethod($repository, 'getClient'));
         $this->assertEquals($factory->reveal(), $this->invokeMethod($repository, 'getFactory'));
+    }
+
+    /**
+     * Test JsonResponse method.
+     */
+    public function testJsonResponse()
+    {
+      $client = $this->prophet->prophesize('Shoko\TwitchApiBundle\Lib\Client');
+      $factory = $this->prophet->prophesize();
+      $factory->willImplement('Shoko\TwitchApiBundle\Factory\FactoryInterface');
+      $repository = new AbstractRepository($client->reveal(), $factory->reveal());
+
+      $response = $this->prophet->prophesize('GuzzleHttp\Psr7\Response');
+      $client->get('some_resource')->willReturn($response->reveal());
+
+      $body = $this->prophet->prophesize();
+      $body->willImplement('Psr\Http\Message\StreamInterface');
+      $response->getBody()->willReturn($body->reveal());
+
+      $content = '{"_links":{"user":"https://api.twitch.tv/kraken/user","channel":"https://api.twitch.tv/kraken/channel","search":"https://api.twitch.tv/kraken/search","streams":"https://api.twitch.tv/kraken/streams","ingests":"https://api.twitch.tv/kraken/ingests","teams":"https://api.twitch.tv/kraken/teams"},"token":{"valid":false,"authorization":null}}';
+      $body->getContents()->willReturn($content);
+
+      $result = $this->invokeMethod($repository, 'jsonResponse', [$response->reveal()]);
+      $this->assertEquals(json_decode($content, true), $result);
     }
 
     /**
