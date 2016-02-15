@@ -3,6 +3,7 @@
 namespace Shoko\TwitchApiBundle\Factory;
 
 use Shoko\TwitchApiBundle\Model\Entity\Root;
+use Shoko\TwitchApiBundle\Factory\TokenFactory;
 use Shoko\TwitchApiBundle\Factory\FactoryInterface;
 
 /**
@@ -22,7 +23,7 @@ class RootFactory implements FactoryInterface
         }
 
         if (isset($data['token'])) {
-            $root = $root->setToken($data['token']);
+            $root = $root->setToken((new TokenFactory())->createEntity($data['token']));
         }
 
         if (isset($data['_links'])) {
