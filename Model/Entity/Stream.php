@@ -6,6 +6,7 @@ use Shoko\TwitchApiBundle\Model\Entity\Traits\Gameable;
 use Shoko\TwitchApiBundle\Model\Entity\Traits\Delayable;
 use Shoko\TwitchApiBundle\Model\Entity\Traits\Linksable;
 use Shoko\TwitchApiBundle\Model\Entity\Traits\Channelable;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\Viewersable;
 use Shoko\TwitchApiBundle\Model\Entity\Traits\Identifiable;
 
 /**
@@ -15,14 +16,7 @@ class Stream
 {
     const ENDPOINT = 'streams/';
 
-    use Identifiable, Linksable, Gameable, Delayable, Channelable;
-
-    /**
-     * Viewers integer $viewers.
-     *
-     * @var int
-     */
-    private $viewers = 0;
+    use Identifiable, Linksable, Gameable, Delayable, Channelable, Viewersable;
 
     /**
      * Average Fps decimal $averageFps.
@@ -65,30 +59,6 @@ class Stream
     public static function create()
     {
         return new self();
-    }
-
-    /**
-     * Get viewers.
-     *
-     * @return int
-     */
-    public function getViewers()
-    {
-        return $this->viewers;
-    }
-
-    /**
-     * Set viewers.
-     *
-     * @param int $viewers
-     *
-     * @return Stream
-     */
-    public function setViewers($viewers)
-    {
-        $this->viewers = $viewers;
-
-        return $this;
     }
 
     /**
