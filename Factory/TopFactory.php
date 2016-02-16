@@ -3,8 +3,6 @@
 namespace Shoko\TwitchApiBundle\Factory;
 
 use Shoko\TwitchApiBundle\Model\Entity\Top;
-use Shoko\TwitchApiBundle\Factory\PositionFactory;
-use Shoko\TwitchApiBundle\Factory\FactoryInterface;
 
 /**
  * Class TopFactory.
@@ -41,7 +39,7 @@ class TopFactory implements FactoryInterface
     {
         $tmp = [];
         foreach ($top as $value) {
-            $tmp[] = (new PositionFactory)->createEntity($value);
+            $tmp[] = (new PositionFactory())->createEntity($value);
         }
 
         return $tmp;

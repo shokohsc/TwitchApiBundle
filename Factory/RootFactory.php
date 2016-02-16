@@ -3,8 +3,6 @@
 namespace Shoko\TwitchApiBundle\Factory;
 
 use Shoko\TwitchApiBundle\Model\Entity\Root;
-use Shoko\TwitchApiBundle\Factory\TokenFactory;
-use Shoko\TwitchApiBundle\Factory\FactoryInterface;
 
 /**
  * Class RootFactory.

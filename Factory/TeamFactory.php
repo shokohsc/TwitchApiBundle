@@ -3,7 +3,6 @@
 namespace Shoko\TwitchApiBundle\Factory;
 
 use Shoko\TwitchApiBundle\Model\Entity\Team;
-use Shoko\TwitchApiBundle\Factory\FactoryInterface;
 
 /**
  * Class TeamFactory.

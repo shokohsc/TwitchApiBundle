@@ -1,6 +1,7 @@
 <?php
 
 namespace Shoko\TwitchApiBundle\Model\Entity\Traits;
+
 use Shoko\TwitchApiBundle\Model\Entity\Channel;
 
 /**

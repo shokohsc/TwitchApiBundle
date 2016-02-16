@@ -5,16 +5,16 @@ namespace Shoko\TwitchApiBundle\Tests\Util;
 use Shoko\TwitchApiBundle\Util\JsonTransformer;
 
 /**
- * AbstractRepositoryTest class.
+ * JsonTransformerTest class.
  */
-class AbstractRepositoryTest extends \PHPUnit_Framework_TestCase
+class JsonTransformerTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * Test transform method.
      */
     public function testTransform()
     {
-        $transformer = new JsonTransformer;
+        $transformer = new JsonTransformer();
         $json = '{"some_key":"some_value"}';
         $expected = ['some_key' => 'some_value'];
         $result = $transformer->transform($json);

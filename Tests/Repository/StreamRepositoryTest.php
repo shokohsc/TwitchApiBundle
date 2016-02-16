@@ -34,8 +34,8 @@ class StreamRepositoryTest extends \PHPUnit_Framework_TestCase
     public function testGetStream()
     {
         $client = $this->prophet->prophesize('Shoko\TwitchApiBundle\Lib\Client');
-        $factory = new StreamFactory;
-        $transformer = new JsonTransformer;
+        $factory = new StreamFactory();
+        $transformer = new JsonTransformer();
         $repository = new StreamRepository($client->reveal(), $factory, $transformer);
 
         $response = $this->prophet->prophesize('GuzzleHttp\Psr7\Response');
@@ -49,7 +49,7 @@ class StreamRepositoryTest extends \PHPUnit_Framework_TestCase
         $body->getContents()->willReturn($content);
 
         $result = $repository->getStream('some_stream');
-        $expected = (new StreamFactory)->createEntity(json_decode($content, true));
+        $expected = (new StreamFactory())->createEntity(json_decode($content, true));
 
         $this->assertEquals($expected, $result);
     }

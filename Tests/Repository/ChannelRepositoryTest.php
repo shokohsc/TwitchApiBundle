@@ -34,8 +34,8 @@ class ChannelRepositoryTest extends \PHPUnit_Framework_TestCase
     public function testGetChannel()
     {
         $client = $this->prophet->prophesize('Shoko\TwitchApiBundle\Lib\Client');
-        $factory = new ChannelFactory;
-        $transformer = new JsonTransformer;
+        $factory = new ChannelFactory();
+        $transformer = new JsonTransformer();
         $repository = new ChannelRepository($client->reveal(), $factory, $transformer);
 
         $response = $this->prophet->prophesize('GuzzleHttp\Psr7\Response');
@@ -49,7 +49,7 @@ class ChannelRepositoryTest extends \PHPUnit_Framework_TestCase
         $body->getContents()->willReturn($content);
 
         $result = $repository->getChannel('some_channel');
-        $expected = (new ChannelFactory)->createEntity(json_decode($content, true));
+        $expected = (new ChannelFactory())->createEntity(json_decode($content, true));
 
         $this->assertEquals($expected, $result);
     }

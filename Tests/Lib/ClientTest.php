@@ -34,7 +34,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetUrl()
     {
-        $client = new Client;
+        $client = new Client();
         $url = $client->getUrl();
         $expected = 'https://api.twitch.tv/kraken/';
 
@@ -46,7 +46,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetHeaders()
     {
-        $client = new Client;
+        $client = new Client();
         $headers = $client->getHeaders();
         $expected = array('Accept' => 'application/vnd.twitchtv.v3+json');
 

@@ -3,7 +3,6 @@
 namespace Shoko\TwitchApiBundle\Factory;
 
 use Shoko\TwitchApiBundle\Model\Entity\Position;
-use Shoko\TwitchApiBundle\Factory\FactoryInterface;
 
 /**
  * Class PositionFactory.

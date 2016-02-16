@@ -2,7 +2,6 @@
 
 namespace Shoko\TwitchApiBundle\Repository;
 
-use Shoko\TwitchApiBundle\Repository\AbstractRepository;
 use Shoko\TwitchApiBundle\Model\Entity\Channel;
 
 /**
@@ -11,8 +10,10 @@ use Shoko\TwitchApiBundle\Model\Entity\Channel;
 class ChannelRepository extends AbstractRepository
 {
     /**
-     * Get channel
-     * @param  string $channelId
+     * Get channel.
+     *
+     * @param string $channelId
+     *
      * @return Channel
      */
     public function getChannel($channelId)

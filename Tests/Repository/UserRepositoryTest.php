@@ -34,8 +34,8 @@ class UserRepositoryTest extends \PHPUnit_Framework_TestCase
     public function testGetUser()
     {
         $client = $this->prophet->prophesize('Shoko\TwitchApiBundle\Lib\Client');
-        $factory = new UserFactory;
-        $transformer = new JsonTransformer;
+        $factory = new UserFactory();
+        $transformer = new JsonTransformer();
         $repository = new UserRepository($client->reveal(), $factory, $transformer);
 
         $response = $this->prophet->prophesize('GuzzleHttp\Psr7\Response');
@@ -49,7 +49,7 @@ class UserRepositoryTest extends \PHPUnit_Framework_TestCase
         $body->getContents()->willReturn($content);
 
         $result = $repository->getUser('some_user');
-        $expected = (new UserFactory)->createEntity(json_decode($content, true));
+        $expected = (new UserFactory())->createEntity(json_decode($content, true));
 
         $this->assertEquals($expected, $result);
     }

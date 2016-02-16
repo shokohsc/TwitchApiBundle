@@ -34,8 +34,8 @@ class RootRepositoryTest extends \PHPUnit_Framework_TestCase
     public function testGetRoot()
     {
         $client = $this->prophet->prophesize('Shoko\TwitchApiBundle\Lib\Client');
-        $factory = new RootFactory;
-        $transformer = new JsonTransformer;
+        $factory = new RootFactory();
+        $transformer = new JsonTransformer();
         $repository = new RootRepository($client->reveal(), $factory, $transformer);
 
         $response = $this->prophet->prophesize('GuzzleHttp\Psr7\Response');
@@ -49,7 +49,7 @@ class RootRepositoryTest extends \PHPUnit_Framework_TestCase
         $body->getContents()->willReturn($content);
 
         $result = $repository->get();
-        $expected = (new RootFactory)->createEntity(json_decode($content, true));
+        $expected = (new RootFactory())->createEntity(json_decode($content, true));
 
         $this->assertEquals($expected, $result);
     }

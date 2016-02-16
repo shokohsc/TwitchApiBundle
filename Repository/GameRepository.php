@@ -2,7 +2,6 @@
 
 namespace Shoko\TwitchApiBundle\Repository;
 
-use Shoko\TwitchApiBundle\Repository\AbstractRepository;
 use Shoko\TwitchApiBundle\Model\Entity\Game;
 
 /**
@@ -11,7 +10,8 @@ use Shoko\TwitchApiBundle\Model\Entity\Game;
 class GameRepository extends AbstractRepository
 {
     /**
-     * Get top games
+     * Get top games.
+     *
      * @return array
      */
     public function getTop()

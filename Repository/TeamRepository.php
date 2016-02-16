@@ -2,7 +2,6 @@
 
 namespace Shoko\TwitchApiBundle\Repository;
 
-use Shoko\TwitchApiBundle\Repository\AbstractRepository;
 use Shoko\TwitchApiBundle\Model\Entity\Team;
 
 /**
@@ -11,8 +10,10 @@ use Shoko\TwitchApiBundle\Model\Entity\Team;
 class TeamRepository extends AbstractRepository
 {
     /**
-     * Get team
-     * @param  string $teamId
+     * Get team.
+     *
+     * @param string $teamId
+     *
      * @return Team
      */
     public function getTeam($teamId)

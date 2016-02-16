@@ -19,7 +19,8 @@ class Top
     private $positions = array();
 
     /**
-     * Total int $total
+     * Total int $total.
+     *
      * @var int
      */
     private $total = 0;
@@ -46,6 +47,7 @@ class Top
      * Set positions method.
      *
      * @param array $positions
+     *
      * @return Top
      */
     public function setPositions(array $positions)
@@ -69,6 +71,7 @@ class Top
      * Set total method.
      *
      * @param int $total
+     *
      * @return Top
      */
     public function setTotal($total)

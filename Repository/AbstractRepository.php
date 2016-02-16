@@ -13,25 +13,29 @@ use GuzzleHttp\Psr7\Response;
 class AbstractRepository
 {
     /**
-     * Client $client
+     * Client $client.
+     *
      * @var Client
      */
     private $client;
 
     /**
-     * FactoryInterface $factory
+     * FactoryInterface $factory.
+     *
      * @var FactoryInterface
      */
     private $factory;
 
     /**
-     * JsonTransformer $transformer
+     * JsonTransformer $transformer.
+     *
      * @var JsonTransformer
      */
     private $transformer;
 
     /**
      * Constructor method.
+     *
      * @param Client           $client
      * @param FactoryInterface $factory
      * @param JsonTransformer  $transformer
@@ -44,7 +48,8 @@ class AbstractRepository
     }
 
     /**
-     * Get Client $client
+     * Get Client $client.
+     *
      * @return Client
      */
     protected function getClient()
@@ -53,7 +58,8 @@ class AbstractRepository
     }
 
     /**
-     * Get FactoryInterface $factory
+     * Get FactoryInterface $factory.
+     *
      * @return FactoryInterface
      */
     protected function getFactory()
@@ -62,7 +68,8 @@ class AbstractRepository
     }
 
     /**
-     * Get JsonTransformer $transformer
+     * Get JsonTransformer $transformer.
+     *
      * @return JsonTransformer
      */
     protected function getTransformer()
@@ -71,8 +78,10 @@ class AbstractRepository
     }
 
     /**
-     * Get Json object to Assoc array
-     * @param  Response $response
+     * Get Json object to Assoc array.
+     *
+     * @param Response $response
+     *
      * @return array
      */
     protected function jsonResponse(Response $response)

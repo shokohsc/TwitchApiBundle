@@ -2,7 +2,6 @@
 
 namespace Shoko\TwitchApiBundle\Repository;
 
-use Shoko\TwitchApiBundle\Repository\AbstractRepository;
 use Shoko\TwitchApiBundle\Model\Entity\User;
 
 /**
@@ -11,8 +10,10 @@ use Shoko\TwitchApiBundle\Model\Entity\User;
 class UserRepository extends AbstractRepository
 {
     /**
-     * Get user
-     * @param  string $userId
+     * Get user.
+     *
+     * @param string $userId
+     *
      * @return User
      */
     public function getUser($userId)

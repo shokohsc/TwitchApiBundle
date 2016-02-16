@@ -24,11 +24,10 @@ class TopTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals([$link], $top->setLinks([$link])->getLinks());
 
         $this->assertEquals(array(), $top->getPositions());
-        $position = new Position;
+        $position = new Position();
         $this->assertEquals([$position], $top->setPositions([$position])->getPositions());
 
         $this->assertEquals(0, $top->getTotal());
         $this->assertEquals(42, $top->setTotal(42)->getTotal());
-
     }
 }

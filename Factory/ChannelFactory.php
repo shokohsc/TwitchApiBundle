@@ -3,7 +3,6 @@
 namespace Shoko\TwitchApiBundle\Factory;
 
 use Shoko\TwitchApiBundle\Model\Entity\Channel;
-use Shoko\TwitchApiBundle\Factory\FactoryInterface;
 
 /**
  * Class ChannelFactory.

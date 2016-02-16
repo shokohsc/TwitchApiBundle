@@ -8,8 +8,10 @@ namespace Shoko\TwitchApiBundle\Util;
 class JsonTransformer
 {
     /**
-     * Transform Json to Associative Array
-     * @param  string $json
+     * Transform Json to Associative Array.
+     *
+     * @param string $json
+     *
      * @return array
      */
     public function transform($json)

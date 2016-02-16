@@ -34,8 +34,8 @@ class GameRepositoryTest extends \PHPUnit_Framework_TestCase
     public function testGetTop()
     {
         $client = $this->prophet->prophesize('Shoko\TwitchApiBundle\Lib\Client');
-        $factory = new TopFactory;
-        $transformer = new JsonTransformer;
+        $factory = new TopFactory();
+        $transformer = new JsonTransformer();
         $repository = new GameRepository($client->reveal(), $factory, $transformer);
 
         $response = $this->prophet->prophesize('GuzzleHttp\Psr7\Response');
@@ -49,7 +49,7 @@ class GameRepositoryTest extends \PHPUnit_Framework_TestCase
         $body->getContents()->willReturn($content);
 
         $result = $repository->getTop();
-        $expected = (new TopFactory)->createEntity(json_decode($content, true));
+        $expected = (new TopFactory())->createEntity(json_decode($content, true));
 
         $this->assertEquals($expected, $result);
     }

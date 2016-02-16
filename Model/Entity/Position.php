@@ -3,7 +3,6 @@
 namespace Shoko\TwitchApiBundle\Model\Entity;
 
 use Shoko\TwitchApiBundle\Model\Entity\Traits\Viewersable;
-use Shoko\TwitchApiBundle\Model\Entity\Game;
 
 /**
  * Position class.
@@ -13,13 +12,15 @@ class Position
     use Viewersable;
 
     /**
-     * Game $game
+     * Game $game.
+     *
      * @var Game
      */
     private $game = null;
 
     /**
-     * Channels int $channels
+     * Channels int $channels.
+     *
      * @var int
      */
     private $channels = 0;
@@ -46,6 +47,7 @@ class Position
      * Set game.
      *
      * @param Game $game
+     *
      * @return Position
      */
     public function setGame(Game $game)
@@ -69,6 +71,7 @@ class Position
      * Set channels.
      *
      * @param int $channels
+     *
      * @return Position
      */
     public function setChannels($channels)

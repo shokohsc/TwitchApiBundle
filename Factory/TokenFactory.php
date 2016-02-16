@@ -4,7 +4,6 @@ namespace Shoko\TwitchApiBundle\Factory;
 
 use Shoko\TwitchApiBundle\Model\Entity\ValueObject\Token;
 use Shoko\TwitchApiBundle\Model\Entity\ValueObject\Authorization;
-use Shoko\TwitchApiBundle\Factory\FactoryInterface;
 
 /**
  * Class TokenFactory.

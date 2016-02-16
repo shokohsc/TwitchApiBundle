@@ -34,8 +34,8 @@ class TeamRepositoryTest extends \PHPUnit_Framework_TestCase
     public function testGetTeam()
     {
         $client = $this->prophet->prophesize('Shoko\TwitchApiBundle\Lib\Client');
-        $factory = new TeamFactory;
-        $transformer = new JsonTransformer;
+        $factory = new TeamFactory();
+        $transformer = new JsonTransformer();
         $repository = new TeamRepository($client->reveal(), $factory, $transformer);
 
         $response = $this->prophet->prophesize('GuzzleHttp\Psr7\Response');
@@ -49,7 +49,7 @@ class TeamRepositoryTest extends \PHPUnit_Framework_TestCase
         $body->getContents()->willReturn($content);
 
         $result = $repository->getTeam('some_team');
-        $expected = (new TeamFactory)->createEntity(json_decode($content, true));
+        $expected = (new TeamFactory())->createEntity(json_decode($content, true));
 
         $this->assertEquals($expected, $result);
     }

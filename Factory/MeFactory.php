@@ -3,7 +3,6 @@
 namespace Shoko\TwitchApiBundle\Factory;
 
 use Shoko\TwitchApiBundle\Model\Entity\Me;
-use Shoko\TwitchApiBundle\Factory\FactoryInterface;
 
 /**
  * Class MeFactory.

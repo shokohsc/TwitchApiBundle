@@ -3,7 +3,6 @@
 namespace Shoko\TwitchApiBundle\Factory;
 
 use Shoko\TwitchApiBundle\Model\Entity\User;
-use Shoko\TwitchApiBundle\Factory\FactoryInterface;
 
 /**
  * Class UserFactory.

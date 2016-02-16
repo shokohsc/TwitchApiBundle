@@ -2,7 +2,6 @@
 
 namespace Shoko\TwitchApiBundle\Repository;
 
-use Shoko\TwitchApiBundle\Repository\AbstractRepository;
 use Shoko\TwitchApiBundle\Model\Entity\Root;
 
 /**
@@ -11,7 +10,8 @@ use Shoko\TwitchApiBundle\Model\Entity\Root;
 class RootRepository extends AbstractRepository
 {
     /**
-     * Get root
+     * Get root.
+     *
      * @return Root
      */
     public function get()
