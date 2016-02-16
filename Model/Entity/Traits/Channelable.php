@@ -1,6 +1,7 @@
 <?php
 
 namespace Shoko\TwitchApiBundle\Model\Entity\Traits;
+use Shoko\TwitchApiBundle\Model\Entity\Channel;
 
 /**
  * Trait Channelable.
@@ -17,7 +18,7 @@ trait Channelable
     /**
      * Get channel.
      *
-     * @return string
+     * @return Channel
      */
     public function getChannel()
     {
@@ -27,9 +28,9 @@ trait Channelable
     /**
      * Set channel.
      *
-     * @param string $channel
+     * @param Channel $channel
      */
-    public function setChannel($channel)
+    public function setChannel(Channel $channel)
     {
         $this->channel = $channel;
 
