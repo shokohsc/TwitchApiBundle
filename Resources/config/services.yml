@@ -2,6 +2,9 @@ services:
 # Client
   twitch.client:
     class: Shoko\TwitchApiBundle\Lib\Client
+# Util
+  json.transformer:
+    class: Shoko\TwitchApiBundle\Util\JsonTransformer
 # Factories
   channel.factory:
     class: Shoko\TwitchApiBundle\Factory\ChannelFactory
@@ -13,6 +16,8 @@ services:
     class: Shoko\TwitchApiBundle\Factory\MeFactory
   my_channel.factory:
     class: Shoko\TwitchApiBundle\Factory\MyChannelFactory
+  position.factory:
+    class: Shoko\TwitchApiBundle\Factory\PositionFactory
   root.factory:
     class: Shoko\TwitchApiBundle\Factory\RootFactory
   stream.factory:
@@ -21,24 +26,26 @@ services:
     class: Shoko\TwitchApiBundle\Factory\TeamFactory
   token.factory:
     class: Shoko\TwitchApiBundle\Factory\TokenFactory
+  top.factory:
+    class: Shoko\TwitchApiBundle\Factory\TopFactory
   user.factory:
     class: Shoko\TwitchApiBundle\Factory\UserFactory
 # Repositories
   channel.repository:
     class: Shoko\TwitchApiBundle\Repository\ChannelRepository
-    arguments: ["@twitch.client", "@channel.factory"]
+    arguments: ["@twitch.client", "@channel.factory", "@json.transformer"]
   game.repository:
     class: Shoko\TwitchApiBundle\Repository\GameRepository
-    arguments: ["@twitch.client", "@game.factory"]
+    arguments: ["@twitch.client", "@top.factory", "@json.transformer"]
   root.repository:
     class: Shoko\TwitchApiBundle\Repository\RootRepository
-    arguments: ["@twitch.client", "@root.factory"]
+    arguments: ["@twitch.client", "@root.factory", "@json.transformer"]
   stream.repository:
     class: Shoko\TwitchApiBundle\Repository\StreamRepository
-    arguments: ["@twitch.client", "@stream.factory"]
+    arguments: ["@twitch.client", "@stream.factory", "@json.transformer"]
   team.repository:
     class: Shoko\TwitchApiBundle\Repository\TeamRepository
-    arguments: ["@twitch.client", "@team.factory"]
+    arguments: ["@twitch.client", "@team.factory", "@json.transformer"]
   user.repository:
     class: Shoko\TwitchApiBundle\Repository\UserRepository
-    arguments: ["@twitch.client", "@user.factory"]
+    arguments: ["@twitch.client", "@user.factory", "@json.transformer"]
