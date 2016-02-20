@@ -6,13 +6,19 @@ use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
+/**
+ * Class JsonSerializer.
+ */
 class JsonSerializer
 {
     /**
-     * @var Serializer
+     * @var Serializer $serializer
      */
     private $serializer;
 
+    /**
+     * Constructor method.
+     */
     public function __construct()
     {
         $encoders = [new JsonEncoder()];
@@ -21,7 +27,9 @@ class JsonSerializer
     }
 
     /**
-     * @param $data
+     * Encode mixed $data to json string.
+     *
+     * @param mixed $data
      *
      * @return string
      */
