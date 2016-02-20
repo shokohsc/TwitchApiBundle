@@ -39,7 +39,7 @@ class GameRepositoryTest extends \PHPUnit_Framework_TestCase
         $repository = new GameRepository($client->reveal(), $factory, $transformer);
 
         $response = $this->prophet->prophesize('GuzzleHttp\Psr7\Response');
-        $client->get(Game::ENDPOINT)->willReturn($response->reveal());
+        $client->get(Game::ENDPOINT.'?limit=10&offset=0')->willReturn($response->reveal());
 
         $body = $this->prophet->prophesize();
         $body->willImplement('Psr\Http\Message\StreamInterface');
