@@ -5,6 +5,8 @@ services:
 # Util
   json.transformer:
     class: Shoko\TwitchApiBundle\Util\JsonTransformer
+  json.serializer:
+    class: Shoko\TwitchApiBundle\Util\JsonSerializer
 # Factories
   channel.factory:
     class: Shoko\TwitchApiBundle\Factory\ChannelFactory
