@@ -38,7 +38,7 @@ services:
     arguments: ["@twitch.client", "@channel.factory", "@json.transformer"]
   game.repository:
     class: Shoko\TwitchApiBundle\Repository\GameRepository
-    arguments: ["@twitch.client", "@gamem.factory", "@json.transformer"]
+    arguments: ["@twitch.client", "@game.factory", "@json.transformer"]
   root.repository:
     class: Shoko\TwitchApiBundle\Repository\RootRepository
     arguments: ["@twitch.client", "@root.factory", "@json.transformer"]
