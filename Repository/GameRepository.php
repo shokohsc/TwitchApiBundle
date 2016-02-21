@@ -10,19 +10,19 @@ use Shoko\TwitchApiBundle\Model\Entity\Game;
 class GameRepository extends AbstractRepository
 {
     /**
-     * Get top games.
+     * Get gameList games.
      *
      * @param string $limit
      * @param string $offset
      *
      * @return array
      */
-    public function getTop($limit = '10', $offset = '0')
+    public function getGameList($limit = '10', $offset = '0')
     {
         $params = '?'.http_build_query(array('limit' => $limit, 'offset' => $offset));
         $response = $this->getClient()->get(Game::ENDPOINT.$params);
         $data = $this->jsonResponse($response);
 
-        return $this->getFactory()->createTop($data);
+        return $this->getFactory()->createGameList($data);
     }
 }

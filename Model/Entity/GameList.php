@@ -3,13 +3,14 @@
 namespace Shoko\TwitchApiBundle\Model\Entity;
 
 use Shoko\TwitchApiBundle\Model\Entity\Traits\Linksable;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\Totalable;
 
 /**
- * Top class.
+ * GameList class.
  */
-class Top
+class GameList
 {
-    use Linksable;
+    use Linksable, Totalable;
 
     /**
      * Games array $games.
@@ -19,14 +20,7 @@ class Top
     private $games = array();
 
     /**
-     * Total int $total.
-     *
-     * @var int
-     */
-    private $total = 0;
-
-    /**
-     * @return Top
+     * @return GameList
      */
     public static function create()
     {
@@ -48,35 +42,11 @@ class Top
      *
      * @param array $games
      *
-     * @return Top
+     * @return GameList
      */
     public function setGames(array $games)
     {
         $this->games = $games;
-
-        return $this;
-    }
-
-    /**
-     * Get total method.
-     *
-     * @return int
-     */
-    public function getTotal()
-    {
-        return $this->total;
-    }
-
-    /**
-     * Set total method.
-     *
-     * @param int $total
-     *
-     * @return Top
-     */
-    public function setTotal($total)
-    {
-        $this->total = $total;
 
         return $this;
     }

@@ -3,6 +3,7 @@
 namespace Shoko\TwitchApiBundle\Factory;
 
 use Shoko\TwitchApiBundle\Model\Entity\Stream;
+use Shoko\TwitchApiBundle\Model\Entity\StreamList;
 
 /**
  * Class StreamFactory.
@@ -65,5 +66,46 @@ class StreamFactory implements FactoryInterface
         }
 
         return $stream;
+    }
+
+    /**
+     * @param array $data
+     * @param false|StreamList $streamList
+     *
+     * @return StreamList
+     */
+    public function createStreamList(array $data, $streamList = false)
+    {
+        if (false === $streamList) {
+            $streamList = StreamList::create();
+        }
+
+        if (isset($data['streams'])) {
+            $streamList = $streamList->setStreams($this->createStreams($data['streams']));
+        }
+
+        if (isset($data['_links'])) {
+            $streamList = $streamList->setLinks($data['_links']);
+        }
+
+        if (isset($data['_total'])) {
+            $streamList = $streamList->setTotal($data['_total']);
+        }
+
+        return $streamList;
+    }
+
+    /**
+     * @param  array  $streams
+     * @return array
+     */
+    public function createStreams(array $streams)
+    {
+        $tmp = [];
+        foreach ($streams as $entry) {
+            $tmp[] = $this->createEntity($entry);
+        }
+
+        return $tmp;
     }
 }

@@ -11,7 +11,7 @@ use Shoko\TwitchApiBundle\Model\Entity\Traits\Identifiable;
  */
 class Game
 {
-    const ENDPOINT = 'games/top';
+    const ENDPOINT = 'games/gameList';
 
     use Identifiable, Linksable, Nameable;
 

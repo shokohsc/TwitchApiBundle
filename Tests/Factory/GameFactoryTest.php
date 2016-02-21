@@ -54,16 +54,16 @@ class GameFactoryTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test create top method.
+     * Test create gameList method.
      */
-    public function testCreateTop()
+    public function testCreateGameList()
     {
         $data = [
           '_links' => [
-            'self' => 'https://api.twitch.tv/kraken/tops/test_channel1',
+            'self' => 'https://api.twitch.tv/kraken/gameLists/test_channel1',
           ],
           '_total' => 42,
-          'top' => [
+          'gameList' => [
             [
               'viewers' => 42,
               'channels' => 42,
@@ -75,11 +75,36 @@ class GameFactoryTest extends \PHPUnit_Framework_TestCase
         ];
 
         $gameFactory = new GameFactory();
-        $top = $gameFactory->createTop($data);
+        $gameList = $gameFactory->createGameList($data);
 
-        $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Top', $top);
-        $this->assertArrayHasKey('self', $top->getLinks());
-        $this->assertEquals('https://api.twitch.tv/kraken/tops/test_channel1', $top->getLinks()['self']);
-        $this->assertEquals(42, $top->getTotal());
+        $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\GameList', $gameList);
+        $this->assertArrayHasKey('self', $gameList->getLinks());
+        $this->assertEquals('https://api.twitch.tv/kraken/gameLists/test_channel1', $gameList->getLinks()['self']);
+        $this->assertEquals(42, $gameList->getTotal());
+    }
+
+    /**
+     * Test create games method.
+     */
+    public function testCreateGames()
+    {
+        $data = [
+          [
+            'viewers' => 42,
+            'channels' => 42,
+            'game' => [
+              'name' => 'some_game',
+            ],
+          ],
+        ];
+
+        $gameFactory = new GameFactory();
+        $gameList = $gameFactory->createGames($data);
+
+        $this->assertEquals(1, count($gameList));
+        $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Games', $gameList[0]);
+        $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Game', $gameList[0]->getGame());
+        $this->assertEquals('42', $gameList[0]->getViewers());
+        $this->assertEquals('some_game', $gameList[0]->getGame()->getName());
     }
 }

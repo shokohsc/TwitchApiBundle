@@ -3,7 +3,7 @@
 namespace Shoko\TwitchApiBundle\Factory;
 
 use Shoko\TwitchApiBundle\Model\Entity\Game;
-use Shoko\TwitchApiBundle\Model\Entity\Top;
+use Shoko\TwitchApiBundle\Model\Entity\GameList;
 use Shoko\TwitchApiBundle\Factory\GamesFactory;
 
 /**
@@ -52,29 +52,29 @@ class GameFactory implements FactoryInterface
 
     /**
      * @param array $data
-     * @param false|Top $top
+     * @param false|GameList $gameList
      *
-     * @return Top
+     * @return GameList
      */
-    public function createTop(array $data, $top = false)
+    public function createGameList(array $data, $gameList = false)
     {
-        if (false === $top) {
-            $top = Top::create();
+        if (false === $gameList) {
+            $gameList = GameList::create();
         }
 
         if (isset($data['top'])) {
-            $top = $top->setGames($this->createGames($data['top']));
+            $gameList = $gameList->setGames($this->createGames($data['top']));
         }
 
         if (isset($data['_links'])) {
-            $top = $top->setLinks($data['_links']);
+            $gameList = $gameList->setLinks($data['_links']);
         }
 
         if (isset($data['_total'])) {
-            $top = $top->setTotal($data['_total']);
+            $gameList = $gameList->setTotal($data['_total']);
         }
 
-        return $top;
+        return $gameList;
     }
 
     /**
@@ -90,5 +90,4 @@ class GameFactory implements FactoryInterface
 
         return $tmp;
     }
-
 }

@@ -72,4 +72,54 @@ class StreamFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(720, $stream->getVideoHeight());
         $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Channel', $stream->getChannel());
     }
+
+    /**
+     * Test create streamList method.
+     */
+    public function testCreateStreamList()
+    {
+        $data = [
+          '_links' => [
+            'self' => 'https://api.twitch.tv/kraken/streamLists/test_channel1',
+          ],
+          '_total' => 42,
+          'streams' => [
+            [
+              '_id' => 21229404,
+              'playlist' => true,
+              'game' => 'Gaming Talk Shows',
+            ],
+          ],
+        ];
+
+        $streamFactory = new StreamFactory();
+        $streamList = $streamFactory->createStreamList($data);
+
+        $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\StreamList', $streamList);
+        $this->assertArrayHasKey('self', $streamList->getLinks());
+        $this->assertEquals('https://api.twitch.tv/kraken/streamLists/test_channel1', $streamList->getLinks()['self']);
+        $this->assertEquals(42, $streamList->getTotal());
+    }
+
+    /**
+     * Test create streams method.
+     */
+    public function testCreateStreams()
+    {
+        $data = [
+          [
+            '_id' => 21229404,
+            'playlist' => true,
+            'game' => 'Gaming Talk Shows',
+          ],
+        ];
+
+        $streamFactory = new StreamFactory();
+        $streamList = $streamFactory->createStreams($data);
+
+        $this->assertEquals(1, count($streamList));
+        $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Stream', $streamList[0]);
+        $this->assertEquals(true, $streamList[0]->isPlaylist());
+        $this->assertEquals('Gaming Talk Shows', $streamList[0]->getGame());
+    }
 }
