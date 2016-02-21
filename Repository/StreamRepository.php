@@ -27,28 +27,16 @@ class StreamRepository extends AbstractRepository
     /**
      * Get streams.
      *
-     * @param null|string $game
-     * @param null|string $channel
-     * @param null|string $limit
-     * @param null|string $offset
-     * @param null|string $clientId
-     * @param null|string $streamType
+     * @param array $params
      *
      * @return Stream
      */
-    public function getStreams($game = null, $channel = null, $limit = null, $offset = null, $clientId = null, $streamType = null)
+    public function getStreams($params = array())
     {
-        $params = '?'.http_build_query(array(
-          'game' => $game,
-          'channel' => $channel,
-          'limit' => $limit,
-          'offset' => $offset,
-          'client_id' => $clientId,
-          'stream_type' => $streamType,
-        ));
+        $params = 0 < count($params) ? '?'.http_build_query($params) : '';
         $response = $this->getClient()->get(Stream::ENDPOINT.$params);
         $data = $this->jsonResponse($response);
 
-        return $this->getFactory()->createEntity($data);
+        return $this->getFactory()->createStreamList($data);
     }
 }

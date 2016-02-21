@@ -12,15 +12,14 @@ class GameRepository extends AbstractRepository
     /**
      * Get gameList games.
      *
-     * @param string $limit
-     * @param string $offset
+     * @param array $params
      *
      * @return array
      */
-    public function getGameList($limit = '10', $offset = '0')
+    public function getTop($params = array())
     {
-        $params = '?'.http_build_query(array('limit' => $limit, 'offset' => $offset));
-        $response = $this->getClient()->get(Game::ENDPOINT.$params);
+        $params = 0 < count($params) ? '?'.http_build_query($params) : '';
+        $response = $this->getClient()->get(Game::ENDPOINT.'/top'.$params);
         $data = $this->jsonResponse($response);
 
         return $this->getFactory()->createGameList($data);
