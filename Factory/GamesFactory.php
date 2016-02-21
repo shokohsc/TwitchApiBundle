@@ -2,22 +2,22 @@
 
 namespace Shoko\TwitchApiBundle\Factory;
 
-use Shoko\TwitchApiBundle\Model\Entity\Position;
+use Shoko\TwitchApiBundle\Model\Entity\Games;
 
 /**
- * Class PositionFactory.
+ * Class GamesFactory.
  */
-class PositionFactory implements FactoryInterface
+class GamesFactory implements FactoryInterface
 {
     /**
      * @param array $data
      *
-     * @return Position
+     * @return Games
      */
     public function createEntity(array $data, $position = false)
     {
         if (false === $position) {
-            $position = Position::create();
+            $position = Games::create();
         }
 
         if (isset($data['game'])) {

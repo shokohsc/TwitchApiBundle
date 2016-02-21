@@ -2,18 +2,18 @@
 
 namespace Shoko\TwitchApiBundle\Tests\Factory;
 
-use Shoko\TwitchApiBundle\Factory\PositionFactory;
-use Shoko\TwitchApiBundle\Model\Entity\Position;
+use Shoko\TwitchApiBundle\Factory\GamesFactory;
+use Shoko\TwitchApiBundle\Model\Entity\Games;
 
 /**
- * PositionFactoryTest class.
+ * GamesFactoryTest class.
  */
-class PositionFactoryTest extends \PHPUnit_Framework_TestCase
+class GamesFactoryTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * Test create position method.
      */
-    public function testCreatePosition()
+    public function testCreateGames()
     {
         $data = [
           'viewers' => 42,
@@ -23,10 +23,10 @@ class PositionFactoryTest extends \PHPUnit_Framework_TestCase
           ],
         ];
 
-        $positionFactory = new PositionFactory();
+        $positionFactory = new GamesFactory();
         $position = $positionFactory->createEntity($data);
 
-        $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Position', $position);
+        $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Games', $position);
         $this->assertEquals(42, $position->getViewers());
         $this->assertEquals(42, $position->getChannels());
     }

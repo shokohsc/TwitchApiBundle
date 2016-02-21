@@ -12,11 +12,11 @@ class Top
     use Linksable;
 
     /**
-     * Positions array $positions.
+     * Games array $games.
      *
      * @var array
      */
-    private $positions = array();
+    private $games = array();
 
     /**
      * Total int $total.
@@ -34,25 +34,25 @@ class Top
     }
 
     /**
-     * Get positions method.
+     * Get games method.
      *
      * @return array
      */
-    public function getPositions()
+    public function getGames()
     {
-        return $this->positions;
+        return $this->games;
     }
 
     /**
-     * Set positions method.
+     * Set games method.
      *
-     * @param array $positions
+     * @param array $games
      *
      * @return Top
      */
-    public function setPositions(array $positions)
+    public function setGames(array $games)
     {
-        $this->positions = $positions;
+        $this->games = $games;
 
         return $this;
     }

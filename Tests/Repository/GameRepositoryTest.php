@@ -3,7 +3,7 @@
 namespace Shoko\TwitchApiBundle\Tests\Lib;
 
 use Shoko\TwitchApiBundle\Repository\GameRepository;
-use Shoko\TwitchApiBundle\Factory\TopFactory;
+use Shoko\TwitchApiBundle\Factory\GameFactory;
 use Shoko\TwitchApiBundle\Model\Entity\Game;
 use Shoko\TwitchApiBundle\Util\JsonTransformer;
 use Prophecy\Prophet;
@@ -34,7 +34,7 @@ class GameRepositoryTest extends \PHPUnit_Framework_TestCase
     public function testGetTop()
     {
         $client = $this->prophet->prophesize('Shoko\TwitchApiBundle\Lib\Client');
-        $factory = new TopFactory();
+        $factory = new GameFactory();
         $transformer = new JsonTransformer();
         $repository = new GameRepository($client->reveal(), $factory, $transformer);
 
@@ -49,7 +49,7 @@ class GameRepositoryTest extends \PHPUnit_Framework_TestCase
         $body->getContents()->willReturn($content);
 
         $result = $repository->getTop();
-        $expected = (new TopFactory())->createEntity(json_decode($content, true));
+        $expected = (new GameFactory())->createTop(json_decode($content, true));
 
         $this->assertEquals($expected, $result);
     }

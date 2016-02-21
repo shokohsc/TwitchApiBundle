@@ -23,6 +23,6 @@ class GameRepository extends AbstractRepository
         $response = $this->getClient()->get(Game::ENDPOINT.$params);
         $data = $this->jsonResponse($response);
 
-        return $this->getFactory()->createEntity($data);
+        return $this->getFactory()->createTop($data);
     }
 }
