@@ -49,7 +49,7 @@ class StreamRepositoryTest extends \PHPUnit_Framework_TestCase
         $body->getContents()->willReturn($content);
 
         $result = $repository->getStream('some_stream');
-        $expected = (new StreamFactory())->createEntity(json_decode($content, true));
+        $expected = (new StreamFactory())->createEntity([]);
 
         $this->assertEquals($expected, $result);
     }

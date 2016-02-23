@@ -20,6 +20,7 @@ class StreamRepository extends AbstractRepository
     {
         $response = $this->getClient()->get(Stream::ENDPOINT.$channelId);
         $data = $this->jsonResponse($response);
+        $data = null !== $data['stream'] ? $data['stream'] : [];
 
         return $this->getFactory()->createEntity($data);
     }
