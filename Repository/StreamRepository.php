@@ -38,6 +38,6 @@ class StreamRepository extends AbstractRepository
         $response = $this->getClient()->get(Stream::ENDPOINT.$params);
         $data = $this->jsonResponse($response);
 
-        return $this->getFactory()->createStreamList($data);
+        return $this->getFactory()->createList($data);
     }
 }

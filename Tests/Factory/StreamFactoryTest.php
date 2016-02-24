@@ -15,60 +15,22 @@ class StreamFactoryTest extends \PHPUnit_Framework_TestCase
      */
     public function testCreateStream()
     {
-        $data = [
-          'created_at' => '2011-06-03T17:49:19Z',
-          '_links' => [
-            'self' => 'https://api.twitch.tv/kraken/streams/test_channel1',
-          ],
-          '_id' => 21229404,
-          'playlist' => true,
-          'game' => 'Gaming Talk Shows',
-          'delay' => 0,
-          'viewers' => 4243,
-          'average_fps' => 60,
-          'video_height' => 720,
-          'channel' => [
-            'name' => 'test_stream1',
-            'created_at' => '2011-06-03T17:49:19Z',
-            'updated_at' => '2012-06-18T17:19:57Z',
-            '_links' => [
-              'self' => 'https://api.twitch.tv/kraken/channels/test_channel1',
-              'another_key' => 'another_value',
-            ],
-            'logo' => 'http://static-cdn.jtvnw.net/jtv_channel_pictures/test_channel1-profile_image-62e8318af864d6d7-300x300.jpeg',
-            '_id' => 21229404,
-            'display_name' => 'test_stream1',
-            'mature' => false,
-            'status' => 'test status',
-            'broadcaster_language' => 'en',
-            'game' => 'Gaming Talk Shows',
-            'delay' => null,
-            'language' => 'en',
-            'banner' => 'some_banner_link',
-            'video_banner' => 'some_video_banner_link',
-            'background' => 'some_background',
-            'profile_banner' => 'some_profile_banner_link',
-            'profile_banner_background_color' => null,
-            'partner' => true,
-            'url' => 'some_url',
-            'views' => 42,
-            'followers' => 42,
-          ],
-        ];
+        $json = '{"_links": {"channel": "https://api.twitch.tv/kraken/channels/test_channel","self": "https://api.twitch.tv/kraken/streams/test_channel"},"stream": {"game": "StarCraft II: Heart of the Swarm","viewers": 2123,"average_fps": 29.9880749574,"delay": 0,"video_height": 720,"is_playlist": false,"created_at": "2015-02-12T04:42:31Z","_id": 4989654544,"channel": {"mature": false,"status": "test status","broadcaster_language": "en","display_name": "test_channel","game": "StarCraft II: Heart of the Swarm","delay": null,"language": "en","_id": 12345,"name": "test_channel","created_at": "2007-05-22T10:39:54Z","updated_at": "2015-02-12T04:15:49Z","logo": "http://static-cdn.jtvnw.net/jtv_user_pictures/test_channel-profile_image-94a42b3a13c31c02-300x300.jpeg","banner": "http://static-cdn.jtvnw.net/jtv_user_pictures/test_channel-channel_header_image-08dd874c17f39837-640x125.png","video_banner": "http://static-cdn.jtvnw.net/jtv_user_pictures/test_channel-channel_offline_image-b314c834d210dc1a-640x360.png","background": null,"profile_banner": "http://static-cdn.jtvnw.net/jtv_user_pictures/test_channel-profile_banner-6936c61353e4aeed-480.png","profile_banner_background_color": "null","partner": true,"url": "http://www.twitch.tv/test_channel","views": 49144894,"followers": 215780,"_links": {"self": "https://api.twitch.tv/kraken/channels/test_channel","follows": "https://api.twitch.tv/kraken/channels/test_channel/follows","commercial": "https://api.twitch.tv/kraken/channels/test_channel/commercial","stream_key": "https://api.twitch.tv/kraken/channels/test_channel/stream_key","chat": "https://api.twitch.tv/kraken/chat/test_channel","features": "https://api.twitch.tv/kraken/channels/test_channel/features","subscriptions": "https://api.twitch.tv/kraken/channels/test_channel/subscriptions","editors": "https://api.twitch.tv/kraken/channels/test_channel/editors","teams": "https://api.twitch.tv/kraken/channels/test_channel/teams","videos": "https://api.twitch.tv/kraken/channels/test_channel/videos"}},"preview": {"small": "http://static-cdn.jtvnw.net/previews-ttv/live_user_test_channel-80x45.jpg","medium": "http://static-cdn.jtvnw.net/previews-ttv/live_user_test_channel-320x180.jpg","large": "http://static-cdn.jtvnw.net/previews-ttv/live_user_test_channel-640x360.jpg","template": "http://static-cdn.jtvnw.net/previews-ttv/live_user_test_channel-{width}x{height}.jpg"},"_links": {"self": "https://api.twitch.tv/kraken/streams/test_channel"}}}';
+        $data = json_decode($json, true);
 
         $streamFactory = new StreamFactory();
-        $stream = $streamFactory->createEntity($data);
+        $stream = $streamFactory->createEntity($data['stream']);
 
         $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Stream', $stream);
-        $this->assertEquals(new \DateTime('2011-06-03T17:49:19Z'), $stream->getCreatedAt());
+        $this->assertEquals(new \DateTime('2015-02-12T04:42:31Z'), $stream->getCreatedAt());
         $this->assertArrayHasKey('self', $stream->getLinks());
-        $this->assertEquals('https://api.twitch.tv/kraken/streams/test_channel1', $stream->getLinks()['self']);
-        $this->assertEquals(21229404, $stream->getId());
-        $this->assertEquals(true, $stream->isPlaylist());
-        $this->assertEquals('Gaming Talk Shows', $stream->getGame());
+        $this->assertEquals('https://api.twitch.tv/kraken/streams/test_channel', $stream->getLinks()['self']);
+        $this->assertEquals(4989654544, $stream->getId());
+        $this->assertEquals(false, $stream->isPlaylist());
+        $this->assertEquals('StarCraft II: Heart of the Swarm', $stream->getGame());
         $this->assertEquals(0, $stream->getDelay());
-        $this->assertEquals(4243, $stream->getViewers());
-        $this->assertEquals(60, $stream->getAverageFps());
+        $this->assertEquals(2123, $stream->getViewers());
+        $this->assertEquals(29.9880749574, $stream->getAverageFps());
         $this->assertEquals(720, $stream->getVideoHeight());
         $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Channel', $stream->getChannel());
     }
@@ -78,27 +40,16 @@ class StreamFactoryTest extends \PHPUnit_Framework_TestCase
      */
     public function testCreateStreamList()
     {
-        $data = [
-          '_links' => [
-            'self' => 'https://api.twitch.tv/kraken/streamLists/test_channel1',
-          ],
-          '_total' => 42,
-          'streams' => [
-            [
-              '_id' => 21229404,
-              'playlist' => true,
-              'game' => 'Gaming Talk Shows',
-            ],
-          ],
-        ];
+        $json = '{"_total": 12345,"streams": [{"game": "StarCraft II: Heart of the Swarm","viewers": 2123,"average_fps": 29.9880749574,"delay": 0,"video_height": 720,"is_playlist": false,"created_at": "2015-02-12T04:42:31Z","_id": 4989654544,"channel": {"mature": false,"status": "test status","broadcaster_language": "en","display_name": "test_channel","game": "StarCraft II: Heart of the Swarm","delay": null,"language": "en","_id": 12345,"name": "test_channel","created_at": "2007-05-22T10:39:54Z","updated_at": "2015-02-12T04:15:49Z","logo": "http://static-cdn.jtvnw.net/jtv_user_pictures/test_channel-profile_image-94a42b3a13c31c02-300x300.jpeg","banner": "http://static-cdn.jtvnw.net/jtv_user_pictures/test_channel-channel_header_image-08dd874c17f39837-640x125.png","video_banner": "http://static-cdn.jtvnw.net/jtv_user_pictures/test_channel-channel_offline_image-b314c834d210dc1a-640x360.png","background": null,"profile_banner": "http://static-cdn.jtvnw.net/jtv_user_pictures/test_channel-profile_banner-6936c61353e4aeed-480.png","profile_banner_background_color": "null","partner": true,"url": "http://www.twitch.tv/test_channel","views": 49144894,"followers": 215780,"_links": {"self": "https://api.twitch.tv/kraken/channels/test_channel","follows": "https://api.twitch.tv/kraken/channels/test_channel/follows","commercial": "https://api.twitch.tv/kraken/channels/test_channel/commercial","stream_key": "https://api.twitch.tv/kraken/channels/test_channel/stream_key","chat": "https://api.twitch.tv/kraken/chat/test_channel","features": "https://api.twitch.tv/kraken/channels/test_channel/features","subscriptions": "https://api.twitch.tv/kraken/channels/test_channel/subscriptions","editors": "https://api.twitch.tv/kraken/channels/test_channel/editors","teams": "https://api.twitch.tv/kraken/channels/test_channel/teams","videos": "https://api.twitch.tv/kraken/channels/test_channel/videos"}},"preview": {"small": "http://static-cdn.jtvnw.net/previews-ttv/live_user_test_channel-80x45.jpg","medium": "http://static-cdn.jtvnw.net/previews-ttv/live_user_test_channel-320x180.jpg","large": "http://static-cdn.jtvnw.net/previews-ttv/live_user_test_channel-640x360.jpg","template": "http://static-cdn.jtvnw.net/previews-ttv/live_user_test_channel-{width}x{height}.jpg"},"_links": {"self": "https://api.twitch.tv/kraken/streams/test_channel"}}],"_links": {"summary": "https://api.twitch.tv/kraken/streams/summary","followed": "https://api.twitch.tv/kraken/streams/followed","next": "https://api.twitch.tv/kraken/streams?channel=test_channel%2Ctest_channel2&game=StarCraft+II%3A+Heart+of+the+Swarm&limit=100&offset=100","featured": "https://api.twitch.tv/kraken/streams/featured","self": "https://api.twitch.tv/kraken/streams?channel=test_channel%2Ctest_channel2&game=StarCraft+II%3A+Heart+of+the+Swarm&limit=100&offset=0"}}';
+        $data = json_decode($json, true);
 
         $streamFactory = new StreamFactory();
-        $streamList = $streamFactory->createStreamList($data);
+        $streamList = $streamFactory->createList($data);
 
         $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\StreamList', $streamList);
         $this->assertArrayHasKey('self', $streamList->getLinks());
-        $this->assertEquals('https://api.twitch.tv/kraken/streamLists/test_channel1', $streamList->getLinks()['self']);
-        $this->assertEquals(42, $streamList->getTotal());
+        $this->assertEquals('https://api.twitch.tv/kraken/streams?channel=test_channel%2Ctest_channel2&game=StarCraft+II%3A+Heart+of+the+Swarm&limit=100&offset=0', $streamList->getLinks()['self']);
+        $this->assertEquals(12345, $streamList->getTotal());
     }
 
     /**
@@ -106,20 +57,15 @@ class StreamFactoryTest extends \PHPUnit_Framework_TestCase
      */
     public function testCreateStreams()
     {
-        $data = [
-          [
-            '_id' => 21229404,
-            'playlist' => true,
-            'game' => 'Gaming Talk Shows',
-          ],
-        ];
+        $json = '{"_total": 12345,"streams": [{"game": "StarCraft II: Heart of the Swarm","viewers": 2123,"average_fps": 29.9880749574,"delay": 0,"video_height": 720,"is_playlist": false,"created_at": "2015-02-12T04:42:31Z","_id": 4989654544,"channel": {"mature": false,"status": "test status","broadcaster_language": "en","display_name": "test_channel","game": "StarCraft II: Heart of the Swarm","delay": null,"language": "en","_id": 12345,"name": "test_channel","created_at": "2007-05-22T10:39:54Z","updated_at": "2015-02-12T04:15:49Z","logo": "http://static-cdn.jtvnw.net/jtv_user_pictures/test_channel-profile_image-94a42b3a13c31c02-300x300.jpeg","banner": "http://static-cdn.jtvnw.net/jtv_user_pictures/test_channel-channel_header_image-08dd874c17f39837-640x125.png","video_banner": "http://static-cdn.jtvnw.net/jtv_user_pictures/test_channel-channel_offline_image-b314c834d210dc1a-640x360.png","background": null,"profile_banner": "http://static-cdn.jtvnw.net/jtv_user_pictures/test_channel-profile_banner-6936c61353e4aeed-480.png","profile_banner_background_color": "null","partner": true,"url": "http://www.twitch.tv/test_channel","views": 49144894,"followers": 215780,"_links": {"self": "https://api.twitch.tv/kraken/channels/test_channel","follows": "https://api.twitch.tv/kraken/channels/test_channel/follows","commercial": "https://api.twitch.tv/kraken/channels/test_channel/commercial","stream_key": "https://api.twitch.tv/kraken/channels/test_channel/stream_key","chat": "https://api.twitch.tv/kraken/chat/test_channel","features": "https://api.twitch.tv/kraken/channels/test_channel/features","subscriptions": "https://api.twitch.tv/kraken/channels/test_channel/subscriptions","editors": "https://api.twitch.tv/kraken/channels/test_channel/editors","teams": "https://api.twitch.tv/kraken/channels/test_channel/teams","videos": "https://api.twitch.tv/kraken/channels/test_channel/videos"}},"preview": {"small": "http://static-cdn.jtvnw.net/previews-ttv/live_user_test_channel-80x45.jpg","medium": "http://static-cdn.jtvnw.net/previews-ttv/live_user_test_channel-320x180.jpg","large": "http://static-cdn.jtvnw.net/previews-ttv/live_user_test_channel-640x360.jpg","template": "http://static-cdn.jtvnw.net/previews-ttv/live_user_test_channel-{width}x{height}.jpg"},"_links": {"self": "https://api.twitch.tv/kraken/streams/test_channel"}}],"_links": {"summary": "https://api.twitch.tv/kraken/streams/summary","followed": "https://api.twitch.tv/kraken/streams/followed","next": "https://api.twitch.tv/kraken/streams?channel=test_channel%2Ctest_channel2&game=StarCraft+II%3A+Heart+of+the+Swarm&limit=100&offset=100","featured": "https://api.twitch.tv/kraken/streams/featured","self": "https://api.twitch.tv/kraken/streams?channel=test_channel%2Ctest_channel2&game=StarCraft+II%3A+Heart+of+the+Swarm&limit=100&offset=0"}}';
+        $data = json_decode($json, true);
 
         $streamFactory = new StreamFactory();
-        $streamList = $streamFactory->createStreams($data);
+        $streamList = $streamFactory->createStreams($data['streams']);
 
         $this->assertEquals(1, count($streamList));
         $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Stream', $streamList[0]);
-        $this->assertEquals(true, $streamList[0]->isPlaylist());
-        $this->assertEquals('Gaming Talk Shows', $streamList[0]->getGame());
+        $this->assertEquals(false, $streamList[0]->isPlaylist());
+        $this->assertEquals('StarCraft II: Heart of the Swarm', $streamList[0]->getGame());
     }
 }

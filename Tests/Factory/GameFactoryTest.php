@@ -75,7 +75,7 @@ class GameFactoryTest extends \PHPUnit_Framework_TestCase
         ];
 
         $gameFactory = new GameFactory();
-        $gameList = $gameFactory->createGameList($data);
+        $gameList = $gameFactory->createList($data);
 
         $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\GameList', $gameList);
         $this->assertArrayHasKey('self', $gameList->getLinks());

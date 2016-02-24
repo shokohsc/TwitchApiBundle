@@ -110,4 +110,45 @@ class ChannelFactory implements FactoryInterface
 
         return $channel;
     }
+
+    /**
+     * @param array $data
+     * @param false|ChannelList $channelList
+     *
+     * @return ChannelList
+     */
+    public function createList(array $data, $channelList = false)
+    {
+        if (false === $channelList) {
+            $channelList = ChannelList::create();
+        }
+
+        if (isset($data['channels'])) {
+            $channelList = $channelList->setChannels($this->createChannels($data['channels']));
+        }
+
+        if (isset($data['_links'])) {
+            $channelList = $channelList->setLinks($data['_links']);
+        }
+
+        if (isset($data['_total'])) {
+            $channelList = $channelList->setTotal($data['_total']);
+        }
+
+        return $channelList;
+    }
+
+    /**
+     * @param  array  $channels
+     * @return array
+     */
+    public function createChannels(array $channels)
+    {
+        $tmp = [];
+        foreach ($channels as $entry) {
+            $tmp[] = $this->createEntity($entry);
+        }
+
+        return $tmp;
+    }
 }

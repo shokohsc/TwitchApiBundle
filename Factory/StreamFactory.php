@@ -74,7 +74,7 @@ class StreamFactory implements FactoryInterface
      *
      * @return StreamList
      */
-    public function createStreamList(array $data, $streamList = false)
+    public function createList(array $data, $streamList = false)
     {
         if (false === $streamList) {
             $streamList = StreamList::create();

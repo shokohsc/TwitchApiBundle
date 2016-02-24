@@ -49,7 +49,7 @@ class GameRepositoryTest extends \PHPUnit_Framework_TestCase
         $body->getContents()->willReturn($content);
 
         $result = $repository->getTop();
-        $expected = (new GameFactory())->createGameList(json_decode($content, true));
+        $expected = (new GameFactory())->createList(json_decode($content, true));
 
         $this->assertEquals($expected, $result);
     }

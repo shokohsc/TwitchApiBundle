@@ -75,7 +75,7 @@ class StreamRepositoryTest extends \PHPUnit_Framework_TestCase
         $body->getContents()->willReturn($content);
 
         $result = $repository->getStreams();
-        $expected = (new StreamFactory())->createStreamList(json_decode($content, true));
+        $expected = (new StreamFactory())->createList(json_decode($content, true));
 
         $this->assertEquals($expected, $result);
     }

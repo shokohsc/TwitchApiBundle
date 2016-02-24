@@ -56,7 +56,7 @@ class GameFactory implements FactoryInterface
      *
      * @return GameList
      */
-    public function createGameList(array $data, $gameList = false)
+    public function createList(array $data, $gameList = false)
     {
         if (false === $gameList) {
             $gameList = GameList::create();

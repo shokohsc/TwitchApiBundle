@@ -15,62 +15,35 @@ class ChannelFactoryTest extends \PHPUnit_Framework_TestCase
      */
     public function testCreateChannel()
     {
-        $data = [
-          'name' => 'test_channel1',
-          'created_at' => '2011-06-03T17:49:19Z',
-          'updated_at' => '2012-06-18T17:19:57Z',
-          '_links' => [
-            'self' => 'https://api.twitch.tv/kraken/channels/test_channel1',
-            'another_key' => 'another_value',
-          ],
-          'logo' => 'http://static-cdn.jtvnw.net/jtv_channel_pictures/test_channel1-profile_image-62e8318af864d6d7-300x300.jpeg',
-          '_id' => 21229404,
-          'display_name' => 'test_channel1',
-          'mature' => false,
-          'status' => 'test status',
-          'broadcaster_language' => 'en',
-          'game' => 'Gaming Talk Shows',
-          'delay' => null,
-          'language' => 'en',
-          'banner' => 'some_banner_link',
-          'video_banner' => 'some_video_banner_link',
-          'background' => 'some_background',
-          'profile_banner' => 'some_profile_banner_link',
-          'profile_banner_background_color' => null,
-          'partner' => true,
-          'url' => 'some_url',
-          'views' => 42,
-          'followers' => 42,
-        ];
+        $json = '{"mature":false,"status":"TESTING  TESTING   TESTING","broadcaster_language":null,"display_name":"Test_channel","game":null,"language":"en","_id":6140842,"name":"test_channel","created_at":"2009-05-08T08:19:58Z","updated_at":"2016-02-23T01:45:33Z","delay":null,"logo":null,"banner":null,"video_banner":null,"background":null,"profile_banner":null,"profile_banner_background_color":null,"partner":false,"url":"http://www.twitch.tv/test_channel","views":223,"followers":12,"_links":{"self":"https://api.twitch.tv/kraken/channels/test_channel","follows":"https://api.twitch.tv/kraken/channels/test_channel/follows","commercial":"https://api.twitch.tv/kraken/channels/test_channel/commercial","stream_key":"https://api.twitch.tv/kraken/channels/test_channel/stream_key","chat":"https://api.twitch.tv/kraken/chat/test_channel","features":"https://api.twitch.tv/kraken/channels/test_channel/features","subscriptions":"https://api.twitch.tv/kraken/channels/test_channel/subscriptions","editors":"https://api.twitch.tv/kraken/channels/test_channel/editors","teams":"https://api.twitch.tv/kraken/channels/test_channel/teams","videos":"https://api.twitch.tv/kraken/channels/test_channel/videos"}}';
+        $data = json_decode($json, true);
 
         $channelFactory = new ChannelFactory();
         $channel = $channelFactory->createEntity($data);
 
         $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Channel', $channel);
-        $this->assertEquals('test_channel1', $channel->getName());
-        $this->assertEquals(new \DateTime('2011-06-03T17:49:19Z'), $channel->getCreatedAt());
-        $this->assertEquals(new \DateTime('2012-06-18T17:19:57Z'), $channel->getUpdatedAt());
+        $this->assertEquals('test_channel', $channel->getName());
+        $this->assertEquals(new \DateTime('2009-05-08T08:19:58Z'), $channel->getCreatedAt());
+        $this->assertEquals(new \DateTime('2016-02-23T01:45:33Z'), $channel->getUpdatedAt());
         $this->assertArrayHasKey('self', $channel->getLinks());
-        $this->assertEquals('https://api.twitch.tv/kraken/channels/test_channel1', $channel->getLinks()['self']);
-        $this->assertArrayHasKey('another_key', $channel->getLinks());
-        $this->assertEquals('another_value', $channel->getLinks()['another_key']);
-        $this->assertEquals('http://static-cdn.jtvnw.net/jtv_channel_pictures/test_channel1-profile_image-62e8318af864d6d7-300x300.jpeg', $channel->getLogo());
-        $this->assertEquals(21229404, $channel->getId());
-        $this->assertEquals('test_channel1', $channel->getDisplayName());
+        $this->assertEquals('https://api.twitch.tv/kraken/channels/test_channel', $channel->getLinks()['self']);
+        $this->assertEquals(null, $channel->getLogo());
+        $this->assertEquals(6140842, $channel->getId());
+        $this->assertEquals('Test_channel', $channel->getDisplayName());
         $this->assertEquals(false, $channel->isMature());
-        $this->assertEquals('test status', $channel->getStatus());
-        $this->assertEquals('en', $channel->getBroadcasterLanguage());
-        $this->assertEquals('Gaming Talk Shows', $channel->getGame());
+        $this->assertEquals('TESTING  TESTING   TESTING', $channel->getStatus());
+        $this->assertEquals(null, $channel->getBroadcasterLanguage());
+        $this->assertEquals(null, $channel->getGame());
         $this->assertEquals(null, $channel->getDelay());
         $this->assertEquals('en', $channel->getLanguage());
-        $this->assertEquals('some_banner_link', $channel->getBanner());
-        $this->assertEquals('some_video_banner_link', $channel->getVideoBanner());
-        $this->assertEquals('some_background', $channel->getBackground());
-        $this->assertEquals('some_profile_banner_link', $channel->getProfileBanner());
+        $this->assertEquals(null, $channel->getBanner());
+        $this->assertEquals(null, $channel->getVideoBanner());
+        $this->assertEquals(null, $channel->getBackground());
+        $this->assertEquals(null, $channel->getProfileBanner());
         $this->assertEquals(null, $channel->getProfileBannerBackgroundColor());
-        $this->assertEquals(true, $channel->isPartner());
-        $this->assertEquals('some_url', $channel->getUrl());
-        $this->assertEquals(42, $channel->getViews());
-        $this->assertEquals(42, $channel->getFollowers());
+        $this->assertEquals(false, $channel->isPartner());
+        $this->assertEquals('http://www.twitch.tv/test_channel', $channel->getUrl());
+        $this->assertEquals(223, $channel->getViews());
+        $this->assertEquals(12, $channel->getFollowers());
     }
 }
