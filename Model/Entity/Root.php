@@ -3,7 +3,7 @@
 namespace Shoko\TwitchApiBundle\Model\Entity;
 
 use Shoko\TwitchApiBundle\Model\Entity\Traits\Linksable;
-use Shoko\TwitchApiBundle\Model\Entity\ValueObject\Token;
+use Shoko\TwitchApiBundle\Model\ValueObject\Token;
 
 /**
  * Root class.

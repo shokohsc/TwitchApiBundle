@@ -3,7 +3,7 @@
 namespace Shoko\TwitchApiBundle\Tests\Factory;
 
 use Shoko\TwitchApiBundle\Factory\TokenFactory;
-use Shoko\TwitchApiBundle\Model\Entity\ValueObject\Token;
+use Shoko\TwitchApiBundle\Model\ValueObject\Token;
 
 /**
  * TokenFactoryTest class.
@@ -28,7 +28,7 @@ class TokenFactoryTest extends \PHPUnit_Framework_TestCase
         $tokenFactory = new TokenFactory();
         $token = $tokenFactory->createEntity($data);
 
-        $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\ValueObject\Token', $token);
+        $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\ValueObject\Token', $token);
         $this->assertEquals(null, $token->getAuthorization());
         $this->assertEquals('test_user1', $token->getUserName());
         $this->assertEquals(false, $token->isValid());

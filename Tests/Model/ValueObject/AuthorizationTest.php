@@ -1,8 +1,8 @@
 <?php
 
-namespace Shoko\TwitchApiBundle\Tests\Model\Entity\ValueObject;
+namespace Shoko\TwitchApiBundle\Tests\Model\ValueObject;
 
-use Shoko\TwitchApiBundle\Model\Entity\ValueObject\Authorization;
+use Shoko\TwitchApiBundle\Model\ValueObject\Authorization;
 
 /**
  * AuthorizationTest class.
@@ -16,7 +16,7 @@ class AuthorizationTest extends \PHPUnit_Framework_TestCase
     {
         $authorization = Authorization::create();
 
-        $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\ValueObject\Authorization', $authorization);
+        $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\ValueObject\Authorization', $authorization);
     }
 
     public function testGettersAndSetters()

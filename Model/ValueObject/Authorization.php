@@ -1,6 +1,6 @@
 <?php
 
-namespace Shoko\TwitchApiBundle\Model\Entity\ValueObject;
+namespace Shoko\TwitchApiBundle\Model\ValueObject;
 
 /**
  * Authorization class.

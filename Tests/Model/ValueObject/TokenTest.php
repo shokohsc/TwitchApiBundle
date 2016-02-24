@@ -1,8 +1,8 @@
 <?php
 
-namespace Shoko\TwitchApiBundle\Tests\Model\Entity\ValueObject;
+namespace Shoko\TwitchApiBundle\Tests\Model\ValueObject;
 
-use Shoko\TwitchApiBundle\Model\Entity\ValueObject\Token;
+use Shoko\TwitchApiBundle\Model\ValueObject\Token;
 use Prophecy\Prophet;
 
 /**
@@ -24,7 +24,7 @@ class TokenTest extends \PHPUnit_Framework_TestCase
     {
         $token = Token::create();
 
-        $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\ValueObject\Token', $token);
+        $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\ValueObject\Token', $token);
     }
 
     public function testGettersAndSetters()
@@ -36,13 +36,13 @@ class TokenTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(null, $token->getUserName());
         $this->assertEquals(false, $token->isValid());
 
-        $authorization = $this->prophet->prophesize('Shoko\TwitchApiBundle\Model\Entity\ValueObject\Authorization');
+        $authorization = $this->prophet->prophesize('Shoko\TwitchApiBundle\Model\ValueObject\Authorization');
         $token
           ->setAuthorization($authorization->reveal())
           ->setUserName('some_username')
           ->setValid(false)
         ;
-        $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\ValueObject\Authorization', $token->getAuthorization());
+        $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\ValueObject\Authorization', $token->getAuthorization());
         $this->assertEquals('some_username', $token->getUserName());
         $this->assertEquals(false, $token->isValid());
     }
