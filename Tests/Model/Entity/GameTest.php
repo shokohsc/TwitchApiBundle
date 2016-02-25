@@ -40,5 +40,8 @@ class GameTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(null, $game->getGiantBombId());
         $this->assertEquals('some_giantbomb_id', $game->setGiantBombId('some_giantbomb_id')->getGiantBombId());
+
+        $this->assertEquals(0, $game->getPopularity());
+        $this->assertEquals(42, $game->setPopularity(42)->getPopularity());
     }
 }

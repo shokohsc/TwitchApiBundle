@@ -47,6 +47,10 @@ class GameFactory implements FactoryInterface
             $game = $game->setGiantBombId($data['giantbomb_id']);
         }
 
+        if (isset($data['popularity'])) {
+            $game = $game->setPopularity($data['popularity']);
+        }
+
         return $game;
     }
 

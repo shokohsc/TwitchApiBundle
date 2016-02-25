@@ -37,6 +37,13 @@ class Game
     private $giantBombId = null;
 
     /**
+     * Popularity int $popularity.
+     *
+     * @var integer
+     */
+    private $popularity = 0;
+
+    /**
      * @return Game
      */
     public static function create()
@@ -112,6 +119,30 @@ class Game
     public function setGiantBombId($giantBombId)
     {
         $this->giantBombId = $giantBombId;
+
+        return $this;
+    }
+
+    /**
+     * Get popularity.
+     *
+     * @return int
+     */
+    public function getPopularity()
+    {
+        return $this->popularity;
+    }
+
+    /**
+     * Set popularity.
+     *
+     * @param int $popularity
+     *
+     * @return Game
+     */
+    public function setPopularity($popularity)
+    {
+        $this->popularity = $popularity;
 
         return $this;
     }

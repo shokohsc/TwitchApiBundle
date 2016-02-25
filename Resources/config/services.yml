@@ -28,8 +28,8 @@ services:
     class: Shoko\TwitchApiBundle\Factory\TeamFactory
   token.factory:
     class: Shoko\TwitchApiBundle\Factory\TokenFactory
-  gameList.factory:
-    class: Shoko\TwitchApiBundle\Factory\GameListFactory
+  top.factory:
+    class: Shoko\TwitchApiBundle\Factory\TopFactory
   user.factory:
     class: Shoko\TwitchApiBundle\Factory\UserFactory
 # Repositories
