@@ -53,7 +53,7 @@ class TopFactory implements FactoryInterface
             }
 
             if (isset($entry['viewers'])) {
-                $topList->setChannels($entry['viewers']);
+                $topList->setViewers($entry['viewers']);
             }
 
             if (isset($entry['channels'])) {

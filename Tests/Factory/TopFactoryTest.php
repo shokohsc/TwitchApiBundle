@@ -39,6 +39,9 @@ class TopFactoryTest extends \PHPUnit_Framework_TestCase
         $tops = $topFactory->createTops($data['top']);
 
         $this->assertEquals(1, count($tops));
+        $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\TopList', $tops[0]);
         $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Game', $tops[0]->getGame());
+        $this->assertEquals(23873, $tops[0]->getViewers());
+        $this->assertEquals(305, $tops[0]->getChannels());
     }
 }
