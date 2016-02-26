@@ -113,7 +113,7 @@ class ChannelFactory implements FactoryInterface
     }
 
     /**
-     * @param array $data
+     * @param array             $data
      * @param false|ChannelList $channelList
      *
      * @return ChannelList
@@ -140,7 +140,8 @@ class ChannelFactory implements FactoryInterface
     }
 
     /**
-     * @param  array  $channels
+     * @param array $channels
+     *
      * @return array
      */
     public function createChannels(array $channels)

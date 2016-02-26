@@ -24,6 +24,7 @@ class JsonTransformerTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test check method.
+     *
      * @expectedException Shoko\TwitchApiBundle\Exception\JsonTransformerException
      */
     public function testCheck()

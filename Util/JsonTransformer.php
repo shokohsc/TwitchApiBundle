@@ -1,6 +1,7 @@
 <?php
 
 namespace Shoko\TwitchApiBundle\Util;
+
 use Shoko\TwitchApiBundle\Exception\JsonTransformerException;
 
 /**
@@ -29,7 +30,7 @@ class JsonTransformer
     /**
      * Verification if no json error has occured.
      *
-     * @param  string $array
+     * @param string $array
      *
      * @throws JsonTransformerException
      *

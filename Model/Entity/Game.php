@@ -39,7 +39,7 @@ class Game
     /**
      * Popularity int $popularity.
      *
-     * @var integer
+     * @var int
      */
     private $popularity = 0;
 

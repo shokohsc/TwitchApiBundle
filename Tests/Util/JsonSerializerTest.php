@@ -17,7 +17,7 @@ class JsonSerializerTest extends \PHPUnit_Framework_TestCase
     {
         $serializer = new JsonSerializer();
         $expected = '{"_links":{"user":"https://api.twitch.tv/kraken/user","channel":"https://api.twitch.tv/kraken/channel","search":"https://api.twitch.tv/kraken/search","streams":"https://api.twitch.tv/kraken/streams","ingests":"https://api.twitch.tv/kraken/ingests","teams":"https://api.twitch.tv/kraken/teams"},"token":{"valid":false,"authorization":null}}';
-        $root = (new RootFactory)->createEntity(json_decode($expected, true));
+        $root = (new RootFactory())->createEntity(json_decode($expected, true));
         $result = $serializer->encode($root);
 
         $result = json_decode($result);

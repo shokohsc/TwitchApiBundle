@@ -12,7 +12,7 @@ use Symfony\Component\Serializer\Serializer;
 class JsonSerializer
 {
     /**
-     * @var Serializer $serializer
+     * @var Serializer
      */
     private $serializer;
 

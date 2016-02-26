@@ -69,7 +69,7 @@ class StreamFactory implements FactoryInterface
     }
 
     /**
-     * @param array $data
+     * @param array            $data
      * @param false|StreamList $streamList
      *
      * @return StreamList
@@ -96,7 +96,8 @@ class StreamFactory implements FactoryInterface
     }
 
     /**
-     * @param  array  $streams
+     * @param array $streams
+     *
      * @return array
      */
     public function createStreams(array $streams)
