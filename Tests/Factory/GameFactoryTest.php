@@ -62,7 +62,18 @@ class GameFactoryTest extends \PHPUnit_Framework_TestCase
         $gameList = $gameFactory->createGames($data['games']);
 
         $this->assertEquals(1, count($gameList));
-        dump($gameList);
-        $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Game', $gameList[0]->getGame());
+        $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Game', $gameList[0]);
+    }
+
+    public function testCreateTop()
+    {
+        $json = '{"_links": {"self": "https://api.twitch.tv/kraken/games/top?limit=10&offset=0","next": "https://api.twitch.tv/kraken/games/top?limit=10&offset=10"},"_total": 322,"top": [{"game": {"name": "Counter-Strike: Global Offensive","box": {"large": "http://static-cdn.jtvnw.net/ttv-boxart/Counter-Strike:%20Global%20Offensive-272x380.jpg","medium": "http://static-cdn.jtvnw.net/ttv-boxart/Counter-Strike:%20Global%20Offensive-136x190.jpg","small": "http://static-cdn.jtvnw.net/ttv-boxart/Counter-Strike:%20Global%20Offensive-52x72.jpg","template": "http://static-cdn.jtvnw.net/ttv-boxart/Counter-Strike:%20Global%20Offensive-{width}x{height}.jpg"},"logo": {"large": "http://static-cdn.jtvnw.net/ttv-logoart/Counter-Strike:%20Global%20Offensive-240x144.jpg","medium": "http://static-cdn.jtvnw.net/ttv-logoart/Counter-Strike:%20Global%20Offensive-120x72.jpg","small": "http://static-cdn.jtvnw.net/ttv-logoart/Counter-Strike:%20Global%20Offensive-60x36.jpg","template": "http://static-cdn.jtvnw.net/ttv-logoart/Counter-Strike:%20Global%20Offensive-{width}x{height}.jpg"},"_links": {},"_id": 32399,"giantbomb_id": 36113},"viewers": 23873,"channels": 305}]}';
+        $data = (new JsonTransformer)->transform($json);
+
+        $gameFactory = new GameFactory();
+        $top = $gameFactory->createTop($data);
+
+        $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Top', $top);
+        $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Game', $top->getTops()[0]->getGame());
     }
 }
