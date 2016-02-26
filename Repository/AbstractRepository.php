@@ -68,6 +68,20 @@ class AbstractRepository
     }
 
     /**
+     * Set FactoryInterface $factory.
+     *
+     * @param FactoryInterface $factory
+     *
+     * @return AbstractRepository
+     */
+    public function setFactory(FactoryInterface $factory)
+    {
+        $this->factory = $factory;
+
+        return $this;
+    }
+
+    /**
      * Get JsonTransformer $transformer.
      *
      * @return JsonTransformer

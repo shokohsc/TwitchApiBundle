@@ -4,7 +4,6 @@ namespace Shoko\TwitchApiBundle\Tests\Lib;
 
 use Shoko\TwitchApiBundle\Repository\RootRepository;
 use Shoko\TwitchApiBundle\Factory\RootFactory;
-use Shoko\TwitchApiBundle\Model\Entity\Root;
 use Shoko\TwitchApiBundle\Util\JsonTransformer;
 use Prophecy\Prophet;
 

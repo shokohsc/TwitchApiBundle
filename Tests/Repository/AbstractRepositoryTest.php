@@ -50,12 +50,15 @@ class AbstractRepositoryTest extends \PHPUnit_Framework_TestCase
     {
         $client = $this->prophet->prophesize('Shoko\TwitchApiBundle\Lib\Client');
         $factory = $this->prophet->prophesize();
+        $channelFactory = $this->prophet->prophesize('Shoko\TwitchApiBundle\Factory\ChannelFactory');
         $factory->willImplement('Shoko\TwitchApiBundle\Factory\FactoryInterface');
         $transformer = $this->prophet->prophesize('Shoko\TwitchApiBundle\Util\JsonTransformer');
         $repository = new AbstractRepository($client->reveal(), $factory->reveal(), $transformer->reveal());
 
         $this->assertEquals($client->reveal(), $this->invokeMethod($repository, 'getClient'));
         $this->assertEquals($factory->reveal(), $this->invokeMethod($repository, 'getFactory'));
+        $repository->setFactory($channelFactory->reveal());
+        $this->assertEquals($channelFactory->reveal(), $this->invokeMethod($repository, 'getFactory'));
         $this->assertEquals($transformer->reveal(), $this->invokeMethod($repository, 'getTransformer'));
     }
 
