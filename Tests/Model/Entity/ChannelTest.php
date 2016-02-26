@@ -18,8 +18,6 @@ class ChannelTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Channel', $channel);
 
-        $this->assertEquals(Channel::ENDPOINT, constant(get_class($channel).'::ENDPOINT'));
-
         $this->assertEquals(null, $channel->getName());
         $this->assertEquals('some_name', $channel->setName('some_name')->getName());
 

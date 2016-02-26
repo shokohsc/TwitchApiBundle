@@ -38,8 +38,10 @@ class ChannelRepositoryTest extends \PHPUnit_Framework_TestCase
         $transformer = new JsonTransformer();
         $repository = new ChannelRepository($client->reveal(), $factory, $transformer);
 
+        $this->assertEquals(ChannelRepository::ENDPOINT, constant(get_class($repository).'::ENDPOINT'));
+
         $response = $this->prophet->prophesize('GuzzleHttp\Psr7\Response');
-        $client->get(Channel::ENDPOINT.'some_channel')->willReturn($response->reveal());
+        $client->get(ChannelRepository::ENDPOINT.'some_channel')->willReturn($response->reveal());
 
         $body = $this->prophet->prophesize();
         $body->willImplement('Psr\Http\Message\StreamInterface');

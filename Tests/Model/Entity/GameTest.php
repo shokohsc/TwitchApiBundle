@@ -18,8 +18,6 @@ class GameTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Game', $game);
 
-        $this->assertEquals(Game::ENDPOINT, constant(get_class($game).'::ENDPOINT'));
-
         $this->assertEquals(null, $game->getName());
         $this->assertEquals('some_name', $game->setName('some_name')->getName());
 

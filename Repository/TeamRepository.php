@@ -2,13 +2,13 @@
 
 namespace Shoko\TwitchApiBundle\Repository;
 
-use Shoko\TwitchApiBundle\Model\Entity\Team;
-
 /**
  * Class TeamRepository.
  */
 class TeamRepository extends AbstractRepository
 {
+    const ENDPOINT = 'teams/';
+
     /**
      * Get team.
      *
@@ -18,7 +18,7 @@ class TeamRepository extends AbstractRepository
      */
     public function getTeam($teamId)
     {
-        $response = $this->getClient()->get(Team::ENDPOINT.$teamId);
+        $response = $this->getClient()->get(self::ENDPOINT.$teamId);
         $data = $this->jsonResponse($response);
 
         return $this->getFactory()->createEntity($data);

@@ -38,8 +38,10 @@ class RootRepositoryTest extends \PHPUnit_Framework_TestCase
         $transformer = new JsonTransformer();
         $repository = new RootRepository($client->reveal(), $factory, $transformer);
 
+        $this->assertEquals(RootRepository::ENDPOINT, constant(get_class($repository).'::ENDPOINT'));
+
         $response = $this->prophet->prophesize('GuzzleHttp\Psr7\Response');
-        $client->get(Root::ENDPOINT)->willReturn($response->reveal());
+        $client->get(RootRepository::ENDPOINT)->willReturn($response->reveal());
 
         $body = $this->prophet->prophesize();
         $body->willImplement('Psr\Http\Message\StreamInterface');

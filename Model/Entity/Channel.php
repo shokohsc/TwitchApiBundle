@@ -18,8 +18,6 @@ use Shoko\TwitchApiBundle\Model\Entity\Traits\Displaynameable;
  */
 class Channel
 {
-    const ENDPOINT = 'channels/';
-
     use Identifiable, Timestampable, Logoable, Linksable, Gameable, Nameable, Displaynameable, Delayable, Bannerable, Backgroundable;
 
     /**

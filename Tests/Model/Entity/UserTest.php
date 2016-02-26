@@ -18,8 +18,6 @@ class UserTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\User', $user);
 
-        $this->assertEquals(User::ENDPOINT, constant(get_class($user).'::ENDPOINT'));
-
         $this->assertEquals('user', $user->getType());
         $this->assertEquals('some_type', $user->setType('some_type')->getType());
 

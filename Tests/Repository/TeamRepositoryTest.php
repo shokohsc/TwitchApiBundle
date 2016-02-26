@@ -38,8 +38,10 @@ class TeamRepositoryTest extends \PHPUnit_Framework_TestCase
         $transformer = new JsonTransformer();
         $repository = new TeamRepository($client->reveal(), $factory, $transformer);
 
+        $this->assertEquals(TeamRepository::ENDPOINT, constant(get_class($repository).'::ENDPOINT'));
+
         $response = $this->prophet->prophesize('GuzzleHttp\Psr7\Response');
-        $client->get(Team::ENDPOINT.'some_team')->willReturn($response->reveal());
+        $client->get(TeamRepository::ENDPOINT.'some_team')->willReturn($response->reveal());
 
         $body = $this->prophet->prophesize();
         $body->willImplement('Psr\Http\Message\StreamInterface');

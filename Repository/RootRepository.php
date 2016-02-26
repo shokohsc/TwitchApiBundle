@@ -2,13 +2,13 @@
 
 namespace Shoko\TwitchApiBundle\Repository;
 
-use Shoko\TwitchApiBundle\Model\Entity\Root;
-
 /**
  * Class RootRepository.
  */
 class RootRepository extends AbstractRepository
 {
+    const ENDPOINT = '';
+
     /**
      * Get root.
      *
@@ -16,7 +16,7 @@ class RootRepository extends AbstractRepository
      */
     public function get()
     {
-        $response = $this->getClient()->get(Root::ENDPOINT);
+        $response = $this->getClient()->get(self::ENDPOINT);
         $data = $this->jsonResponse($response);
 
         return $this->getFactory()->createEntity($data);

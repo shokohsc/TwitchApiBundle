@@ -2,13 +2,13 @@
 
 namespace Shoko\TwitchApiBundle\Repository;
 
-use Shoko\TwitchApiBundle\Model\Entity\Channel;
-
 /**
  * Class ChannelRepository.
  */
 class ChannelRepository extends AbstractRepository
 {
+    const ENDPOINT = 'channels/';
+
     /**
      * Get channel.
      *
@@ -18,7 +18,7 @@ class ChannelRepository extends AbstractRepository
      */
     public function getChannel($channelId)
     {
-        $response = $this->getClient()->get(Channel::ENDPOINT.$channelId);
+        $response = $this->getClient()->get(self::ENDPOINT.$channelId);
         $data = $this->jsonResponse($response);
 
         return $this->getFactory()->createEntity($data);

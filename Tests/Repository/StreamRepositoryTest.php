@@ -38,8 +38,10 @@ class StreamRepositoryTest extends \PHPUnit_Framework_TestCase
         $transformer = new JsonTransformer();
         $repository = new StreamRepository($client->reveal(), $factory, $transformer);
 
+        $this->assertEquals(StreamRepository::ENDPOINT, constant(get_class($repository).'::ENDPOINT'));
+
         $response = $this->prophet->prophesize('GuzzleHttp\Psr7\Response');
-        $client->get(Stream::ENDPOINT.'some_stream')->willReturn($response->reveal());
+        $client->get(StreamRepository::ENDPOINT.'some_stream')->willReturn($response->reveal());
 
         $body = $this->prophet->prophesize();
         $body->willImplement('Psr\Http\Message\StreamInterface');
@@ -65,7 +67,7 @@ class StreamRepositoryTest extends \PHPUnit_Framework_TestCase
         $repository = new StreamRepository($client->reveal(), $factory, $transformer);
 
         $response = $this->prophet->prophesize('GuzzleHttp\Psr7\Response');
-        $client->get(Stream::ENDPOINT)->willReturn($response->reveal());
+        $client->get(StreamRepository::ENDPOINT)->willReturn($response->reveal());
 
         $body = $this->prophet->prophesize();
         $body->willImplement('Psr\Http\Message\StreamInterface');

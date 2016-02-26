@@ -38,8 +38,10 @@ class GameRepositoryTest extends \PHPUnit_Framework_TestCase
         $transformer = new JsonTransformer();
         $repository = new GameRepository($client->reveal(), $factory, $transformer);
 
+        $this->assertEquals(GameRepository::ENDPOINT, constant(get_class($repository).'::ENDPOINT'));
+
         $response = $this->prophet->prophesize('GuzzleHttp\Psr7\Response');
-        $client->get(Game::ENDPOINT.'/top')->willReturn($response->reveal());
+        $client->get(GameRepository::ENDPOINT.'/top')->willReturn($response->reveal());
 
         $body = $this->prophet->prophesize();
         $body->willImplement('Psr\Http\Message\StreamInterface');

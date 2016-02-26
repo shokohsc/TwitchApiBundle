@@ -2,13 +2,13 @@
 
 namespace Shoko\TwitchApiBundle\Repository;
 
-use Shoko\TwitchApiBundle\Model\Entity\Game;
-
 /**
  * Class GameRepository.
  */
 class GameRepository extends AbstractRepository
 {
+    const ENDPOINT = 'games';
+
     /**
      * Get gameList games.
      *
@@ -19,7 +19,7 @@ class GameRepository extends AbstractRepository
     public function getTop($params = array())
     {
         $params = 0 < count($params) ? '?'.http_build_query($params) : '';
-        $response = $this->getClient()->get(Game::ENDPOINT.'/top'.$params);
+        $response = $this->getClient()->get(self::ENDPOINT.'/top'.$params);
         $data = $this->jsonResponse($response);
 
         return $this->getFactory()->createTop($data);

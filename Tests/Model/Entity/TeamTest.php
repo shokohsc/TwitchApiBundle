@@ -18,8 +18,6 @@ class TeamTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Team', $team);
 
-        $this->assertEquals(Team::ENDPOINT, constant(get_class($team).'::ENDPOINT'));
-
         $this->assertEquals(null, $team->getName());
         $this->assertEquals('some_name', $team->setName('some_name')->getName());
 

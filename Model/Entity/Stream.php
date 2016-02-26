@@ -14,8 +14,6 @@ use Shoko\TwitchApiBundle\Model\Entity\Traits\Identifiable;
  */
 class Stream
 {
-    const ENDPOINT = 'streams/';
-
     use Identifiable, Linksable, Gameable, Delayable, Channelable, Viewersable;
 
     /**

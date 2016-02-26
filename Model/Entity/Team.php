@@ -16,8 +16,6 @@ use Shoko\TwitchApiBundle\Model\Entity\Traits\Displaynameable;
  */
 class Team
 {
-    const ENDPOINT = 'teams/';
-
     use Identifiable, Timestampable, Logoable, Linksable, Nameable, Displaynameable, Bannerable, Backgroundable;
 
     /**

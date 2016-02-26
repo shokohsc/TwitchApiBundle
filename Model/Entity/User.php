@@ -14,8 +14,6 @@ use Shoko\TwitchApiBundle\Model\Entity\Traits\Displaynameable;
  */
 class User
 {
-    const ENDPOINT = 'users/';
-
     use Identifiable, Timestampable, Linksable, Logoable, Nameable, Displaynameable;
 
     /**

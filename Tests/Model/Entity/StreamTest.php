@@ -19,8 +19,6 @@ class StreamTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Stream', $stream);
 
-        $this->assertEquals(Stream::ENDPOINT, constant(get_class($stream).'::ENDPOINT'));
-
         $this->assertEquals(null, $stream->getGame());
         $this->assertEquals('some_game', $stream->setGame('some_game')->getGame());
 

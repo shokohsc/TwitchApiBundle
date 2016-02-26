@@ -10,8 +10,6 @@ use Shoko\TwitchApiBundle\Model\ValueObject\Token;
  */
 class Root
 {
-    const ENDPOINT = '';
-
     use Linksable;
 
     /**

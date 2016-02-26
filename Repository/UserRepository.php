@@ -2,13 +2,13 @@
 
 namespace Shoko\TwitchApiBundle\Repository;
 
-use Shoko\TwitchApiBundle\Model\Entity\User;
-
 /**
  * Class UserRepository.
  */
 class UserRepository extends AbstractRepository
 {
+    const ENDPOINT = 'users/';
+
     /**
      * Get user.
      *
@@ -18,7 +18,7 @@ class UserRepository extends AbstractRepository
      */
     public function getUser($userId)
     {
-        $response = $this->getClient()->get(User::ENDPOINT.$userId);
+        $response = $this->getClient()->get(self::ENDPOINT.$userId);
         $data = $this->jsonResponse($response);
 
         return $this->getFactory()->createEntity($data);
