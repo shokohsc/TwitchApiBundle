@@ -91,10 +91,13 @@ class GameFactory implements FactoryInterface
         return $tmp;
     }
 
-    public function createTop(array $data, $rank = false)
+    /**
+     * @param  array  $data
+     *
+     * @return Top
+     */
+    public function createTop(array $data)
     {
-        $rank = (new TopFactory())->createEntity($data);
-
-        return $rank;
+        return (new TopFactory())->createEntity($data);
     }
 }

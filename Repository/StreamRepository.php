@@ -30,7 +30,7 @@ class StreamRepository extends AbstractRepository
      *
      * @param array $params
      *
-     * @return Stream
+     * @return StreamList
      */
     public function getStreams($params = array())
     {
@@ -39,5 +39,21 @@ class StreamRepository extends AbstractRepository
         $data = $this->jsonResponse($response);
 
         return $this->getFactory()->createList($data);
+    }
+
+    /**
+     * Get featured streams.
+     *
+     * @param array $params
+     *
+     * @return StreamList
+     */
+    public function getFeaturedStreams($params = array())
+    {
+        $params = 0 < count($params) ? '?'.http_build_query($params) : '';
+        $response = $this->getClient()->get(self::ENDPOINT.'featured'.$params);
+        $data = $this->jsonResponse($response);
+
+        return $this->getFactory()->createFeatured($data);
     }
 }
