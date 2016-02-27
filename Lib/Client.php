@@ -25,6 +25,13 @@ class Client
     const URL_VERSION = 'kraken';
 
     /**
+     * Guzzle $guzzle.
+     *
+     * @var Guzzle
+     */
+    private $guzzle = null;
+
+    /**
      * Constructor method.
      *
      * @param Guzzle|bool $guzzle
@@ -49,7 +56,7 @@ class Client
      *
      * @return array
      */
-    public function getHeaders()
+    public function getDefaultHeaders()
     {
         return array('Accept' => 'application/vnd.twitchtv.v3+json');
     }
@@ -89,7 +96,7 @@ class Client
         return $this->getGuzzle()->request(
           'GET',
           $this->getUrl().$resource,
-          array_merge($this->getHeaders(), $headers)
+          array_merge($this->getDefaultHeaders(), $headers)
         );
     }
 }

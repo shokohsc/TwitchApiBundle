@@ -30,6 +30,19 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test Client object properties/constants.
+     */
+    public function testClient()
+    {
+        $client = new Client();
+
+        $this->assertEquals('https', $client::URL_PROTOCOL);
+        $this->assertEquals('api.twitch.tv', $client::URL_HOST);
+        $this->assertEquals('kraken', $client::URL_VERSION);
+        $this->assertInstanceOf('GuzzleHttp\Client', $client->getGuzzle());
+    }
+
+    /**
      * Test GetUrl method.
      */
     public function testGetUrl()
@@ -47,7 +60,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     public function testGetHeaders()
     {
         $client = new Client();
-        $headers = $client->getHeaders();
+        $headers = $client->getDefaultHeaders();
         $expected = array('Accept' => 'application/vnd.twitchtv.v3+json');
 
         $this->assertEquals($expected, $headers);
@@ -59,8 +72,8 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     public function testGuzzle()
     {
         $guzzle = new Guzzle();
-        $client = new Client($guzzle);
-        $result = $client->getGuzzle();
+        $client = new Client();
+        $result = $client->setGuzzle($guzzle)->getGuzzle();
 
         $this->assertEquals($guzzle, $result);
         $this->assertInstanceOf('GuzzleHttp\Client', $result);
