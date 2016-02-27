@@ -7,7 +7,7 @@ use Shoko\TwitchApiBundle\Exception\JsonTransformerException;
 /**
  * Class JsonTransformer.
  */
-class JsonTransformer
+class JsonTransformer implements TransformerInterface
 {
     /**
      * Transform Json to Associative Array.
@@ -18,57 +18,29 @@ class JsonTransformer
      */
     public function transform($json)
     {
-        $array = json_decode($json, true);
-
-        if (null === $array) {
-            $array = $this->check($array);
+        if (!is_string($json)) {
+            throw new \InvalidArgumentException('$json variable is not a string.');
         }
+        $assocArrayJson = json_decode($json, true);
 
-        return $array;
+        return $this->checkDecodedJson($assocArrayJson);
     }
 
     /**
      * Verification if no json error has occured.
      *
-     * @param string $array
+     * @param string $assocArrayJson
      *
      * @throws JsonTransformerException
      *
      * @return string
      */
-    private function check($array)
+    private function checkDecodedJson($assocArrayJson)
     {
-        switch (json_last_error()) {
-            case JSON_ERROR_NONE:
-                return $array;
-            break;
-            case JSON_ERROR_DEPTH:
-                throw new JsonTransformerException(json_last_error_msg());
-            break;
-            case JSON_ERROR_STATE_MISMATCH:
-                throw new JsonTransformerException(json_last_error_msg());
-            break;
-            case JSON_ERROR_CTRL_CHAR:
-                throw new JsonTransformerException(json_last_error_msg());
-            break;
-            case JSON_ERROR_SYNTAX:
-                throw new JsonTransformerException(json_last_error_msg());
-            break;
-            case JSON_ERROR_UTF8:
-                throw new JsonTransformerException(json_last_error_msg());
-            break;
-            case JSON_ERROR_RECURSION:
-                throw new JsonTransformerException(json_last_error_msg());
-            break;
-            case JSON_ERROR_INF_OR_NAN:
-                throw new JsonTransformerException(json_last_error_msg());
-            break;
-            case JSON_ERROR_UNSUPPORTED_TYPE:
-                throw new JsonTransformerException(json_last_error_msg());
-            break;
-            default:
-                throw new JsonTransformerException('Unknown json_decode error');
-            break;
+        if (JSON_ERROR_NONE !== json_last_error()) {
+            throw new JsonTransformerException(json_last_error_msg());
         }
+
+        return $assocArrayJson;
     }
 }

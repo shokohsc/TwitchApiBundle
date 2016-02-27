@@ -23,14 +23,26 @@ class JsonTransformerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test check method.
+     * Test invalid argument exception.
+     *
+     * @expectedException InvalidArgumentException
+     */
+    public function testInvalidArgumentException()
+    {
+        $transformer = new JsonTransformer();
+        $json = 42;
+        $transformer->transform($json);
+    }
+
+    /**
+     * Test checkDecodedJson method.
      *
      * @expectedException Shoko\TwitchApiBundle\Exception\JsonTransformerException
      */
-    public function testCheck()
+    public function testCheckDecodedJson()
     {
         $transformer = new JsonTransformer();
         $json = '{"some_key""some_value"}';
-        $result = $transformer->transform($json);
+        $transformer->transform($json);
     }
 }

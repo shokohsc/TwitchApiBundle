@@ -4,7 +4,7 @@ namespace Shoko\TwitchApiBundle\Repository;
 
 use Shoko\TwitchApiBundle\Lib\Client;
 use Shoko\TwitchApiBundle\Factory\FactoryInterface;
-use Shoko\TwitchApiBundle\Util\JsonTransformer;
+use Shoko\TwitchApiBundle\Util\TransformerInterface;
 use GuzzleHttp\Psr7\Response;
 
 /**
@@ -27,9 +27,9 @@ class AbstractRepository
     private $factory;
 
     /**
-     * JsonTransformer $transformer.
+     * TransformerInterface $transformer.
      *
-     * @var JsonTransformer
+     * @var TransformerInterface
      */
     private $transformer;
 
@@ -38,9 +38,9 @@ class AbstractRepository
      *
      * @param Client           $client
      * @param FactoryInterface $factory
-     * @param JsonTransformer  $transformer
+     * @param TransformerInterface  $transformer
      */
-    public function __construct(Client $client, FactoryInterface $factory, JsonTransformer $transformer)
+    public function __construct(Client $client, FactoryInterface $factory, TransformerInterface $transformer)
     {
         $this->client = $client;
         $this->factory = $factory;
@@ -82,9 +82,9 @@ class AbstractRepository
     }
 
     /**
-     * Get JsonTransformer $transformer.
+     * Get TransformerInterface $transformer.
      *
-     * @return JsonTransformer
+     * @return TransformerInterface
      */
     protected function getTransformer()
     {
