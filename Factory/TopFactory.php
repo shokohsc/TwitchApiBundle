@@ -3,7 +3,7 @@
 namespace Shoko\TwitchApiBundle\Factory;
 
 use Shoko\TwitchApiBundle\Model\Entity\Top;
-use Shoko\TwitchApiBundle\Model\Entity\TopList;
+use Shoko\TwitchApiBundle\Model\Entity\Rank;
 
 /**
  * Class TopFactory.
@@ -12,55 +12,55 @@ class TopFactory implements FactoryInterface
 {
     /**
      * @param array      $data
-     * @param false|Game $top
+     * @param false|Game $rank
      *
      * @return Game
      */
-    public function createEntity(array $data, $top = false)
+    public function createEntity(array $data, $rank = false)
     {
-        if (false === $top) {
-            $top = Top::create();
+        if (false === $rank) {
+            $rank = Top::create();
         }
 
         if (isset($data['top'])) {
-            $top = $top->setTops($this->createTops($data['top']));
+            $rank = $rank->setRanks($this->createRanks($data['top']));
         }
 
         if (isset($data['_links'])) {
-            $top = $top->setLinks($data['_links']);
+            $rank = $rank->setLinks($data['_links']);
         }
 
         if (isset($data['_total'])) {
-            $top = $top->setTotal($data['_total']);
+            $rank = $rank->setTotal($data['_total']);
         }
 
-        return $top;
+        return $rank;
     }
 
     /**
-     * @param array $tops
+     * @param array $ranks
      *
      * @return array
      */
-    public function createTops(array $tops)
+    public function createRanks(array $ranks)
     {
         $tmp = [];
-        foreach ($tops as $entry) {
-            $topList = TopList::create();
+        foreach ($ranks as $entry) {
+            $rank = Rank::create();
 
             if (isset($entry['game'])) {
-                $topList->setGame((new GameFactory())->createEntity($entry['game']));
+                $rank->setGame((new GameFactory())->createEntity($entry['game']));
             }
 
             if (isset($entry['viewers'])) {
-                $topList->setViewers($entry['viewers']);
+                $rank->setViewers($entry['viewers']);
             }
 
             if (isset($entry['channels'])) {
-                $topList->setChannels($entry['channels']);
+                $rank->setChannels($entry['channels']);
             }
 
-            $tmp[] = $topList;
+            $tmp[] = $rank;
         }
 
         return $tmp;

@@ -26,8 +26,5 @@ class GameListTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(array(), $gameList->getGames());
         $game = new Game();
         $this->assertEquals([$game], $gameList->setGames([$game])->getGames());
-
-        $this->assertEquals(0, $gameList->getTotal());
-        $this->assertEquals(42, $gameList->setTotal(42)->getTotal());
     }
 }

@@ -5,9 +5,9 @@ namespace Shoko\TwitchApiBundle\Model\Entity;
 use Shoko\TwitchApiBundle\Model\Entity\Traits\Viewersable;
 
 /**
- * Games class.
+ * Rank class.
  */
-class Games
+class Rank
 {
     use Viewersable;
 
@@ -26,7 +26,7 @@ class Games
     private $channels = 0;
 
     /**
-     * @return Games
+     * @return Rank
      */
     public static function create()
     {
@@ -48,7 +48,7 @@ class Games
      *
      * @param Game $game
      *
-     * @return Games
+     * @return Rank
      */
     public function setGame(Game $game)
     {
@@ -72,7 +72,7 @@ class Games
      *
      * @param int $channels
      *
-     * @return Games
+     * @return Rank
      */
     public function setChannels($channels)
     {

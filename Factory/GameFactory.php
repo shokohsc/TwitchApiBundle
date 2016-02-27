@@ -73,10 +73,6 @@ class GameFactory implements FactoryInterface
             $gameList = $gameList->setLinks($data['_links']);
         }
 
-        if (isset($data['_total'])) {
-            $gameList = $gameList->setTotal($data['_total']);
-        }
-
         return $gameList;
     }
 
@@ -95,10 +91,10 @@ class GameFactory implements FactoryInterface
         return $tmp;
     }
 
-    public function createTop(array $data, $top = false)
+    public function createTop(array $data, $rank = false)
     {
-        $top = (new TopFactory())->createEntity($data);
+        $rank = (new TopFactory())->createEntity($data);
 
-        return $top;
+        return $rank;
     }
 }

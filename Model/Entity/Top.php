@@ -13,11 +13,11 @@ class Top
     use Linksable, Totalable;
 
     /**
-     * Tops array $tops.
+     * Rank array $ranks.
      *
      * @var array
      */
-    private $tops = array();
+    private $ranks = array();
 
     /**
      * @return Top
@@ -28,25 +28,25 @@ class Top
     }
 
     /**
-     * Get Tops method.
+     * Get Ranks method.
      *
      * @return array
      */
-    public function getTops()
+    public function getRanks()
     {
-        return $this->tops;
+        return $this->ranks;
     }
 
     /**
-     * Set Tops method.
+     * Set Ranks method.
      *
-     * @param array $tops
+     * @param array $ranks
      *
      * @return Top
      */
-    public function setTops(array $tops)
+    public function setRanks(array $ranks)
     {
-        $this->tops = $tops;
+        $this->ranks = $ranks;
 
         return $this;
     }

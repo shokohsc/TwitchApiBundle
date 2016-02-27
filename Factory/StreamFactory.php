@@ -21,8 +21,8 @@ class StreamFactory implements FactoryInterface
             $stream = Stream::create();
         }
 
-        if (isset($data['playlist'])) {
-            $stream = $stream->setPlaylist($data['playlist']);
+        if (isset($data['is_playlist'])) {
+            $stream = $stream->setPlaylist($data['is_playlist']);
         }
 
         if (isset($data['game'])) {

@@ -3,14 +3,13 @@
 namespace Shoko\TwitchApiBundle\Model\Entity;
 
 use Shoko\TwitchApiBundle\Model\Entity\Traits\Linksable;
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Totalable;
 
 /**
  * GameList class.
  */
 class GameList
 {
-    use Linksable, Totalable;
+    use Linksable;
 
     /**
      * Games array $games.

@@ -74,6 +74,6 @@ class GameFactoryTest extends \PHPUnit_Framework_TestCase
         $top = $gameFactory->createTop($data);
 
         $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Top', $top);
-        $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Game', $top->getTops()[0]->getGame());
+        $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\Game', $top->getRanks()[0]->getGame());
     }
 }
