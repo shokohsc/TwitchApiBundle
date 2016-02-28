@@ -36,7 +36,7 @@ class Client
      *
      * @var string
      */
-    private $url = self::URL_PROTOCOL.'://'.self::URL_HOST.'/'.self::URL_VERSION.'/';
+    private $url;
 
     /**
      * Constructor method.
@@ -46,6 +46,7 @@ class Client
     public function __construct($guzzle = false)
     {
         $this->guzzle = $guzzle ? $guzzle : new Guzzle();
+        $this->url = self::URL_PROTOCOL.'://'.self::URL_HOST.'/'.self::URL_VERSION.'/';
     }
 
     /**
