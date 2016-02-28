@@ -32,6 +32,13 @@ class Client
     private $guzzle = null;
 
     /**
+     * Url string $url
+     *
+     * @var string
+     */
+    private $url = self::URL_PROTOCOL.'://'.self::URL_HOST.'/'.self::URL_VERSION.'/';
+
+    /**
      * Constructor method.
      *
      * @param Guzzle|bool $guzzle
@@ -48,7 +55,21 @@ class Client
      */
     public function getUrl()
     {
-        return self::URL_PROTOCOL.'://'.self::URL_HOST.'/'.self::URL_VERSION.'/';
+        return $this->url;
+    }
+
+    /**
+     * Set url $url
+     *
+     * @param string $url
+     *
+     * @return Client
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+
+        return $this;
     }
 
     /**

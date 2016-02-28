@@ -58,6 +58,20 @@ class AbstractRepository
     }
 
     /**
+     * Set Client $client
+     *
+     * @param Client $client
+     *
+     * @return AbstractRepository
+     */
+    public function setClient(Client $client)
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
+    /**
      * Get FactoryInterface $factory.
      *
      * @return FactoryInterface

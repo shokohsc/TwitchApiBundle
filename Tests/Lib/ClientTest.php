@@ -55,6 +55,18 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test SetUrl method.
+     */
+    public function testSetUrl()
+    {
+        $client = new Client();
+        $url = $client->setUrl('some_url')->getUrl();
+        $expected = 'some_url';
+
+        $this->assertEquals($expected, $url);
+    }
+
+    /**
      * Test getHeaders method.
      */
     public function testGetHeaders()

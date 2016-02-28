@@ -2,6 +2,9 @@
 
 namespace Shoko\TwitchApiBundle\Repository;
 
+use Shoko\TwitchApiBundle\Lib\Client;
+use Shoko\TwitchApiBundle\Factory\FollowFactory;
+
 /**
  * Class UserRepository.
  */
@@ -22,5 +25,23 @@ class UserRepository extends AbstractRepository
         $data = $this->jsonResponse($response);
 
         return $this->getFactory()->createEntity($data);
+    }
+
+    /**
+     * Get user followed games.
+     *
+     * @param string $userId
+     * @param array $params
+     *
+     * @return GameList
+     */
+    public function getUserFollowedGames($userId, $params = array())
+    {
+        $params = 0 < count($params) ? '?'.http_build_query($params) : '';
+        $client = $this->getClient()->setUrl(Client::URL_PROTOCOL.'://'.Client::URL_HOST.'/api/');
+        $response = $this->setClient($client)->getClient()->get(self::ENDPOINT.$userId.'/follows/games'.$params);
+        $data = $this->jsonResponse($response);
+
+        return $this->setFactory(new FollowFactory())->getFactory()->createGameList($data);
     }
 }
