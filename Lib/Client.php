@@ -118,7 +118,7 @@ class Client
         return $this->getGuzzle()->request(
           'GET',
           $this->getUrl().$resource,
-          array_merge($this->getDefaultHeaders(), $headers)
+          ['headers' => array_merge($this->getDefaultHeaders(), $headers)]
         );
     }
 }
