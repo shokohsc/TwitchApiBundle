@@ -3,10 +3,10 @@ services:
   twitch.client:
     class: Shoko\TwitchApiBundle\Lib\Client
 # Util
-  json.transformer:
-    class: Shoko\TwitchApiBundle\Util\JsonTransformer
   json.serializer:
     class: Shoko\TwitchApiBundle\Util\JsonSerializer
+  json.transformer:
+    class: Shoko\TwitchApiBundle\Util\JsonTransformer
 # Factories
   channel.factory:
     class: Shoko\TwitchApiBundle\Factory\ChannelFactory
@@ -39,6 +39,9 @@ services:
   game.repository:
     class: Shoko\TwitchApiBundle\Repository\GameRepository
     arguments: ["@twitch.client", "@game.factory", "@json.transformer"]
+  me.repository:
+    class: Shoko\TwitchApiBundle\Repository\MeRepository
+    arguments: ["@twitch.client", "@me.factory", "@json.transformer"]
   root.repository:
     class: Shoko\TwitchApiBundle\Repository\RootRepository
     arguments: ["@twitch.client", "@root.factory", "@json.transformer"]
