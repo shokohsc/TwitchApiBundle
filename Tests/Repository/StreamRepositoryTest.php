@@ -3,6 +3,7 @@
 namespace Shoko\TwitchApiBundle\Tests\Lib;
 
 use Shoko\TwitchApiBundle\Repository\StreamRepository;
+use Shoko\TwitchApiBundle\Factory\RankFactory;
 use Shoko\TwitchApiBundle\Factory\StreamFactory;
 use Shoko\TwitchApiBundle\Model\Entity\Stream;
 use Shoko\TwitchApiBundle\Util\JsonTransformer;
@@ -130,6 +131,58 @@ class StreamRepositoryTest extends \PHPUnit_Framework_TestCase
 
         $result = $repository->getFollowedStreams('some_access_token');
         $expected = (new StreamFactory())->createList(json_decode($content, true));
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test fail Get followed streams method.
+     * @expectedException InvalidArgumentException
+     */
+    public function testFailGetFollowedStreams()
+    {
+        $client = $this->prophet->prophesize('Shoko\TwitchApiBundle\Lib\Client');
+        $factory = new StreamFactory();
+        $transformer = new JsonTransformer();
+        $repository = new StreamRepository($client->reveal(), $factory, $transformer);
+
+        $response = $this->prophet->prophesize('GuzzleHttp\Psr7\Response');
+
+        $body = $this->prophet->prophesize();
+        $body->willImplement('Psr\Http\Message\StreamInterface');
+        $response->getBody()->willReturn($body->reveal());
+
+        $content = '{"_links": {"self": "https://api.twitch.tv/kraken/streams/followed?limit=25&offset=0","next": "https://api.twitch.tv/kraken/streams/followed?limit=25&offset=25"},"_total": 123,"streams": []}';
+        $body->getContents()->willReturn($content);
+
+        $result = $repository->getFollowedStreams('');
+        $expected = (new StreamFactory())->createList(json_decode($content, true));
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test Get streams summary method.
+     */
+    public function testGetStreamsSummary()
+    {
+        $client = $this->prophet->prophesize('Shoko\TwitchApiBundle\Lib\Client');
+        $factory = new StreamFactory();
+        $transformer = new JsonTransformer();
+        $repository = new StreamRepository($client->reveal(), $factory, $transformer);
+
+        $response = $this->prophet->prophesize('GuzzleHttp\Psr7\Response');
+        $client->get(StreamRepository::ENDPOINT.'summary')->willReturn($response->reveal());
+
+        $body = $this->prophet->prophesize();
+        $body->willImplement('Psr\Http\Message\StreamInterface');
+        $response->getBody()->willReturn($body->reveal());
+
+        $content = '{"viewers": 194774,"_links": {"self": "https://api.twitch.tv/kraken/streams/summary"},"channels": 4144}';
+        $body->getContents()->willReturn($content);
+
+        $result = $repository->getStreamsSummary();
+        $expected = (new RankFactory())->createEntity(json_decode($content, true));
 
         $this->assertEquals($expected, $result);
     }

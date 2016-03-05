@@ -28,5 +28,9 @@ class RankTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(0, $rank->getChannels());
         $this->assertEquals(42, $rank->setChannels(42)->getChannels());
+
+        $this->assertEquals(array(), $rank->getLinks());
+        $link = 'some_link';
+        $this->assertEquals([$link], $rank->setLinks([$link])->getLinks());
     }
 }

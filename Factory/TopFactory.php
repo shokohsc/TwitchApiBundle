@@ -4,6 +4,7 @@ namespace Shoko\TwitchApiBundle\Factory;
 
 use Shoko\TwitchApiBundle\Model\Entity\Top;
 use Shoko\TwitchApiBundle\Model\Entity\Rank;
+use Shoko\TwitchApiBundle\Factory\RankFactory;
 
 /**
  * Class TopFactory.
@@ -46,21 +47,7 @@ class TopFactory implements FactoryInterface
     {
         $tmp = [];
         foreach ($ranks as $entry) {
-            $rank = Rank::create();
-
-            if (isset($entry['game'])) {
-                $rank->setGame((new GameFactory())->createEntity($entry['game']));
-            }
-
-            if (isset($entry['viewers'])) {
-                $rank->setViewers($entry['viewers']);
-            }
-
-            if (isset($entry['channels'])) {
-                $rank->setChannels($entry['channels']);
-            }
-
-            $tmp[] = $rank;
+            $tmp[] = (new RankFactory())->createEntity($entry);
         }
 
         return $tmp;

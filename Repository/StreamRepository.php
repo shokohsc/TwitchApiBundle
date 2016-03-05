@@ -1,6 +1,7 @@
 <?php
 
 namespace Shoko\TwitchApiBundle\Repository;
+use Shoko\TwitchApiBundle\Factory\RankFactory;
 
 /**
  * Class StreamRepository.
@@ -76,5 +77,21 @@ class StreamRepository extends AbstractRepository
         $data = $this->jsonResponse($response);
 
         return $this->getFactory()->createList($data);
+    }
+
+    /**
+     * Get streams summary.
+     *
+     * @param array $params
+     *
+     * @return Rank
+     */
+    public function getStreamsSummary($params = array())
+    {
+        $params = 0 < count($params) ? '?'.http_build_query($params) : '';
+        $response = $this->getClient()->get(self::ENDPOINT.'summary'.$params);
+        $data = $this->jsonResponse($response);
+
+        return $this->setFactory((new RankFactory()))->getFactory()->createEntity($data);
     }
 }
