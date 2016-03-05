@@ -107,6 +107,33 @@ class StreamRepositoryTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($expected, $result);
     }
+
+    /**
+     * Test Get followed streams method.
+     */
+    public function testGetFollowedStreams()
+    {
+        $client = $this->prophet->prophesize('Shoko\TwitchApiBundle\Lib\Client');
+        $factory = new StreamFactory();
+        $transformer = new JsonTransformer();
+        $repository = new StreamRepository($client->reveal(), $factory, $transformer);
+
+        $response = $this->prophet->prophesize('GuzzleHttp\Psr7\Response');
+        $client->get(StreamRepository::ENDPOINT.'followed', ["Authorization" => "OAuth some_access_token"])->willReturn($response->reveal());
+
+        $body = $this->prophet->prophesize();
+        $body->willImplement('Psr\Http\Message\StreamInterface');
+        $response->getBody()->willReturn($body->reveal());
+
+        $content = '{"_links": {"self": "https://api.twitch.tv/kraken/streams/followed?limit=25&offset=0","next": "https://api.twitch.tv/kraken/streams/followed?limit=25&offset=25"},"_total": 123,"streams": []}';
+        $body->getContents()->willReturn($content);
+
+        $result = $repository->getFollowedStreams('some_access_token');
+        $expected = (new StreamFactory())->createList(json_decode($content, true));
+
+        $this->assertEquals($expected, $result);
+    }
+
     /**
      * {@inheridoc}.
      */
