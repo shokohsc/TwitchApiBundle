@@ -39,6 +39,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('https', $client::URL_PROTOCOL);
         $this->assertEquals('api.twitch.tv', $client::URL_HOST);
         $this->assertEquals('kraken', $client::URL_VERSION);
+        $this->assertEquals('api', $client::URL_OLD_VERSION);
         $this->assertInstanceOf('GuzzleHttp\Client', $client->getGuzzle());
     }
 

@@ -25,6 +25,11 @@ class Client
     const URL_VERSION = 'kraken';
 
     /**
+     * Url old version, Twitch api old version: api.
+     */
+    const URL_OLD_VERSION = 'api';
+
+    /**
      * Guzzle $guzzle.
      *
      * @var Guzzle

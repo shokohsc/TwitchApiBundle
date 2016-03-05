@@ -38,8 +38,12 @@ class UserRepository extends AbstractRepository
     public function getUserFollowedGames($userId, $params = array())
     {
         $params = 0 < count($params) ? '?'.http_build_query($params) : '';
-        $client = $this->getClient()->setUrl(Client::URL_PROTOCOL.'://'.Client::URL_HOST.'/api/');
+        // need old api version to get user's followed games
+        $client = $this->getClient()->setUrl(Client::URL_PROTOCOL.'://'.Client::URL_HOST.'/'.Client::URL_OLD_VERSION.'/');
         $response = $this->setClient($client)->getClient()->get(self::ENDPOINT.$userId.'/follows/games'.$params);
+        // reset api endpoint to current version
+        $client = $this->getClient()->setUrl(Client::URL_PROTOCOL.'://'.Client::URL_HOST.'/'.Client::URL_VERSION.'/');
+        $this->setClient($client);
         $data = $this->jsonResponse($response);
 
         return $this->setFactory(new FollowFactory())->getFactory()->createGameList($data);

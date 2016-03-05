@@ -70,6 +70,7 @@ class UserRepositoryTest extends \PHPUnit_Framework_TestCase
         $response = $this->prophet->prophesize('GuzzleHttp\Psr7\Response');
         $client->setUrl('https://api.twitch.tv/api/')->willReturn($client->reveal());
         $client->get(UserRepository::ENDPOINT.'some_user/follows/games')->willReturn($response->reveal());
+        $client->setUrl('https://api.twitch.tv/kraken/')->willReturn($client->reveal());
 
         $body = $this->prophet->prophesize();
         $body->willImplement('Psr\Http\Message\StreamInterface');
