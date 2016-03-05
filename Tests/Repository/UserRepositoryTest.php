@@ -69,7 +69,7 @@ class UserRepositoryTest extends \PHPUnit_Framework_TestCase
 
         $response = $this->prophet->prophesize('GuzzleHttp\Psr7\Response');
         $client->setUrl('https://api.twitch.tv/api/')->willReturn($client->reveal());
-        $client->get(UserRepository::ENDPOINT.'some_user/follows/games/live/')->willReturn($response->reveal());
+        $client->get(UserRepository::ENDPOINT.'some_user/follows/games/live/', ['Client-ID' => 'some_client_id'])->willReturn($response->reveal());
         $client->setUrl('https://api.twitch.tv/kraken/')->willReturn($client->reveal());
 
         $body = $this->prophet->prophesize();
@@ -79,7 +79,7 @@ class UserRepositoryTest extends \PHPUnit_Framework_TestCase
         $content = '{"_total": 5,"follows": [{"viewers": 7911,"channels": 136,"game": {"name": "DayZ","_id": 65632,"giantbomb_id": 39256,"box": {"large": "http://static-cdn.jtvnw.net/ttv-boxart/DayZ-272x380.jpg","medium": "http://static-cdn.jtvnw.net/ttv-boxart/DayZ-136x190.jpg","small": "http://static-cdn.jtvnw.net/ttv-boxart/DayZ-52x72.jpg","template": "http://static-cdn.jtvnw.net/ttv-boxart/DayZ-{width}x{height}.jpg"},"logo": {"large": "http://static-cdn.jtvnw.net/ttv-logoart/DayZ-240x144.jpg","medium": "http://static-cdn.jtvnw.net/ttv-logoart/DayZ-120x72.jpg","small": "http://static-cdn.jtvnw.net/ttv-logoart/DayZ-60x36.jpg","template": "http://static-cdn.jtvnw.net/ttv-logoart/DayZ-{width}x{height}.jpg"},"properties": {},"_links": {}}}]}';
         $body->getContents()->willReturn($content);
 
-        $result = $repository->getUserFollowedGames('some_user');
+        $result = $repository->getUserFollowedGames('some_user', 'some_client_id');
         $expected = (new FollowFactory())->createGameList(json_decode($content, true));
 
         $this->assertEquals($expected, $result);
