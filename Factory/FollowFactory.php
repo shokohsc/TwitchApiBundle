@@ -4,6 +4,7 @@ namespace Shoko\TwitchApiBundle\Factory;
 
 use Shoko\TwitchApiBundle\Model\Entity\Follow;
 use Shoko\TwitchApiBundle\Model\Entity\GameList;
+use Shoko\TwitchApiBundle\Factory\TopFactory;
 
 /**
  * Class FollowFactory.
@@ -95,7 +96,7 @@ class FollowFactory implements FactoryInterface
         }
 
         if (isset($data['follows'])) {
-            $gameList = $gameList->setGames((new GameFactory())->createGames($data['follows']));
+            $gameList = $gameList->setGames((new TopFactory())->createRanks($data['follows']));
         }
 
         if (isset($data['_links'])) {
