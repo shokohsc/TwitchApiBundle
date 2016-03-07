@@ -1,6 +1,7 @@
 services:
 # Client
   twitch.client:
+    arguments: [%client_id%]
     class: Shoko\TwitchApiBundle\Lib\Client
 # Util
   json.serializer:
