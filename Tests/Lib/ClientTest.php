@@ -34,12 +34,19 @@ class ClientTest extends \PHPUnit_Framework_TestCase
      */
     public function testClient()
     {
-        $client = new Client();
+        $client = new Client('some_client_id');
 
         $this->assertEquals('https', $client::URL_PROTOCOL);
         $this->assertEquals('api.twitch.tv', $client::URL_HOST);
         $this->assertEquals('kraken', $client::URL_VERSION);
         $this->assertEquals('api', $client::URL_OLD_VERSION);
+        $this->assertEquals(
+          array(
+            'Accept' => 'application/vnd.twitchtv.v3+json',
+            'Client-ID' => 'some_client_id'
+          ),
+          $client->getHeaders()
+        );
         $this->assertInstanceOf('GuzzleHttp\Client', $client->getGuzzle());
     }
 
@@ -68,13 +75,13 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test getHeaders method.
+     * Test setHeaders method.
      */
-    public function testGetHeaders()
+    public function testSetHeaders()
     {
         $client = new Client();
-        $headers = $client->getDefaultHeaders();
-        $expected = array('Accept' => 'application/vnd.twitchtv.v3+json');
+        $headers = $client->setHeaders(array())->getHeaders();
+        $expected = array();
 
         $this->assertEquals($expected, $headers);
     }
@@ -101,7 +108,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $handler = HandlerStack::create($mock);
         $guzzle = new Guzzle(['handler' => $handler]);
 
-        $client = new Client($guzzle);
+        $client = new Client(null, $guzzle);
         $response = $client->get('');
 
         $this->assertEquals(200, $response->getStatusCode());

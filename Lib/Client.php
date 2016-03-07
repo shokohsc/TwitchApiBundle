@@ -37,6 +37,13 @@ class Client
     private $guzzle = null;
 
     /**
+     * Headers $headers.
+     *
+     * @var array
+     */
+    private $headers = array();
+
+    /**
      * Url string $url
      *
      * @var string
@@ -46,12 +53,19 @@ class Client
     /**
      * Constructor method.
      *
+     * @param string|null $clientId
      * @param Guzzle|bool $guzzle
      */
-    public function __construct($guzzle = false)
+    public function __construct($clientId = null, $guzzle = false)
     {
         $this->guzzle = $guzzle ? $guzzle : new Guzzle();
         $this->url = self::URL_PROTOCOL.'://'.self::URL_HOST.'/'.self::URL_VERSION.'/';
+        $this->headers = $clientId ? array(
+          'Accept' => 'application/vnd.twitchtv.v3+json',
+          'Client-ID' => $clientId,
+        ) : array(
+          'Accept' => 'application/vnd.twitchtv.v3+json',
+        );
     }
 
     /**
@@ -79,13 +93,25 @@ class Client
     }
 
     /**
-     * Get default headers to send.
+     * Get headers.
      *
      * @return array
      */
-    public function getDefaultHeaders()
+    public function getHeaders()
     {
-        return array('Accept' => 'application/vnd.twitchtv.v3+json');
+        return $this->headers;
+    }
+
+    /**
+     * Set headers.
+     *
+     * @param array $headers
+     */
+    public function setHeaders(array $headers)
+    {
+        $this->headers = $headers;
+
+        return $this;
     }
 
     /**
@@ -123,7 +149,7 @@ class Client
         return $this->getGuzzle()->request(
           'GET',
           $this->getUrl().$resource,
-          ['headers' => array_merge($this->getDefaultHeaders(), $headers)]
+          ['headers' => array_merge($this->getHeaders(), $headers)]
         );
     }
 }
