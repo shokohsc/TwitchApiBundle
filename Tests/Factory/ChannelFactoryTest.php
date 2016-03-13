@@ -81,4 +81,20 @@ class ChannelFactoryTest extends \PHPUnit_Framework_TestCase
             $this->assertEquals(true, $channelList[0]->isPartner());
             $this->assertEquals('StarCraft II: Heart of the Swarm', $channelList[0]->getGame());
         }
+
+        /**
+         * Test create channel token method.
+         */
+        public function testCreateChannelToken()
+        {
+            $json = '{"token":"{\"user_id\":63230110,\"channel\":\"outerheaven\",\"expires\":1457884285,\"chansub\":{\"view_until\":1924905600,\"restricted_bitrates\":[]},\"private\":{\"allowed_to_view\":true},\"privileged\":false,\"source_restricted\":false}","sig":"adbdf04778026937b1f09584332cce3cc472cb82","mobile_restricted":true}';
+            $data = json_decode($json, true);
+
+            $channelFactory = new ChannelFactory();
+            $channelToken = $channelFactory->createChannelToken($data);
+
+            $this->assertInstanceOf('Shoko\TwitchApiBundle\Model\Entity\ChannelToken', $channelToken);
+            $this->assertEquals(true, $channelToken->isMobileRestricted());
+            $this->assertEquals('adbdf04778026937b1f09584332cce3cc472cb82', $channelToken->getSig());
+        }
 }

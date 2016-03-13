@@ -4,6 +4,7 @@ namespace Shoko\TwitchApiBundle\Factory;
 
 use Shoko\TwitchApiBundle\Model\Entity\Channel;
 use Shoko\TwitchApiBundle\Model\Entity\ChannelList;
+use Shoko\TwitchApiBundle\Model\Entity\ChannelToken;
 
 /**
  * Class ChannelFactory.
@@ -152,5 +153,29 @@ class ChannelFactory implements FactoryInterface
         }
 
         return $tmp;
+    }
+
+    /**
+     * @param array $data
+     *
+     * @return ChannelToken
+     */
+    public function createChannelToken($data)
+    {
+        $channelToken = ChannelToken::create();
+
+        if (isset($data['token'])) {
+            $channelToken = $channelToken->setToken($data['token']);
+        }
+
+        if (isset($data['sig'])) {
+            $channelToken = $channelToken->setSig($data['sig']);
+        }
+
+        if (isset($data['mobile_restricted'])) {
+            $channelToken = $channelToken->setMobileRestricted($data['mobile_restricted']);
+        }
+
+        return $channelToken;
     }
 }

@@ -57,6 +57,34 @@ class ChannelRepositoryTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test Get channel access token method.
+     */
+    public function testGetChannelToken()
+    {
+        $client = $this->prophet->prophesize('Shoko\TwitchApiBundle\Lib\Client');
+        $factory = new ChannelFactory();
+        $transformer = new JsonTransformer();
+        $repository = new ChannelRepository($client->reveal(), $factory, $transformer);
+
+        $response = $this->prophet->prophesize('GuzzleHttp\Psr7\Response');
+        $client->setUrl('https://api.twitch.tv/api/')->willReturn($client->reveal());
+        $client->get(ChannelRepository::ENDPOINT.'some_channel/access_token')->willReturn($response->reveal());
+        $client->setUrl('https://api.twitch.tv/kraken/')->willReturn($client->reveal());
+
+        $body = $this->prophet->prophesize();
+        $body->willImplement('Psr\Http\Message\StreamInterface');
+        $response->getBody()->willReturn($body->reveal());
+
+        $content = '{"token":"{\"user_id\":63230110,\"channel\":\"outerheaven\",\"expires\":1457884285,\"chansub\":{\"view_until\":1924905600,\"restricted_bitrates\":[]},\"private\":{\"allowed_to_view\":true},\"privileged\":false,\"source_restricted\":false}","sig":"adbdf04778026937b1f09584332cce3cc472cb82","mobile_restricted":true}';
+        $body->getContents()->willReturn($content);
+
+        $result = $repository->getChannelToken('some_channel');
+        $expected = (new ChannelFactory())->createChannelToken(json_decode($content, true));
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
      * {@inheridoc}.
      */
     protected function tearDown()
