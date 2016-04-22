@@ -92,7 +92,7 @@ class GameFactory implements FactoryInterface
     }
 
     /**
-     * @param  array  $data
+     * @param array $data
      *
      * @return Top
      */

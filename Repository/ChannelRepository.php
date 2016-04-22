@@ -1,6 +1,7 @@
 <?php
 
 namespace Shoko\TwitchApiBundle\Repository;
+
 use Shoko\TwitchApiBundle\Lib\Client;
 
 /**

@@ -40,7 +40,7 @@ class MeRepositoryTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(MeRepository::ENDPOINT, constant(get_class($repository).'::ENDPOINT'));
 
         $response = $this->prophet->prophesize('GuzzleHttp\Psr7\Response');
-        $client->get(MeRepository::ENDPOINT, ["Authorization" => "OAuth some_token"])->willReturn($response->reveal());
+        $client->get(MeRepository::ENDPOINT, ['Authorization' => 'OAuth some_token'])->willReturn($response->reveal());
 
         $body = $this->prophet->prophesize();
         $body->willImplement('Psr\Http\Message\StreamInterface');
@@ -57,6 +57,7 @@ class MeRepositoryTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test fail Get authenticated user method.
+     *
      * @expectedException InvalidArgumentException
      */
     public function testFailGetMe()

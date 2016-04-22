@@ -44,7 +44,7 @@ class Client
     private $headers = array();
 
     /**
-     * Url string $url
+     * Url string $url.
      *
      * @var string
      */
@@ -79,7 +79,7 @@ class Client
     }
 
     /**
-     * Set url $url
+     * Set url $url.
      *
      * @param string $url
      *

@@ -43,7 +43,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(
           array(
             'Accept' => 'application/vnd.twitchtv.v3+json',
-            'Client-ID' => 'some_client_id'
+            'Client-ID' => 'some_client_id',
           ),
           $client->getHeaders()
         );

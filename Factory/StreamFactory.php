@@ -4,7 +4,6 @@ namespace Shoko\TwitchApiBundle\Factory;
 
 use Shoko\TwitchApiBundle\Model\Entity\Stream;
 use Shoko\TwitchApiBundle\Model\Entity\StreamList;
-use Shoko\TwitchApiBundle\Factory\FeaturedFactory;
 
 /**
  * Class StreamFactory.
@@ -112,7 +111,7 @@ class StreamFactory implements FactoryInterface
     }
 
     /**
-     * @param  array  $data
+     * @param array $data
      *
      * @return FeaturedStreams
      */

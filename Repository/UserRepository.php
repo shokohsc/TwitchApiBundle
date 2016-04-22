@@ -31,7 +31,7 @@ class UserRepository extends AbstractRepository
      * Get user followed games.
      *
      * @param string $userId
-     * @param array $params
+     * @param array  $params
      *
      * @return GameList
      */

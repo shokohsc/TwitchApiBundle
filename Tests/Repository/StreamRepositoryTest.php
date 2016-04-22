@@ -120,7 +120,7 @@ class StreamRepositoryTest extends \PHPUnit_Framework_TestCase
         $repository = new StreamRepository($client->reveal(), $factory, $transformer);
 
         $response = $this->prophet->prophesize('GuzzleHttp\Psr7\Response');
-        $client->get(StreamRepository::ENDPOINT.'followed', ["Authorization" => "OAuth some_access_token"])->willReturn($response->reveal());
+        $client->get(StreamRepository::ENDPOINT.'followed', ['Authorization' => 'OAuth some_access_token'])->willReturn($response->reveal());
 
         $body = $this->prophet->prophesize();
         $body->willImplement('Psr\Http\Message\StreamInterface');
@@ -137,6 +137,7 @@ class StreamRepositoryTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test fail Get followed streams method.
+     *
      * @expectedException InvalidArgumentException
      */
     public function testFailGetFollowedStreams()

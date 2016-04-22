@@ -3,8 +3,6 @@
 namespace Shoko\TwitchApiBundle\Factory;
 
 use Shoko\TwitchApiBundle\Model\Entity\Top;
-use Shoko\TwitchApiBundle\Model\Entity\Rank;
-use Shoko\TwitchApiBundle\Factory\RankFactory;
 
 /**
  * Class TopFactory.

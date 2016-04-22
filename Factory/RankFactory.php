@@ -3,7 +3,6 @@
 namespace Shoko\TwitchApiBundle\Factory;
 
 use Shoko\TwitchApiBundle\Model\Entity\Rank;
-use Shoko\TwitchApiBundle\Factory\GameFactory;
 
 /**
  * Class RankFactory.

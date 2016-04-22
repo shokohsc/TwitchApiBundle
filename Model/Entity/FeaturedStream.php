@@ -2,8 +2,6 @@
 
 namespace Shoko\TwitchApiBundle\Model\Entity;
 
-use Shoko\TwitchApiBundle\Model\Entity\Stream;
-
 /**
  * FeaturedStream class.
  */

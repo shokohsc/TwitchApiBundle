@@ -1,6 +1,7 @@
 <?php
 
 namespace Shoko\TwitchApiBundle\Repository;
+
 use Shoko\TwitchApiBundle\Factory\RankFactory;
 
 /**
@@ -58,19 +59,18 @@ class StreamRepository extends AbstractRepository
         return $this->getFactory()->createFeatured($data);
     }
 
-
     /**
      * Get authenticated user streams.
      *
      * @param string $accessToken
-     * @param array $params
+     * @param array  $params
      *
      * @return StreamList
      */
     public function getFollowedStreams($accessToken, $params = array())
     {
         if (empty($accessToken)) {
-            throw new \InvalidArgumentException("Empty access token provided", 1);
+            throw new \InvalidArgumentException('Empty access token provided', 1);
         }
         $params = 0 < count($params) ? '?'.http_build_query($params) : '';
         $response = $this->getClient()->get(self::ENDPOINT.'followed'.$params, array('Authorization' => 'OAuth '.$accessToken));

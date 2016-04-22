@@ -19,7 +19,7 @@ class MeRepository extends AbstractRepository
     public function getMe($accessToken)
     {
         if (empty($accessToken)) {
-            throw new \InvalidArgumentException("Empty access token provided", 1);
+            throw new \InvalidArgumentException('Empty access token provided', 1);
         }
         $response = $this->getClient()->get(self::ENDPOINT, array('Authorization' => 'OAuth '.$accessToken));
         $data = $this->jsonResponse($response);

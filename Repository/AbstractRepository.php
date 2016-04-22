@@ -36,9 +36,9 @@ class AbstractRepository
     /**
      * Constructor method.
      *
-     * @param Client           $client
-     * @param FactoryInterface $factory
-     * @param TransformerInterface  $transformer
+     * @param Client               $client
+     * @param FactoryInterface     $factory
+     * @param TransformerInterface $transformer
      */
     public function __construct(Client $client, FactoryInterface $factory, TransformerInterface $transformer)
     {
@@ -58,7 +58,7 @@ class AbstractRepository
     }
 
     /**
-     * Set Client $client
+     * Set Client $client.
      *
      * @param Client $client
      *
