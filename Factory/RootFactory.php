@@ -11,6 +11,7 @@ class RootFactory implements FactoryInterface
 {
     /**
      * @param array $data
+     * @param false|Root $root
      *
      * @return Root
      */

@@ -11,9 +11,9 @@ class TopFactory implements FactoryInterface
 {
     /**
      * @param array      $data
-     * @param false|Game $rank
+     * @param false|Rank $rank
      *
-     * @return Game
+     * @return Rank
      */
     public function createEntity(array $data, $rank = false)
     {

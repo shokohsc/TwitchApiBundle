@@ -53,8 +53,8 @@ class Client
     /**
      * Constructor method.
      *
-     * @param string|null $clientId
-     * @param Guzzle|bool $guzzle
+     * @param null|string $clientId
+     * @param false|Guzzle $guzzle
      */
     public function __construct($clientId = null, $guzzle = false)
     {
@@ -106,6 +106,8 @@ class Client
      * Set headers.
      *
      * @param array $headers
+     *
+     * @return Client
      */
     public function setHeaders(array $headers)
     {
@@ -126,6 +128,8 @@ class Client
 
     /**
      * Set guzzle $guzzle.
+     *
+     * @param Guzzle $guzzle
      *
      * @return Client
      */

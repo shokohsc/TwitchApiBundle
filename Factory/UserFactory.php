@@ -11,6 +11,7 @@ class UserFactory implements FactoryInterface
 {
     /**
      * @param array $data
+     * @param false|User $user
      *
      * @return User
      */

@@ -11,6 +11,7 @@ class MeFactory implements FactoryInterface
 {
     /**
      * @param array $data
+     * @param false|Me $me
      *
      * @return Me
      */

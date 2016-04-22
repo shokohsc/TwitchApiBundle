@@ -11,6 +11,7 @@ class MyChannelFactory implements FactoryInterface
 {
     /**
      * @param array $data
+     * @param false|MyChannel $myChannel
      *
      * @return MyChannel
      */

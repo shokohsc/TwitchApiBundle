@@ -12,6 +12,7 @@ class StreamFactory implements FactoryInterface
 {
     /**
      * @param array $data
+     * @param false|Stream $stream
      *
      * @return Stream
      */

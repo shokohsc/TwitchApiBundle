@@ -12,6 +12,7 @@ class FollowFactory implements FactoryInterface
 {
     /**
      * @param array $data
+     * @param false|Follow $follow
      *
      * @return Follow
      */
@@ -84,9 +85,9 @@ class FollowFactory implements FactoryInterface
 
     /**
      * @param array            $data
-     * @param false|FollowList $followList
+     * @param false|GameList $gameList
      *
-     * @return FollowList
+     * @return GameList
      */
     public function createGameList(array $data, $gameList = false)
     {

@@ -15,13 +15,14 @@ class TokenFactory implements FactoryInterface
      *
      * @return Authorization
      */
-    protected function createAuthorization($data)
+    protected function createAuthorization(array $data)
     {
         return Authorization::create($data);
     }
 
     /**
      * @param array $data
+     * @param false|Token $token
      *
      * @return Token
      */

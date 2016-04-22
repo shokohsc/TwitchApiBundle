@@ -13,6 +13,7 @@ class ChannelFactory implements FactoryInterface
 {
     /**
      * @param array $data
+     * @param false|Channel $channel
      *
      * @return Channel
      */
@@ -160,7 +161,7 @@ class ChannelFactory implements FactoryInterface
      *
      * @return ChannelToken
      */
-    public function createChannelToken($data)
+    public function createChannelToken(array $data)
     {
         $channelToken = ChannelToken::create();
 
