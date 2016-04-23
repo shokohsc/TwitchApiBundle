@@ -2,7 +2,7 @@
 
 namespace Shoko\TwitchApiBundle\Model\Entity;
 
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Emailable;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\EmailTrait;
 
 /**
  * Me class.
@@ -11,7 +11,7 @@ class Me extends User
 {
     const ENDPOINT = 'user';
 
-    use Emailable;
+    use EmailTrait;
 
     /**
      * Partnered boolean $partnered.

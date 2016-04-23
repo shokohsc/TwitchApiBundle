@@ -3,9 +3,9 @@
 namespace Shoko\TwitchApiBundle\Model\Entity\Traits;
 
 /**
- * Trait Displaynameable.
+ * Trait DisplaynameTrait.
  */
-trait Displaynameable
+trait DisplaynameTrait
 {
     /**
      * DisplayName string $displayName.

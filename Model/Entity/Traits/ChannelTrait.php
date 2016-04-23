@@ -5,9 +5,9 @@ namespace Shoko\TwitchApiBundle\Model\Entity\Traits;
 use Shoko\TwitchApiBundle\Model\Entity\Channel;
 
 /**
- * Trait Channelable.
+ * Trait ChannelTrait.
  */
-trait Channelable
+trait ChannelTrait
 {
     /**
      * Channel string $channel.

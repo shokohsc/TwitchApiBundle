@@ -3,9 +3,9 @@
 namespace Shoko\TwitchApiBundle\Model\Entity\Traits;
 
 /**
- * Trait Emailable.
+ * Trait EmailTrait.
  */
-trait Emailable
+trait EmailTrait
 {
     /**
      * Email string $email.

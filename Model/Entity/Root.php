@@ -2,7 +2,7 @@
 
 namespace Shoko\TwitchApiBundle\Model\Entity;
 
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Linksable;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\LinksTrait;
 use Shoko\TwitchApiBundle\Model\ValueObject\Token;
 
 /**
@@ -10,7 +10,7 @@ use Shoko\TwitchApiBundle\Model\ValueObject\Token;
  */
 class Root
 {
-    use Linksable;
+    use LinksTrait;
 
     /**
      * Token $token.

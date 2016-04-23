@@ -2,15 +2,15 @@
 
 namespace Shoko\TwitchApiBundle\Model\Entity;
 
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Linksable;
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Totalable;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\LinksTrait;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\TotalTrait;
 
 /**
  * FollowList class.
  */
 class FollowList
 {
-    use Linksable, Totalable;
+    use LinksTrait, TotalTrait;
 
     /**
      * Follows array $follows.

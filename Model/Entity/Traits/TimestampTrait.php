@@ -3,9 +3,9 @@
 namespace Shoko\TwitchApiBundle\Model\Entity\Traits;
 
 /**
- * Trait Timestampable.
+ * Trait TimestampTrait.
  */
-trait Timestampable
+trait TimestampTrait
 {
     /**
      * Creation date DateTime $createdAt.

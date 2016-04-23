@@ -2,16 +2,16 @@
 
 namespace Shoko\TwitchApiBundle\Model\Entity;
 
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Nameable;
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Linksable;
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Identifiable;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\NameTrait;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\LinksTrait;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\IdTrait;
 
 /**
  * Game class.
  */
 class Game
 {
-    use Identifiable, Linksable, Nameable;
+    use IdTrait, LinksTrait, NameTrait;
 
     /**
      * Box array $box.

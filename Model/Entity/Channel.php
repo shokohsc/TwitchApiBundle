@@ -2,23 +2,23 @@
 
 namespace Shoko\TwitchApiBundle\Model\Entity;
 
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Logoable;
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Gameable;
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Nameable;
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Linksable;
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Delayable;
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Bannerable;
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Identifiable;
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Timestampable;
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Backgroundable;
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Displaynameable;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\LogoTrait;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\GameTrait;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\NameTrait;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\LinksTrait;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\DelayTrait;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\BannerTrait;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\IdTrait;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\TimestampTrait;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\BackgroundTrait;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\DisplaynameTrait;
 
 /**
  * Channel class.
  */
 class Channel
 {
-    use Identifiable, Timestampable, Logoable, Linksable, Gameable, Nameable, Displaynameable, Delayable, Bannerable, Backgroundable;
+    use IdTrait, TimestampTrait, LogoTrait, LinksTrait, GameTrait, NameTrait, DisplaynameTrait, DelayTrait, BannerTrait, BackgroundTrait;
 
     /**
      * Mature boolean $mature.

@@ -3,9 +3,9 @@
 namespace Shoko\TwitchApiBundle\Model\Entity\Traits;
 
 /**
- * Trait Backgroundable.
+ * Trait BackgroundTrait.
  */
-trait Backgroundable
+trait BackgroundTrait
 {
     /**
      * Background string $background.

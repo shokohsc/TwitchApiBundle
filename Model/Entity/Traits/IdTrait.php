@@ -3,9 +3,9 @@
 namespace Shoko\TwitchApiBundle\Model\Entity\Traits;
 
 /**
- * Trait Identifiable.
+ * Trait IdTrait.
  */
-trait Identifiable
+trait IdTrait
 {
     /**
      * Id string $id.

@@ -3,9 +3,9 @@
 namespace Shoko\TwitchApiBundle\Model\Entity\Traits;
 
 /**
- * Trait Bannerable.
+ * Trait BannerTrait.
  */
-trait Bannerable
+trait BannerTrait
 {
     /**
      * Banner string $banner.

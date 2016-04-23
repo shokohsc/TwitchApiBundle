@@ -2,21 +2,21 @@
 
 namespace Shoko\TwitchApiBundle\Model\Entity;
 
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Logoable;
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Nameable;
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Linksable;
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Bannerable;
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Identifiable;
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Timestampable;
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Backgroundable;
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Displaynameable;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\LogoTrait;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\NameTrait;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\LinksTrait;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\BannerTrait;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\IdTrait;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\TimestampTrait;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\BackgroundTrait;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\DisplaynameTrait;
 
 /**
  * Team class.
  */
 class Team
 {
-    use Identifiable, Timestampable, Logoable, Linksable, Nameable, Displaynameable, Bannerable, Backgroundable;
+    use IdTrait, TimestampTrait, LogoTrait, LinksTrait, NameTrait, DisplaynameTrait, BannerTrait, BackgroundTrait;
 
     /**
      * Info string $info.

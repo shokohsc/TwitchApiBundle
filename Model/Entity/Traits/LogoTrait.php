@@ -3,9 +3,9 @@
 namespace Shoko\TwitchApiBundle\Model\Entity\Traits;
 
 /**
- * Trait Logoable.
+ * Trait LogoTrait.
  */
-trait Logoable
+trait LogoTrait
 {
     /**
      * Logo string $logo.

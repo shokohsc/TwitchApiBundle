@@ -2,19 +2,19 @@
 
 namespace Shoko\TwitchApiBundle\Model\Entity;
 
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Gameable;
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Delayable;
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Linksable;
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Channelable;
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Viewersable;
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Identifiable;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\GameTrait;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\DelayTrait;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\LinksTrait;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\ChannelTrait;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\ViewersTrait;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\IdTrait;
 
 /**
  * Stream class.
  */
 class Stream
 {
-    use Identifiable, Linksable, Gameable, Delayable, Channelable, Viewersable;
+    use IdTrait, LinksTrait, GameTrait, DelayTrait, ChannelTrait, ViewersTrait;
 
     /**
      * Average Fps decimal $averageFps.

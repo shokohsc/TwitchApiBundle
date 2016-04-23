@@ -2,14 +2,14 @@
 
 namespace Shoko\TwitchApiBundle\Model\Entity;
 
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Linksable;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\LinksTrait;
 
 /**
  * Featured class.
  */
 class Featured
 {
-    use Linksable;
+    use LinksTrait;
 
     /**
      * Featured array $featureds.

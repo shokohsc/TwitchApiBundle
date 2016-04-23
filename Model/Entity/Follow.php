@@ -2,15 +2,15 @@
 
 namespace Shoko\TwitchApiBundle\Model\Entity;
 
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Linksable;
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Channelable;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\LinksTrait;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\ChannelTrait;
 
 /**
  * Follow class.
  */
 class Follow
 {
-    use Linksable, Channelable;
+    use LinksTrait, ChannelTrait;
 
     /**
      * Notifications boolean $notifications.

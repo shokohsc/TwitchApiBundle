@@ -3,9 +3,9 @@
 namespace Shoko\TwitchApiBundle\Model\Entity\Traits;
 
 /**
- * Trait Linksable.
+ * Trait LinksTrait.
  */
-trait Linksable
+trait LinksTrait
 {
     /**
      * Links array $links.

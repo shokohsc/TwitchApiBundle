@@ -2,7 +2,7 @@
 
 namespace Shoko\TwitchApiBundle\Model\Entity;
 
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Emailable;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\EmailTrait;
 
 /**
  * MyChannel class.
@@ -11,7 +11,7 @@ class MyChannel extends Channel
 {
     const ENDPOINT = 'channel';
 
-    use Emailable;
+    use EmailTrait;
 
     /**
      * Stream key string $streamKey.

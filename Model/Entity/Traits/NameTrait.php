@@ -3,9 +3,9 @@
 namespace Shoko\TwitchApiBundle\Model\Entity\Traits;
 
 /**
- * Trait Nameable.
+ * Trait NameTrait.
  */
-trait Nameable
+trait NameTrait
 {
     /**
      * Name string $name.

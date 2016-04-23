@@ -3,9 +3,9 @@
 namespace Shoko\TwitchApiBundle\Model\Entity\Traits;
 
 /**
- * Trait Totalable.
+ * Trait TotalTrait.
  */
-trait Totalable
+trait TotalTrait
 {
     /**
      * Total string $total.

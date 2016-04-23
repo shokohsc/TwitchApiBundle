@@ -3,9 +3,9 @@
 namespace Shoko\TwitchApiBundle\Model\Entity\Traits;
 
 /**
- * Trait Viewersable.
+ * Trait ViewersTrait.
  */
-trait Viewersable
+trait ViewersTrait
 {
     /**
      * Viewers string $viewers.

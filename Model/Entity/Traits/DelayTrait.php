@@ -3,9 +3,9 @@
 namespace Shoko\TwitchApiBundle\Model\Entity\Traits;
 
 /**
- * Trait Delayable.
+ * Trait DelayTrait.
  */
-trait Delayable
+trait DelayTrait
 {
     /**
      * Delay integer|null $delay.

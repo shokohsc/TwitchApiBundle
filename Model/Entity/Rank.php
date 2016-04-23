@@ -2,15 +2,15 @@
 
 namespace Shoko\TwitchApiBundle\Model\Entity;
 
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Linksable;
-use Shoko\TwitchApiBundle\Model\Entity\Traits\Viewersable;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\LinksTrait;
+use Shoko\TwitchApiBundle\Model\Entity\Traits\ViewersTrait;
 
 /**
  * Rank class.
  */
 class Rank
 {
-    use Viewersable, Linksable;
+    use ViewersTrait, LinksTrait;
 
     /**
      * Game $game.
