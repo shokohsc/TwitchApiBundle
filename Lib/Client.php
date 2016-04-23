@@ -60,7 +60,7 @@ class Client
     {
         $this->guzzle = $guzzle ? $guzzle : new Guzzle();
         $this->url = self::URL_PROTOCOL.'://'.self::URL_HOST.'/'.self::URL_VERSION.'/';
-        $this->headers = $clientId ? array(
+        $this->headers = null !== $clientId ? array(
           'Accept' => 'application/vnd.twitchtv.v3+json',
           'Client-ID' => $clientId,
         ) : array(
