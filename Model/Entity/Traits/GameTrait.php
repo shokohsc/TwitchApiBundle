@@ -29,7 +29,7 @@ trait GameTrait
      *
      * @param string $game
      */
-    public function setGame($game)
+    public function setGame(string $game)
     {
         $this->game = $game;
 

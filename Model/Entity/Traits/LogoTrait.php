@@ -29,7 +29,7 @@ trait LogoTrait
      *
      * @param string $logo
      */
-    public function setLogo($logo)
+    public function setLogo(string $logo)
     {
         $this->logo = $logo;
 

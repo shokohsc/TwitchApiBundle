@@ -29,7 +29,7 @@ trait DisplaynameTrait
      *
      * @param string $displayName
      */
-    public function setDisplayName($displayName)
+    public function setDisplayName(string $displayName)
     {
         $this->displayName = $displayName;
 

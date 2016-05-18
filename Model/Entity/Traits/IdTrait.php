@@ -29,7 +29,7 @@ trait IdTrait
      *
      * @param string $id
      */
-    public function setId($id)
+    public function setId(string $id)
     {
         $this->id = $id;
 

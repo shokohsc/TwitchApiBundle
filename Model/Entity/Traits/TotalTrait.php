@@ -29,7 +29,7 @@ trait TotalTrait
      *
      * @param int $total
      */
-    public function setTotal($total)
+    public function setTotal(int $total)
     {
         $this->total = $total;
 

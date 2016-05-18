@@ -29,7 +29,7 @@ trait BackgroundTrait
      *
      * @param string $background
      */
-    public function setBackground($background)
+    public function setBackground(string $background)
     {
         $this->background = $background;
 

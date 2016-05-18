@@ -29,7 +29,7 @@ trait EmailTrait
      *
      * @param string $email
      */
-    public function setEmail($email)
+    public function setEmail(string $email)
     {
         $this->email = $email;
 

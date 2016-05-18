@@ -29,7 +29,7 @@ trait BannerTrait
      *
      * @param string $banner
      */
-    public function setBanner($banner)
+    public function setBanner(string $banner)
     {
         $this->banner = $banner;
 

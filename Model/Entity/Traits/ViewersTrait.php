@@ -29,7 +29,7 @@ trait ViewersTrait
      *
      * @param int $viewers
      */
-    public function setViewers($viewers)
+    public function setViewers(int $viewers)
     {
         $this->viewers = $viewers;
 
