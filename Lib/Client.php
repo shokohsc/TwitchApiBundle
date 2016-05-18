@@ -3,6 +3,7 @@
 namespace Shoko\TwitchApiBundle\Lib;
 
 use GuzzleHttp\Client as Guzzle;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * Client class.
@@ -71,9 +72,9 @@ class Client
     /**
      * Get default twitch v3 api url.
      *
-     * @return Url
+     * @return string
      */
-    public function getUrl()
+    public function getUrl() : string
     {
         return $this->url;
     }
@@ -85,7 +86,7 @@ class Client
      *
      * @return Client
      */
-    public function setUrl($url)
+    public function setUrl(string $url) : Client
     {
         $this->url = $url;
 
@@ -97,7 +98,7 @@ class Client
      *
      * @return array
      */
-    public function getHeaders()
+    public function getHeaders() : array
     {
         return $this->headers;
     }
@@ -109,7 +110,7 @@ class Client
      *
      * @return Client
      */
-    public function setHeaders(array $headers)
+    public function setHeaders(array $headers) : Client
     {
         $this->headers = $headers;
 
@@ -121,7 +122,7 @@ class Client
      *
      * @return Guzzle
      */
-    public function getGuzzle()
+    public function getGuzzle() : Guzzle
     {
         return $this->guzzle;
     }
@@ -133,7 +134,7 @@ class Client
      *
      * @return Client
      */
-    public function setGuzzle(Guzzle $guzzle)
+    public function setGuzzle(Guzzle $guzzle) : Client
     {
         $this->guzzle = $guzzle;
 
@@ -146,9 +147,9 @@ class Client
      * @param string $resource
      * @param array  $headers
      *
-     * @return \Guzzle\Http\Message\Response
+     * @return ResponseInterface
      */
-    public function get($resource, $headers = array())
+    public function get(string $resource, $headers = array()) : ResponseInterface
     {
         return $this->getGuzzle()->request(
           'GET',
