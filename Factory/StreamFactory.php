@@ -2,6 +2,7 @@
 
 namespace Shoko\TwitchApiBundle\Factory;
 
+use Shoko\TwitchApiBundle\Model\Entity\Featured;
 use Shoko\TwitchApiBundle\Model\Entity\Stream;
 use Shoko\TwitchApiBundle\Model\Entity\StreamList;
 
@@ -16,7 +17,7 @@ class StreamFactory implements FactoryInterface
      *
      * @return Stream
      */
-    public function createEntity(array $data, $stream = false)
+    public function createEntity(array $data, $stream = false) : Stream
     {
         if (false === $stream) {
             $stream = Stream::create();
@@ -75,7 +76,7 @@ class StreamFactory implements FactoryInterface
      *
      * @return StreamList
      */
-    public function createList(array $data, $streamList = false)
+    public function createList(array $data, $streamList = false) : StreamList
     {
         if (false === $streamList) {
             $streamList = StreamList::create();
@@ -101,7 +102,7 @@ class StreamFactory implements FactoryInterface
      *
      * @return array
      */
-    public function createStreams(array $streams)
+    public function createStreams(array $streams) : array
     {
         $tmp = [];
         foreach ($streams as $entry) {
@@ -114,9 +115,9 @@ class StreamFactory implements FactoryInterface
     /**
      * @param array $data
      *
-     * @return FeaturedStreams
+     * @return Featured
      */
-    public function createFeatured(array $data)
+    public function createFeatured(array $data) : Featured
     {
         return (new FeaturedFactory())->createEntity($data);
     }

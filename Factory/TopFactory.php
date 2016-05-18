@@ -11,29 +11,29 @@ class TopFactory implements FactoryInterface
 {
     /**
      * @param array      $data
-     * @param false|Rank $rank
+     * @param false|Top $top
      *
-     * @return Rank
+     * @return Top
      */
-    public function createEntity(array $data, $rank = false)
+    public function createEntity(array $data, $top = false) : Top
     {
-        if (false === $rank) {
-            $rank = Top::create();
+        if (false === $top) {
+            $top = Top::create();
         }
 
         if (isset($data['top'])) {
-            $rank = $rank->setRanks($this->createRanks($data['top']));
+            $top = $top->setRanks($this->createRanks($data['top']));
         }
 
         if (isset($data['_links'])) {
-            $rank = $rank->setLinks($data['_links']);
+            $top = $top->setLinks($data['_links']);
         }
 
         if (isset($data['_total'])) {
-            $rank = $rank->setTotal($data['_total']);
+            $top = $top->setTotal($data['_total']);
         }
 
-        return $rank;
+        return $top;
     }
 
     /**
@@ -41,7 +41,7 @@ class TopFactory implements FactoryInterface
      *
      * @return array
      */
-    public function createRanks(array $ranks)
+    public function createRanks(array $ranks) : array
     {
         $tmp = [];
         foreach ($ranks as $entry) {

@@ -16,7 +16,7 @@ class FollowFactory implements FactoryInterface
      *
      * @return Follow
      */
-    public function createEntity(array $data, $follow = false)
+    public function createEntity(array $data, $follow = false) : Follow
     {
         if (false === $follow) {
             $follow = Follow::create();
@@ -47,7 +47,7 @@ class FollowFactory implements FactoryInterface
      *
      * @return FollowList
      */
-    public function createList(array $data, $followList = false)
+    public function createList(array $data, $followList = false) : FollowList
     {
         if (false === $followList) {
             $followList = FollowList::create();
@@ -73,7 +73,7 @@ class FollowFactory implements FactoryInterface
      *
      * @return array
      */
-    public function createFollows(array $follows)
+    public function createFollows(array $follows) : array
     {
         $tmp = [];
         foreach ($follows as $entry) {
@@ -89,7 +89,7 @@ class FollowFactory implements FactoryInterface
      *
      * @return GameList
      */
-    public function createGameList(array $data, $gameList = false)
+    public function createGameList(array $data, $gameList = false) : GameList
     {
         if (false === $gameList) {
             $gameList = GameList::create();

@@ -17,7 +17,7 @@ class ChannelFactory implements FactoryInterface
      *
      * @return Channel
      */
-    public function createEntity(array $data, $channel = false)
+    public function createEntity(array $data, $channel = false) : Channel
     {
         if (false === $channel) {
             $channel = Channel::create();
@@ -120,7 +120,7 @@ class ChannelFactory implements FactoryInterface
      *
      * @return ChannelList
      */
-    public function createList(array $data, $channelList = false)
+    public function createList(array $data, $channelList = false) : ChannelList
     {
         if (false === $channelList) {
             $channelList = ChannelList::create();
@@ -161,7 +161,7 @@ class ChannelFactory implements FactoryInterface
      *
      * @return ChannelToken
      */
-    public function createChannelToken(array $data)
+    public function createChannelToken(array $data) : ChannelToken
     {
         $channelToken = ChannelToken::create();
 

@@ -15,7 +15,7 @@ class UserFactory implements FactoryInterface
      *
      * @return User
      */
-    public function createEntity(array $data, $user = false)
+    public function createEntity(array $data, $user = false) : User
     {
         if (false === $user) {
             $user = User::create();

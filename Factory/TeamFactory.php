@@ -15,7 +15,7 @@ class TeamFactory implements FactoryInterface
      *
      * @return Team
      */
-    public function createEntity(array $data, $team = false)
+    public function createEntity(array $data, $team = false) : Team
     {
         if (false === $team) {
             $team = Team::create();

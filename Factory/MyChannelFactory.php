@@ -15,7 +15,7 @@ class MyChannelFactory implements FactoryInterface
      *
      * @return MyChannel
      */
-    public function createEntity(array $data, $myChannel = false)
+    public function createEntity(array $data, $myChannel = false) : MyChannel
     {
         if (false === $myChannel) {
             $myChannel = MyChannel::create();

@@ -16,7 +16,7 @@ class FeaturedFactory implements FactoryInterface
      *
      * @return Featured
      */
-    public function createEntity(array $data, $featured = false)
+    public function createEntity(array $data, $featured = false) : Featured
     {
         if (false === $featured) {
             $featured = Featured::create();
@@ -38,7 +38,7 @@ class FeaturedFactory implements FactoryInterface
      *
      * @return array
      */
-    public function createFeaturedStreams(array $featureds)
+    public function createFeaturedStreams(array $featureds) : array
     {
         $tmp = [];
         foreach ($featureds as $entry) {

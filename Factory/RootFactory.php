@@ -15,7 +15,7 @@ class RootFactory implements FactoryInterface
      *
      * @return Root
      */
-    public function createEntity(array $data, $root = false)
+    public function createEntity(array $data, $root = false) : Root
     {
         if (false === $root) {
             $root = Root::create();

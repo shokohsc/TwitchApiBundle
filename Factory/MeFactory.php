@@ -15,7 +15,7 @@ class MeFactory implements FactoryInterface
      *
      * @return Me
      */
-    public function createEntity(array $data, $me = false)
+    public function createEntity(array $data, $me = false) : Me
     {
         if (false === $me) {
             $me = Me::create();

@@ -15,7 +15,7 @@ class RankFactory implements FactoryInterface
      *
      * @return Rank
      */
-    public function createEntity(array $data, $rank = false)
+    public function createEntity(array $data, $rank = false) : Rank
     {
         if (false === $rank) {
             $rank = Rank::create();

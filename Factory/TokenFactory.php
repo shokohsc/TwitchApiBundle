@@ -15,7 +15,7 @@ class TokenFactory implements FactoryInterface
      *
      * @return Authorization
      */
-    protected function createAuthorization(array $data)
+    protected function createAuthorization(array $data) : Authorization
     {
         return Authorization::create($data);
     }
@@ -26,7 +26,7 @@ class TokenFactory implements FactoryInterface
      *
      * @return Token
      */
-    public function createEntity(array $data, $token = false)
+    public function createEntity(array $data, $token = false) : Token
     {
         if (false === $token) {
             $token = Token::create();
